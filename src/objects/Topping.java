@@ -16,7 +16,7 @@ public class Topping {
 
     @Override
     public String toString(){
-        return shortName;
+        return fullName;
     }
 
     public String getShortName() {

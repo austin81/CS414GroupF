@@ -5,7 +5,8 @@ package views;
  */
 public class Main {
     public static void main(String[] args){
-        //MainMenuView mainMenuView = new MainMenuView();
-        AddOrderView addOrderView = new AddOrderView();
+
+        MainMenuView mainMenuView = new MainMenuView();
+        //AddOrderView addOrderView = new AddOrderView();
     }
 }

@@ -20,7 +20,9 @@ public class MainMenuView extends JFrame{
         addOrderButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-
+                // add authentication here
+                AddOrderView addOrderView = new AddOrderView();
+                setVisible(false);
             }
         });
         makeLineViewButton.addActionListener(new ActionListener() {
