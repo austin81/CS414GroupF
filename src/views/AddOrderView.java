@@ -1,14 +1,13 @@
 package views;
 
-import objects.Pizza;
-import objects.PizzaSize;
-import objects.Sauce;
-import objects.Topping;
+import objects.*;
 
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 /**
@@ -23,14 +22,14 @@ public class AddOrderView extends JFrame{
     private JButton collectOrderButton;
     private JButton sendToMakelineButton;
     private JButton addPizzaButton;
-
+    private Order order;
     ArrayList<Pizza> pizzas;
     ArrayList<Topping> toppings;
     ArrayList<PizzaSize> sizes;
     ArrayList<Sauce> sauces;
+
     public AddOrderView(){
         orderView.setPreferredSize(new Dimension(getToolkit().getScreenSize().width, getToolkit().getScreenSize().height));
-
         setContentPane(orderView);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         pack();
@@ -43,12 +42,12 @@ public class AddOrderView extends JFrame{
         pizzaList.setCellRenderer(new ComponentPizza());
         pizzaToppingsList.setListData(toppings.toArray());
         pizzaToppingsList.setCellRenderer(new ComponentTopping());
-        pizzaToppingsList.setSelectionModel(new DefaultListSelectionModel(){
+        pizzaToppingsList.setSelectionModel(new DefaultListSelectionModel() {
             @Override
-            public void setSelectionInterval(int index0, int index1){
-                if(super.isSelectedIndex(index0)){
+            public void setSelectionInterval(int index0, int index1) {
+                if (super.isSelectedIndex(index0)) {
                     super.removeSelectionInterval(index0, index1);
-                }else{
+                } else {
                     super.addSelectionInterval(index0, index1);
                 }
             }
@@ -60,6 +59,25 @@ public class AddOrderView extends JFrame{
         pizzaSizesList.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
         pizzaSaucesList.setListData(sauces.toArray());
         pizzaSaucesList.setCellRenderer(new ComponentSauce());
+        order = new Order();
+        addPizzaButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                ArrayList<Topping> selectedToppings = new ArrayList<>();
+                int[] tmpSelectedToppings = pizzaToppingsList.getSelectedIndices();
+                for(int i = 0; i < tmpSelectedToppings.length; i++) {
+                    selectedToppings.add(toppings.get(i));
+                }
+                Pizza pizza = new Pizza();
+                pizza.setToppingList(selectedToppings);
+                pizza.setSauce(sauces.get(pizzaSaucesList.getSelectedIndex()));
+                pizza.setSize(sizes.get(pizzaSizesList.getSelectedIndex()));
+                pizza.calculatePrice();
+                order.addPizza(pizza);
+            }
+        });
+
+
         setVisible(true);
     }
     private void initData(){

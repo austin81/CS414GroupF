@@ -23,9 +23,20 @@ public class Register {
     public ArrayList<Order> getOrders() {
         return orders;
     }
-
+    public Order getOrder(int index){
+        return this.orders.get(index);
+    }
+    public void addOrder(Order order){
+        if(this.orders == null){
+            this.orders = new ArrayList<>();
+        }
+        this.orders.add(order);
+    }
     public void setOrders(ArrayList<Order> orders) {
-        this.orders = orders;
+        if(this.orders == null){
+            this.orders = new ArrayList<>();
+        }
+        this.orders.addAll(orders);
     }
 
     public User getLoggedInUser() {

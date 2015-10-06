@@ -1,5 +1,7 @@
 package views;
 
+import objects.Register;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -12,7 +14,7 @@ public class MainMenuView extends JFrame{
     private JButton makeLineViewButton;
     private JButton managerControlsButton;
     private JPanel mainMenuPanel;
-
+    public static final Register register = new Register();
     public MainMenuView(){
         setContentPane(mainMenuPanel);
         pack();
