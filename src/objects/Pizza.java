@@ -11,18 +11,21 @@ public class Pizza {
     ArrayList<Topping> toppings;
     Sauce sauce;
     PizzaSize size;
+    PIZZA_STATUS status;
     double price;
 
     public Pizza(){
-
+        toppings = new ArrayList<>();
     }
 
-    public Pizza(ArrayList<Topping> toppings, Sauce sauce, PizzaSize size, double price) {
+    public Pizza(ArrayList<Topping> toppings, Sauce sauce, PizzaSize size, PIZZA_STATUS status, double price) {
         this.toppings = toppings;
         this.sauce = sauce;
         this.size = size;
+        this.status = status;
         this.price = price;
     }
+
     @Override
     public String toString(){
         return size.toString() + " " + getSauce() + " " + getToppingList() + " $" + getPrice();
@@ -49,6 +52,26 @@ public class Pizza {
 
     public void setSize(PizzaSize size) {
         this.size = size;
+    }
+
+    public PIZZA_STATUS getStatus(){
+        return status;
+    }
+
+    public void setStatus(PIZZA_STATUS status){
+        this.status = status;
+    }
+
+    public void sendPizzaToMakeline(){
+        this.status = PIZZA_STATUS.MAKELINE;
+    }
+
+    public void loadPizza(){
+        this.status = PIZZA_STATUS.LOADED;
+    }
+
+    public void completePizza(){
+        this.status = PIZZA_STATUS.COMPLETED;
     }
 
     public void calculatePrice(){

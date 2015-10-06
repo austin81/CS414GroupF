@@ -22,24 +22,67 @@ public class AddOrderView extends JFrame{
     private JButton collectOrderButton;
     private JButton sendToMakelineButton;
     private JButton addPizzaButton;
+    private JButton cancelPizzaButton;
+    private JTextField totalDisplay;
     private Order order;
     ArrayList<Pizza> pizzas;
     ArrayList<Topping> toppings;
     ArrayList<PizzaSize> sizes;
     ArrayList<Sauce> sauces;
+    public static final String TOTAL_TEXT = "Total................";
 
     public AddOrderView(){
         orderView.setPreferredSize(new Dimension(getToolkit().getScreenSize().width, getToolkit().getScreenSize().height));
         setContentPane(orderView);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         pack();
+        order = new Order();
         pizzas = new ArrayList<>();
         toppings = new ArrayList<>();
         sizes = new ArrayList<>();
         sauces = new ArrayList<>();
         initData();
-        pizzaList.setListData(pizzas.toArray());
+        totalDisplay.setText(TOTAL_TEXT + order.getOrderTotal());
+        pizzaList.setListData(order.getPizzas().toArray());
         pizzaList.setCellRenderer(new ComponentPizza());
+        pizzaList.addListSelectionListener(new ListSelectionListener() {
+            @Override
+            public void valueChanged(ListSelectionEvent event) {
+                System.out.println(event.toString());
+                addPizzaButton.setText("Update Pizza");
+                JList list = (JList) event.getSource();
+                String buttonText = "";
+                try {
+                    buttonText = list.getSelectedValue().toString();
+                } catch (NullPointerException e) {
+                    addPizzaButton.setText("Add Pizza");
+                }
+                Pizza pizza = null;
+                for (Pizza p : order.getPizzas()) {
+                    if (p.toString().equals(buttonText)) {
+                        pizza = p;
+                    }
+                }
+                if (pizza != null) {
+                    pizzaSaucesList.setSelectedValue(pizza.getSauce(), true);
+                    pizzaSizesList.setSelectedValue(pizza.getSize(), true);
+
+                    ArrayList<Integer> indicies = new ArrayList<>();
+                    for (Topping t : pizza.getToppingList()) {
+                        for (int i = 0; i < toppings.size(); i++) {
+                            if (toppings.get(i).equals(t)) {
+                                indicies.add(i);
+                            }
+                        }
+                    }
+                    int[] tmpIndicies = new int[indicies.size()];
+                    for (int i = 0; i < indicies.size(); i++) {
+                        tmpIndicies[i] = indicies.get(i);
+                    }
+                    pizzaToppingsList.setSelectedIndices(tmpIndicies);
+                }
+            }
+        });
         pizzaToppingsList.setListData(toppings.toArray());
         pizzaToppingsList.setCellRenderer(new ComponentTopping());
         pizzaToppingsList.setSelectionModel(new DefaultListSelectionModel() {
@@ -65,19 +108,50 @@ public class AddOrderView extends JFrame{
             public void actionPerformed(ActionEvent actionEvent) {
                 ArrayList<Topping> selectedToppings = new ArrayList<>();
                 int[] tmpSelectedToppings = pizzaToppingsList.getSelectedIndices();
-                for(int i = 0; i < tmpSelectedToppings.length; i++) {
-                    selectedToppings.add(toppings.get(i));
+                for (int i = 0; i < tmpSelectedToppings.length; i++) {
+                    selectedToppings.add(toppings.get(tmpSelectedToppings[i]));
                 }
+
+                // add new pizza to order
                 Pizza pizza = new Pizza();
                 pizza.setToppingList(selectedToppings);
                 pizza.setSauce(sauces.get(pizzaSaucesList.getSelectedIndex()));
                 pizza.setSize(sizes.get(pizzaSizesList.getSelectedIndex()));
                 pizza.calculatePrice();
-                order.addPizza(pizza);
+                if (addPizzaButton.getText().equals("Add Pizza")) {
+                    order.addPizza(pizza);
+                } else {
+                    // update pizza
+                    int selectedIndex = pizzaList.getSelectedIndex();
+                    order.updatePizza(selectedIndex, pizza);
+                }
+                pizzaList.setListData(order.getPizzas().toArray());
+                clearPizzaSelections();
+                totalDisplay.setText(TOTAL_TEXT + order.getOrderTotal());
             }
         });
-
-
+        cancelPizzaButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                if(addPizzaButton.getText().equals("Update Pizza")){
+                    addPizzaButton.setText("Add Pizza");
+                }
+                clearPizzaSelections();
+            }
+        });
+        collectOrderButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                // go to payment screen
+            }
+        });
+        sendToMakelineButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                // push order to makeline
+                order.sendPizzasToMakeLine();
+            }
+        });
         setVisible(true);
     }
     private void initData(){
@@ -110,12 +184,13 @@ public class AddOrderView extends JFrame{
         sauces.add(new Sauce("M", "Marinara"));
         sauces.add(new Sauce("O", "Olive Oil"));
         sauces.add(new Sauce("R", "Ranch"));
+    }
 
-        ArrayList<Topping> ptoppings = new ArrayList<>();
-        ptoppings.add(toppings.get(0));
-        ptoppings.add(toppings.get(1));
-        pizzas.add(new Pizza(ptoppings, sauces.get(0), sizes.get(2), 10.99));
-
-
+    public void clearPizzaSelections(){
+        pizzaToppingsList.clearSelection();
+        pizzaSizesList.clearSelection();
+        pizzaSaucesList.clearSelection();
+        pizzaList.clearSelection();
+        addPizzaButton.setText("Add Pizza");
     }
 }

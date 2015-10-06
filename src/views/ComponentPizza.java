@@ -17,7 +17,6 @@ public class ComponentPizza extends JLabel implements ListCellRenderer {
     public JButton getListCellRendererComponent(JList jList, Object value, int index, boolean isSelected, boolean cellHasFocus) {
         Pizza pizza = (Pizza)value;
         JButton button = new JButton(pizza.toString());
-
         return button;
     }
 }
