@@ -7,16 +7,16 @@ import java.util.ArrayList;
  */
 public class Register {
     private ArrayList<Order> orders;
-    private User loggedInUser;
+    private Employee loggedInEmployee;
     private int storeID;
 
     public Register() {
 
     }
 
-    public Register(ArrayList<Order> orders, User loggedInUser, int storeID) {
+    public Register(ArrayList<Order> orders, Employee loggedInEmployee, int storeID) {
         this.orders = orders;
-        this.loggedInUser = loggedInUser;
+        this.loggedInEmployee = loggedInEmployee;
         this.storeID = storeID;
     }
 
@@ -39,12 +39,12 @@ public class Register {
         this.orders.addAll(orders);
     }
 
-    public User getLoggedInUser() {
-        return loggedInUser;
+    public Employee getLoggedInEmployee() {
+        return loggedInEmployee;
     }
 
-    public void setLoggedInUser(User loggedInUser) {
-        this.loggedInUser = loggedInUser;
+    public void setLoggedInEmployee(Employee loggedInEmployee) {
+        this.loggedInEmployee = loggedInEmployee;
     }
 
     public int getStoreID() {
