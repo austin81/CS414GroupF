@@ -1,5 +1,6 @@
 package views;
 
+import objects.OrderEditListener;
 import objects.Register;
 
 import javax.swing.*;
@@ -13,17 +14,27 @@ public class MainMenuView extends JFrame{
     private JButton addOrderButton;
     private JButton makeLineViewButton;
     private JButton managerControlsButton;
-    private JPanel mainMenuPanel;
-    public static final Register register = new Register();
+    public JPanel mainMenuPanel;
+    Register register;
+    OrderEditListener oeListener;
+    AddOrderView addOrderView;
+
     public MainMenuView(){
         setContentPane(mainMenuPanel);
         pack();
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        register = new Register();
+        oeListener = new OrderEditListener();
         addOrderButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 // add authentication here
-                AddOrderView addOrderView = new AddOrderView();
+                oeListener.addModel(register);
+                addOrderView = new AddOrderView();
+                addOrderView.addRegister(register);
+                addOrderView.addController(oeListener);
+                addOrderView.addControllers();
+                oeListener.addView(addOrderView);
                 setVisible(false);
             }
         });

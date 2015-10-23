@@ -17,6 +17,7 @@ public class Order {
     public Order(String customerName, Address address) {
         this.customerName = customerName;
         this.address = address;
+        this.pizzas = new ArrayList<>();
     }
 
     public Order(String customerName, Address address, ArrayList<Pizza> pizzas) {
@@ -55,6 +56,15 @@ public class Order {
         }
         pizza.setStatus(PIZZA_STATUS.NEW);
         this.pizzas.add(pizza);
+    }
+
+    public void removePizza(Pizza pizza){
+        if(pizzas.contains(pizza)){
+            pizzas.remove(pizza);
+        }
+    }
+    public void removeAllPizzas(){
+        this.pizzas.clear();
     }
 
     public void setPizzas(ArrayList<Pizza> pizzas) {

@@ -3,17 +3,16 @@ package views;
 import objects.*;
 
 import javax.swing.*;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
+import java.util.Observable;
+import java.util.Observer;
 
 /**
  * Created by darkbobo on 9/28/15.
  */
-public class AddOrderView extends JFrame{
+public class AddOrderView extends JFrame implements Observer{
     private JList pizzaList;
     private JPanel orderView;
     private JList pizzaToppingsList;
@@ -22,30 +21,30 @@ public class AddOrderView extends JFrame{
     private JButton collectOrderButton;
     private JButton sendToMakelineButton;
     private JButton addPizzaButton;
-    private JButton cancelPizzaButton;
+    private JButton cancelCurrent;
     private JTextField totalDisplay;
+    private JButton cancelOrderButton;
+    private JButton cancelPizzaButton;
     private Order order;
-    ArrayList<Pizza> pizzas;
-    ArrayList<Topping> toppings;
-    ArrayList<PizzaSize> sizes;
-    ArrayList<Sauce> sauces;
-    public static final String TOTAL_TEXT = "Total................";
+    private Register model;
+    private OrderEditListener controller;
+
+
 
     public AddOrderView(){
         orderView.setPreferredSize(new Dimension(getToolkit().getScreenSize().width, getToolkit().getScreenSize().height));
         setContentPane(orderView);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         pack();
+
         order = new Order();
-        pizzas = new ArrayList<>();
-        toppings = new ArrayList<>();
-        sizes = new ArrayList<>();
-        sauces = new ArrayList<>();
-        initData();
-        totalDisplay.setText(TOTAL_TEXT + order.getOrderTotal());
+
+
+        totalDisplay.setText(model.TOTAL_TEXT + order.getOrderTotal());
         pizzaList.setListData(order.getPizzas().toArray());
         pizzaList.setCellRenderer(new ComponentPizza());
-        pizzaList.addListSelectionListener(new ListSelectionListener() {
+
+        /*pizzaList.addListSelectionListener(new ListSelectionListener() {
             @Override
             public void valueChanged(ListSelectionEvent event) {
                 System.out.println(event.toString());
@@ -69,8 +68,8 @@ public class AddOrderView extends JFrame{
 
                     ArrayList<Integer> indicies = new ArrayList<>();
                     for (Topping t : pizza.getToppingList()) {
-                        for (int i = 0; i < toppings.size(); i++) {
-                            if (toppings.get(i).equals(t)) {
+                        for (int i = 0; i < model.getCatalog().getToppings().size(); i++) {
+                            if (model.getCatalog().getToppings().get(i).equals(t)) {
                                 indicies.add(i);
                             }
                         }
@@ -82,8 +81,8 @@ public class AddOrderView extends JFrame{
                     pizzaToppingsList.setSelectedIndices(tmpIndicies);
                 }
             }
-        });
-        pizzaToppingsList.setListData(toppings.toArray());
+        });*/
+        pizzaToppingsList.setListData(model.getCatalog().getToppings().toArray());
         pizzaToppingsList.setCellRenderer(new ComponentTopping());
         pizzaToppingsList.setSelectionModel(new DefaultListSelectionModel() {
             @Override
@@ -96,13 +95,16 @@ public class AddOrderView extends JFrame{
             }
         });
 
-        pizzaSizesList.setListData(sizes.toArray());
+        pizzaSizesList.setListData(model.getCatalog().getSizes().toArray());
         pizzaSizesList.setCellRenderer(new ComponentSize());
         pizzaSizesList.setLayoutOrientation(JList.HORIZONTAL_WRAP);
         pizzaSizesList.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
-        pizzaSaucesList.setListData(sauces.toArray());
+        pizzaSaucesList.setListData(model.getCatalog().getSauces().toArray());
         pizzaSaucesList.setCellRenderer(new ComponentSauce());
-        order = new Order();
+
+
+
+        /*
         addPizzaButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
@@ -130,13 +132,26 @@ public class AddOrderView extends JFrame{
                 totalDisplay.setText(TOTAL_TEXT + order.getOrderTotal());
             }
         });
-        cancelPizzaButton.addActionListener(new ActionListener() {
+        */
+        /*cancelCurrent.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 if(addPizzaButton.getText().equals("Update Pizza")){
                     addPizzaButton.setText("Add Pizza");
+
+                    Pizza pizza = null;
+                    for(Pizza p : order.getPizzas()){
+                        if(p.toString().equals(pizzaList.getSelectedValue().toString())){
+                            pizza = p;
+                        }
+                    }
+                    if(pizza != null){
+                        order.removePizza(pizza);
+
+                        pizzaList.setListData(order.getPizzas().toArray());
+                        System.out.println(order.getPizzas().size());
+                    }
                 }
-                clearPizzaSelections();
             }
         });
         collectOrderButton.addActionListener(new ActionListener() {
@@ -152,45 +167,43 @@ public class AddOrderView extends JFrame{
                 order.sendPizzasToMakeLine();
             }
         });
+        */
         setVisible(true);
     }
-    private void initData(){
-        toppings.add(new Topping("A", "Anchovies"));
-        toppings.add(new Topping("B", "Beef"));
-        toppings.add(new Topping("C", "Xtra Cheese"));
-        toppings.add(new Topping("D", "Banana Peppers"));
-        toppings.add(new Topping("E", "Green Chilis"));
-        toppings.add(new Topping("F", "Tomatoes"));
-        toppings.add(new Topping("G", "Green Pepper"));
-        toppings.add(new Topping("I", "Artichokes"));
-        toppings.add(new Topping("J", "Jalapenos"));
-        toppings.add(new Topping("K", "Bacon"));
-        toppings.add(new Topping("L", "Green Olives"));
-        toppings.add(new Topping("M", "Mushrooms"));
-        toppings.add(new Topping("N", "Chicken"));
-        toppings.add(new Topping("O", "Onion"));
-        toppings.add(new Topping("P", "Pepperoni"));
-        toppings.add(new Topping("R", "Black Olive"));
-        toppings.add(new Topping("S", "Sausage"));
-        toppings.add(new Topping("U", "Sundried Tomatoes"));
-        toppings.add(new Topping("V", "Feta"));
-        toppings.add(new Topping("W", "Garlic"));
 
-        sizes.add(new PizzaSize("S", "10\" Small"));
-        sizes.add(new PizzaSize("M", "12\" Medium"));
-        sizes.add(new PizzaSize("L", "14\" Large"));
-        sizes.add(new PizzaSize("XL", "16\"Extra Large"));
-
-        sauces.add(new Sauce("M", "Marinara"));
-        sauces.add(new Sauce("O", "Olive Oil"));
-        sauces.add(new Sauce("R", "Ranch"));
+    public void addRegister(Register model){
+        this.model = model;
     }
 
-    public void clearPizzaSelections(){
-        pizzaToppingsList.clearSelection();
-        pizzaSizesList.clearSelection();
-        pizzaSaucesList.clearSelection();
-        pizzaList.clearSelection();
-        addPizzaButton.setText("Add Pizza");
+    public void addController(OrderEditListener controller){
+        this.controller = controller;
+    }
+
+
+    @Override
+    public void update(Observable observable, Object o) {
+        System.out.println("AddOrderView: Observer is: " + observable.getClass() + ", object passed is: " + o.getClass());
+    }
+
+    public void addControllers(){
+        controller.registerComponent("pizzaToppingsList", pizzaToppingsList);
+        controller.registerComponent("pizzaSizesList", pizzaSizesList);
+        controller.registerComponent("pizzaSaucesList", pizzaSaucesList);
+        controller.registerComponent("pizzaList", pizzaList);
+        pizzaList.addListSelectionListener(controller);
+        controller.registerComponent("totalDisplay", totalDisplay);
+
+        controller.registerComponent("addPizzaButton", addPizzaButton);
+        addPizzaButton.addActionListener(controller);
+        controller.registerComponent("collectOrderButton", collectOrderButton);
+        collectOrderButton.addActionListener(controller);
+        controller.registerComponent("cancelCurrent", cancelCurrent);
+        cancelCurrent.addActionListener(controller);
+        controller.registerComponent("cancelOrderButton", cancelOrderButton);
+        cancelOrderButton.addActionListener(controller);
+        controller.registerComponent("sendToMakelineButton", sendToMakelineButton);
+        sendToMakelineButton.addActionListener(controller);
+        controller.registerComponent("cancelPizzaButton", cancelPizzaButton);
+        cancelPizzaButton.addActionListener(controller);
     }
 }

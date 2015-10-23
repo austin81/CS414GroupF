@@ -30,6 +30,26 @@ public class Pizza {
     public String toString(){
         return size.toString() + " " + getSauce() + " " + getToppingList() + " $" + getPrice();
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (!(o instanceof Pizza)){
+            return false;
+        }else {
+            Pizza p = (Pizza)o;
+            if (getSauce().equals(p.getSauce()) && getSize().equals(p.getSize()) && getStatus() == p.getStatus()) {
+                for (Topping t : p.getToppingList()) {
+                    if (!getToppingList().contains(t)) {
+                        return false;
+                    }
+                }
+            } else {
+                return false;
+            }
+            return true;
+        }
+    }
+
     public ArrayList<Topping> getToppingList() {
         return toppings;
     }

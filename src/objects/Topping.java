@@ -19,6 +19,20 @@ public class Topping {
         return fullName;
     }
 
+    @Override
+    public boolean equals(Object o){
+        if(!(o instanceof Topping)){
+            return false;
+        }else{
+            Topping t = (Topping)o;
+            if(getFullName().equals(t.getFullName())){
+                return true;
+            }else{
+                return false;
+            }
+        }
+    }
+
     public String getShortName() {
         return shortName;
     }
