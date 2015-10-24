@@ -1,5 +1,7 @@
 package objects;
 
+import controllers.CollectPaymentListener;
+import controllers.CustomerListener;
 import controllers.OrderEditListener;
 
 import javax.swing.*;
@@ -13,20 +15,21 @@ public class Register {
     private ArrayList<Order> orders;
     private Employee loggedInEmployee;
     private int storeID;
-    private OrderEditListener orderEditListener;
     private static PizzaCatalog catalog;
+    CustomerListener customerListener;
+    OrderEditListener orderEditListener;
+    CollectPaymentListener collectPaymentListener;
+
     public static final String TOTAL_TEXT = "Total................";
     public Register() {
         orders = new ArrayList<>();
+        catalog = new PizzaCatalog();
+        customerListener = new CustomerListener();
         orderEditListener = new OrderEditListener();
-        catalog = new PizzaCatalog();
-    }
-
-    public Register(ArrayList<Order> orders, Employee loggedInEmployee, int storeID) {
-        this.orders = orders;
-        this.loggedInEmployee = loggedInEmployee;
-        this.storeID = storeID;
-        catalog = new PizzaCatalog();
+        collectPaymentListener = new CollectPaymentListener();
+        customerListener.addModel(this);
+        orderEditListener.addModel(this);
+        collectPaymentListener.addModel(this);
     }
 
     public int getNextOrderID(){
@@ -78,5 +81,17 @@ public class Register {
 
     public void setStoreID(int storeID) {
         this.storeID = storeID;
+    }
+
+    public CustomerListener getCustomerListener() {
+        return customerListener;
+    }
+
+    public OrderEditListener getOrderEditListener() {
+        return orderEditListener;
+    }
+
+    public CollectPaymentListener getCollectPaymentListener() {
+        return collectPaymentListener;
     }
 }

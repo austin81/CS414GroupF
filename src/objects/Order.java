@@ -6,10 +6,11 @@ import java.util.ArrayList;
  * Created by darkbobo on 9/28/15.
  */
 public class Order {
-    public int orderID;
-    String customerName;
-    Address address;
-    ArrayList<Pizza> pizzas;
+    private int orderID;
+    private String customerName;
+    private Address address;
+    boolean isPaidFor;
+    private ArrayList<Pizza> pizzas;
 
     public Order() {
         pizzas = new ArrayList<>();
@@ -19,18 +20,21 @@ public class Order {
         this.customerName = customerName;
         this.address = address;
         this.pizzas = new ArrayList<>();
+        setIsPaidFor(false);
     }
 
     public Order(int orderID, String customerName, Address address) {
         this.orderID = orderID;
         this.customerName = customerName;
         this.address = address;
+        setIsPaidFor(false);
     }
 
     public Order(String customerName, Address address, ArrayList<Pizza> pizzas) {
         this.customerName = customerName;
         this.address = address;
         this.pizzas = pizzas;
+        setIsPaidFor(false);
     }
 
     public Order(int orderID, String customerName, Address address, ArrayList<Pizza> pizzas) {
@@ -38,6 +42,7 @@ public class Order {
         this.customerName = customerName;
         this.address = address;
         this.pizzas = pizzas;
+        setIsPaidFor(false);
     }
 
     public int getOrderID() {
@@ -112,5 +117,21 @@ public class Order {
             totalPrice += pizza.getPrice();
         }
         return totalPrice;
+    }
+
+    public boolean isPaidFor() {
+        return isPaidFor;
+    }
+
+    public void setIsPaidFor(boolean isPaidFor) {
+        this.isPaidFor = isPaidFor;
+    }
+
+    public void payForOrder(){
+        this.isPaidFor = true;
+    }
+
+    public double testingGetOrderTotal(){
+        return 12.99;
     }
 }

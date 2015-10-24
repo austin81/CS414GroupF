@@ -170,7 +170,7 @@ public class AddOrderView extends JFrame implements Observer{
         setVisible(true);
     }
 
-    public void addRegister(Register model){
+    public void addModel(Register model){
         this.model = model;
     }
 
@@ -184,7 +184,7 @@ public class AddOrderView extends JFrame implements Observer{
         System.out.println("AddOrderView: Observer is: " + observable.getClass() + ", object passed is: " + o.getClass());
     }
 
-    public void addControllers(){
+    public void addComponents(){
         controller.registerComponent("pizzaToppingsList", pizzaToppingsList);
         controller.registerComponent("pizzaSizesList", pizzaSizesList);
         controller.registerComponent("pizzaSaucesList", pizzaSaucesList);

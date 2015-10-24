@@ -1,5 +1,6 @@
 package views;
 
+import controllers.CollectPaymentListener;
 import controllers.CustomerListener;
 import controllers.OrderEditListener;
 import objects.Register;
@@ -19,26 +20,30 @@ public class MainMenuView extends JFrame{
     Register register;
     CustomerListener customerListener;
     OrderEditListener oeListener;
+    CollectPaymentListener collectPaymentListener;
     CustomerView customerView;
     AddOrderView addOrderView;
+    CollectPaymentView collectPaymentView;
 
     public MainMenuView(){
         setContentPane(mainMenuPanel);
         pack();
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         register = new Register();
-        oeListener = new OrderEditListener();
+
+
+
         addOrderButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 // add authentication here
 
-                oeListener.addModel(register);
+
                 addOrderView = new AddOrderView();
-                addOrderView.addRegister(register);
-                addOrderView.addController(oeListener);
-                addOrderView.addControllers();
-                oeListener.addView(addOrderView);
+                addOrderView.addModel(register);
+                addOrderView.addController(register.getOrderEditListener());
+                addOrderView.addComponents();
+
                 setVisible(false);
             }
         });

@@ -5,6 +5,7 @@ import objects.Pizza;
 import objects.Register;
 import objects.Topping;
 import views.AddOrderView;
+import views.CollectPaymentView;
 
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
@@ -108,6 +109,10 @@ public class OrderEditListener implements ActionListener, ListSelectionListener 
                 order.sendPizzasToMakeLine();
                 model.addOrder(order);
                 order = null;
+                CollectPaymentView collectPaymentView = new CollectPaymentView();
+                collectPaymentView.addController(model.getCollectPaymentListener());
+                collectPaymentView.addModel(model);
+                collectPaymentView.addComponents();
                 break;
         }
     }
