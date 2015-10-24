@@ -1,7 +1,7 @@
 package views;
 
 import objects.*;
-import objects.controllers.OrderEditListener;
+import controllers.OrderEditListener;
 
 import javax.swing.*;
 import java.awt.*;

@@ -1,11 +1,10 @@
-package objects.controllers;
+package controllers;
 
 import objects.Order;
 import objects.Pizza;
 import objects.Register;
 import objects.Topping;
 import views.AddOrderView;
-import views.MainMenuView;
 
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
@@ -14,7 +13,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Observer;
 
 /**
  * Created by darkbobo on 10/14/15.
