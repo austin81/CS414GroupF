@@ -29,6 +29,9 @@ public class Register {
         catalog = new PizzaCatalog();
     }
 
+    public int getNextOrderID(){
+        return orders.size();
+    }
     public static PizzaCatalog getCatalog(){
         return catalog;
     }
@@ -44,6 +47,7 @@ public class Register {
         if(this.orders == null){
             this.orders = new ArrayList<>();
         }
+        order.setOrderID(getNextOrderID());
         this.orders.add(order);
     }
 
@@ -74,13 +78,5 @@ public class Register {
 
     public void setStoreID(int storeID) {
         this.storeID = storeID;
-    }
-
-    public void registerActionListenerComponent(String labelID, JComponent component){
-        orderEditListener.registerComponent(labelID, component);
-    }
-
-    public ActionListener getActionListener(){
-        return orderEditListener;
     }
 }

@@ -1,5 +1,6 @@
 package views;
 
+import controllers.CustomerListener;
 import controllers.OrderEditListener;
 import objects.Register;
 
@@ -16,7 +17,9 @@ public class MainMenuView extends JFrame{
     private JButton managerControlsButton;
     public JPanel mainMenuPanel;
     Register register;
+    CustomerListener customerListener;
     OrderEditListener oeListener;
+    CustomerView customerView;
     AddOrderView addOrderView;
 
     public MainMenuView(){
@@ -29,6 +32,7 @@ public class MainMenuView extends JFrame{
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 // add authentication here
+
                 oeListener.addModel(register);
                 addOrderView = new AddOrderView();
                 addOrderView.addRegister(register);
