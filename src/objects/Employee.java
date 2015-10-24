@@ -32,9 +32,7 @@ public class Employee extends Person {
         this.username = username;
     }
 
-    public String getAuthentication() {
-        return authentication;
-    }
+    public String getAuthentication() { return authentication; }
 
     public void setAuthentication(String authentication) {
         this.authentication = authentication;
