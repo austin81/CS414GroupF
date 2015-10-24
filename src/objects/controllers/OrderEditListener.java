@@ -1,5 +1,9 @@
-package objects;
+package objects.controllers;
 
+import objects.Order;
+import objects.Pizza;
+import objects.Register;
+import objects.Topping;
 import views.AddOrderView;
 import views.MainMenuView;
 
@@ -86,6 +90,7 @@ public class OrderEditListener implements ActionListener, ListSelectionListener 
                         System.out.println(order.getPizzas().size());
                     }
                 }
+                clearPizzaSelections();
                 break;
             case "Cancel":
                 clearPizzaSelections();
@@ -98,7 +103,8 @@ public class OrderEditListener implements ActionListener, ListSelectionListener 
                 if(model.getOrders().contains(order)){
                     model.getOrders().remove(order);
                 }
-
+                order = null;
+                ((JTextField)components.get("totalDisplay")).setText(model.TOTAL_TEXT);
                 break;
             case "Send To Makeline":
                 order.sendPizzasToMakeLine();
@@ -119,7 +125,6 @@ public class OrderEditListener implements ActionListener, ListSelectionListener 
     public void registerComponent(String labelID, JComponent component){
         components.put(labelID, component);
     }
-
 
     @Override
     public void valueChanged(ListSelectionEvent event) {
