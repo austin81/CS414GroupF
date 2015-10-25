@@ -13,7 +13,7 @@ import java.util.Observer;
 /**
  * Created by darkbobo on 10/24/15.
  */
-public class CustomerView extends JFrame implements Observer{
+public class CustomerView extends MyJFrame {
     private JPanel customerContainer;
     private JTextArea phoneEditText;
     private JTextArea nameEditText;
@@ -24,7 +24,6 @@ public class CustomerView extends JFrame implements Observer{
     private JButton cancelButton;
     private JButton saveButton;
     private JButton clearButton;
-    private Register model;
     private CustomerListener controller;
     private WindowManager manager;
     private Order order;
@@ -39,10 +38,6 @@ public class CustomerView extends JFrame implements Observer{
     @Override
     public void update(Observable observable, Object o) {
 
-    }
-
-    public void addModel(Register register){
-        this.model = register;
     }
 
     public void addController(CustomerListener controller){

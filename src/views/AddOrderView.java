@@ -12,7 +12,7 @@ import java.util.Observer;
 /**
  * Created by darkbobo on 9/28/15.
  */
-public class AddOrderView extends JFrame implements Observer{
+public class AddOrderView extends MyJFrame {
     private JList pizzaList;
     private JPanel orderView;
     private JList pizzaToppingsList;
@@ -26,7 +26,6 @@ public class AddOrderView extends JFrame implements Observer{
     private JButton cancelOrderButton;
     private JButton cancelPizzaButton;
     private Order order;
-    private Register model;
     private OrderEditListener controller;
     private WindowManager manager;
 
@@ -59,10 +58,6 @@ public class AddOrderView extends JFrame implements Observer{
         pizzaSizesList.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
         pizzaSaucesList.setListData(model.getCatalog().getSauces().toArray());
         pizzaSaucesList.setCellRenderer(new ComponentSauce());
-    }
-
-    public void addModel(Register model){
-        this.model = model;
     }
 
     public void addController(OrderEditListener controller){

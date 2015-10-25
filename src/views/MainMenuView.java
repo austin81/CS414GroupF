@@ -10,27 +10,18 @@ import java.awt.event.ActionListener;
 /**
  * Created by darkbobo on 9/28/15.
  */
-public class MainMenuView extends JFrame{
+public class MainMenuView extends MyJFrame {
     private JButton orderViewButton;
     private JButton makeLineViewButton;
     private JButton managerControlsButton;
     public JPanel mainMenuPanel;
-    Register register;
     WindowManager manager;
-    OrderListListener orderListListener;
-    CustomerListener customerListener;
-    OrderEditListener oeListener;
-    CollectPaymentListener collectPaymentListener;
-    OrderListView orderListView;
-    CustomerView customerView;
-    AddOrderView addOrderView;
-    CollectPaymentView collectPaymentView;
 
     public MainMenuView(){
         setContentPane(mainMenuPanel);
         pack();
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        register = new Register();
+        model = new Register();
 
 
 

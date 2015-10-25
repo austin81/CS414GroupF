@@ -15,7 +15,7 @@ import java.util.Observer;
 /**
  * Created by darkbobo on 10/24/15.
  */
-public class CollectPaymentView extends JFrame implements Observer{
+public class CollectPaymentView extends MyJFrame {
     private JPanel collectPaymentContainer;
     private JButton cashButton;
     private JButton cardButton;
@@ -24,7 +24,6 @@ public class CollectPaymentView extends JFrame implements Observer{
     private JButton roundUpFiveButton;
     private JButton roundUpTwentyButton;
     private JPanel cashOptContainer;
-    private Register model;
     private CollectPaymentListener controller;
     private WindowManager manager;
     Order order;
@@ -41,9 +40,6 @@ public class CollectPaymentView extends JFrame implements Observer{
     @Override
     public void update(Observable observable, Object o) {
 
-    }
-    public void addModel(Register model){
-        this.model = model;
     }
 
     public void addController(CollectPaymentListener controller){

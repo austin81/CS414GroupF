@@ -13,14 +13,13 @@ import java.util.Observer;
 /**
  * Created by Tyler on 10/24/15.
  */
-public class MakelineView extends JFrame implements Observer{
+public class MakelineView extends MyJFrame {
     private JPanel panel1;
     private JList orderList;
     private JList sizeList;
     private JList sauceList;
     private JList toppingList;
     private JList timeList;
-    private Register model;
     private WindowManager manager;
 
     public MakelineView(){

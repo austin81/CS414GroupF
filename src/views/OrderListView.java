@@ -14,12 +14,11 @@ import java.util.Observer;
 /**
  * Created by darkbobo on 10/24/15.
  */
-public class OrderListView extends JFrame implements Observer{
+public class OrderListView extends MyJFrame {
     private JPanel orderViewContainer;
     private JList orderList;
     private JButton newOrderButton;
     private JButton orderLookupButton;
-    private Register model;
     private OrderListListener controller;
     private WindowManager manager;
 
@@ -34,10 +33,6 @@ public class OrderListView extends JFrame implements Observer{
     @Override
     public void update(Observable observable, Object o) {
 
-    }
-
-    public void addModel(Register model){
-        this.model = model;
     }
 
     public void addController(OrderListListener controller){
