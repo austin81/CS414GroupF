@@ -10,6 +10,9 @@ public class Person {
     private ArrayList<Address> addresses;
     private ArrayList<Phone> phoneNumbers;
 
+    public Person(){
+
+    }
     public Person(String name, Address address, Phone phone) {
         this.addresses = new ArrayList<Address>();
         this.phoneNumbers = new ArrayList<Phone>();

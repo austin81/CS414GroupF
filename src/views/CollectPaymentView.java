@@ -2,6 +2,7 @@ package views;
 
 import controllers.CollectPaymentListener;
 import controllers.OrderEditListener;
+import controllers.WindowManager;
 import objects.Order;
 import objects.Register;
 
@@ -25,6 +26,7 @@ public class CollectPaymentView extends JFrame implements Observer{
     private JPanel cashOptContainer;
     private Register model;
     private CollectPaymentListener controller;
+    private WindowManager manager;
     Order order;
     public CollectPaymentView(){
         collectPaymentContainer.setPreferredSize(new Dimension(getToolkit().getScreenSize().width, getToolkit().getScreenSize().height));
@@ -33,7 +35,7 @@ public class CollectPaymentView extends JFrame implements Observer{
         pack();
         cashOptContainer.setVisible(false);
         order = new Order();
-        setVisible(true);
+        //setVisible(true);
     }
 
     @Override
@@ -47,6 +49,10 @@ public class CollectPaymentView extends JFrame implements Observer{
     public void addController(CollectPaymentListener controller){
         this.controller = controller;
         controller.addView(this);
+    }
+
+    public void addWindowManager(WindowManager manager){
+        this.manager = manager;
     }
 
     public void addComponents(){

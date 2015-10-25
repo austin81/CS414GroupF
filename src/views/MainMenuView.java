@@ -1,8 +1,6 @@
 package views;
 
-import controllers.CollectPaymentListener;
-import controllers.CustomerListener;
-import controllers.OrderEditListener;
+import controllers.*;
 import objects.Register;
 
 import javax.swing.*;
@@ -13,14 +11,17 @@ import java.awt.event.ActionListener;
  * Created by darkbobo on 9/28/15.
  */
 public class MainMenuView extends JFrame{
-    private JButton addOrderButton;
+    private JButton orderViewButton;
     private JButton makeLineViewButton;
     private JButton managerControlsButton;
     public JPanel mainMenuPanel;
     Register register;
+    WindowManager manager;
+    OrderListListener orderListListener;
     CustomerListener customerListener;
     OrderEditListener oeListener;
     CollectPaymentListener collectPaymentListener;
+    OrderListView orderListView;
     CustomerView customerView;
     AddOrderView addOrderView;
     CollectPaymentView collectPaymentView;
@@ -33,24 +34,17 @@ public class MainMenuView extends JFrame{
 
 
 
-        addOrderButton.addActionListener(new ActionListener() {
+        orderViewButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 // add authentication here
-
-
-                addOrderView = new AddOrderView();
-                addOrderView.addModel(register);
-                addOrderView.addController(register.getOrderEditListener());
-                addOrderView.addComponents();
-
-                setVisible(false);
+                manager.activateWindow("mainMenuView", "orderListView");
             }
         });
         makeLineViewButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-
+                manager.activateWindow("mainMenuView", "makelineView");
             }
         });
         managerControlsButton.addActionListener(new ActionListener() {
@@ -59,6 +53,9 @@ public class MainMenuView extends JFrame{
 
             }
         });
-        setVisible(true);
+        //setVisible(true);
+    }
+    public void addWindowManager(WindowManager manager){
+        this.manager = manager;
     }
 }

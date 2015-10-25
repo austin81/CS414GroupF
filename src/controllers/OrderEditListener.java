@@ -18,12 +18,11 @@ import java.util.HashMap;
 /**
  * Created by darkbobo on 10/14/15.
  */
-public class OrderEditListener implements ActionListener, ListSelectionListener {
+public class OrderEditListener extends MyActionListener implements ListSelectionListener {
     HashMap<String,JComponent> components;
     AddOrderView view; // view
-    Register model;      // model
     Order order;
-
+    WindowManager manager;
 
     public OrderEditListener(){
         components = new HashMap<>();
@@ -35,6 +34,19 @@ public class OrderEditListener implements ActionListener, ListSelectionListener 
 
     public void addView(AddOrderView view){
         this.view = view;
+    }
+
+    public void addWindowManager(WindowManager manager){
+        this.manager = manager;
+    }
+
+    public void setOrder(){
+        order = model.getOrder(orderID);
+        if(order.getPizzas().size() != 0){
+            ((JTextField)components.get("totalDisplay")).setText(model.TOTAL_TEXT + order.getOrderTotal());
+            ((JList)components.get("pizzaList")).setListData(order.getPizzas().toArray());
+
+        }
     }
 
     @Override
@@ -59,9 +71,6 @@ public class OrderEditListener implements ActionListener, ListSelectionListener 
                 pizza.setSize(model.getCatalog().getSizes().get(((JList) components.get("pizzaSizesList")).getSelectedIndex()));
                 pizza.calculatePrice();
                 if (((JButton)components.get("addPizzaButton")).getText().equals("Add Pizza")) {
-                    if(order == null){
-                        order = new Order();
-                    }
                     order.addPizza(pizza);
                 } else {
                     // update pizza
@@ -107,12 +116,9 @@ public class OrderEditListener implements ActionListener, ListSelectionListener 
                 break;
             case "Send To Makeline":
                 order.sendPizzasToMakeLine();
-                model.addOrder(order);
+                model.updateOrder(orderID, order);
                 order = null;
-                CollectPaymentView collectPaymentView = new CollectPaymentView();
-                collectPaymentView.addController(model.getCollectPaymentListener());
-                collectPaymentView.addModel(model);
-                collectPaymentView.addComponents();
+                manager.activateWindow("orderEditView", "orderListView");
                 break;
         }
     }

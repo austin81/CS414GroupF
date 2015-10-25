@@ -7,8 +7,7 @@ import java.util.ArrayList;
  */
 public class Order {
     private int orderID;
-    private String customerName;
-    private Address address;
+    private Person customer;
     boolean isPaidFor;
     private ArrayList<Pizza> pizzas;
 
@@ -16,31 +15,27 @@ public class Order {
         pizzas = new ArrayList<>();
     }
 
-    public Order(String customerName, Address address) {
-        this.customerName = customerName;
-        this.address = address;
+    public Order(Person customer, Address address) {
+        this.customer = customer;
         this.pizzas = new ArrayList<>();
         setIsPaidFor(false);
     }
 
-    public Order(int orderID, String customerName, Address address) {
+    public Order(int orderID, Person customer) {
         this.orderID = orderID;
-        this.customerName = customerName;
-        this.address = address;
+        this.customer = customer;
         setIsPaidFor(false);
     }
 
-    public Order(String customerName, Address address, ArrayList<Pizza> pizzas) {
-        this.customerName = customerName;
-        this.address = address;
+    public Order(Person customer, ArrayList<Pizza> pizzas) {
+        this.customer = customer;
         this.pizzas = pizzas;
         setIsPaidFor(false);
     }
 
-    public Order(int orderID, String customerName, Address address, ArrayList<Pizza> pizzas) {
+    public Order(int orderID, Person customer, ArrayList<Pizza> pizzas) {
         this.orderID = orderID;
-        this.customerName = customerName;
-        this.address = address;
+        this.customer = customer;
         this.pizzas = pizzas;
         setIsPaidFor(false);
     }
@@ -53,20 +48,12 @@ public class Order {
         this.orderID = orderID;
     }
 
-    public String getCustomerName() {
-        return customerName;
+    public Person getCustomer() {
+        return customer;
     }
 
-    public void setCustomerName(String customerName) {
-        this.customerName = customerName;
-    }
-
-    public Address getAddress() {
-        return address;
-    }
-
-    public void setAddress(Address address) {
-        this.address = address;
+    public void setCustomer(Person customerName) {
+        this.customer = customerName;
     }
 
     public ArrayList<Pizza> getPizzas() {

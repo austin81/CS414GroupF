@@ -46,12 +46,13 @@ public class Register {
         return this.orders.get(index);
     }
 
-    public void addOrder(Order order){
+    public int addOrder(Order order){
         if(this.orders == null){
             this.orders = new ArrayList<>();
         }
         order.setOrderID(getNextOrderID());
         this.orders.add(order);
+        return order.getOrderID();
     }
 
     public void removeOrder(Order order){
@@ -65,6 +66,10 @@ public class Register {
             this.orders = new ArrayList<>();
         }
         this.orders.addAll(orders);
+    }
+
+    public void updateOrder(int orderID, Order order){
+        orders.set(orderID, order);
     }
 
     public Employee getLoggedInEmployee() {

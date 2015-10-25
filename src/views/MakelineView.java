@@ -1,6 +1,7 @@
 package views;
 
 import controllers.CollectPaymentListener;
+import controllers.WindowManager;
 import objects.*;
 import controllers.OrderEditListener;
 
@@ -20,16 +21,16 @@ public class MakelineView extends JFrame implements Observer{
     private JList toppingList;
     private JList timeList;
     private Register model;
-
+    private WindowManager manager;
 
     public MakelineView(){
         panel1.setPreferredSize(new Dimension(getToolkit().getScreenSize().width, getToolkit().getScreenSize().height));
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         pack();
 
-        orderList.setListData(model.getOrders().toArray());
+//        orderList.setListData(model.getOrders().toArray());
 
-        setVisible(true);
+        //setVisible(true);
     }
 
     @Override
@@ -45,5 +46,7 @@ public class MakelineView extends JFrame implements Observer{
     public void addComponents() {
 
     }
-
+    public void addWindowManager(WindowManager manager){
+        this.manager = manager;
+    }
 }
