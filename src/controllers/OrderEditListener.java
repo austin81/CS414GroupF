@@ -19,25 +19,10 @@ import java.util.HashMap;
  * Created by darkbobo on 10/14/15.
  */
 public class OrderEditListener extends MyActionListener implements ListSelectionListener {
-    HashMap<String,JComponent> components;
-    AddOrderView view; // view
     Order order;
-    WindowManager manager;
 
     public OrderEditListener(){
         components = new HashMap<>();
-    }
-
-    public void addModel(Register register){
-        this.model = register;
-    }
-
-    public void addView(AddOrderView view){
-        this.view = view;
-    }
-
-    public void addWindowManager(WindowManager manager){
-        this.manager = manager;
     }
 
     public void setOrder(){
@@ -129,10 +114,6 @@ public class OrderEditListener extends MyActionListener implements ListSelection
         ((JList)components.get("pizzaSaucesList")).clearSelection();
         //((JList)components.get("pizzaList")).clearSelection();
         ((JButton)components.get("addPizzaButton")).setText("Add Pizza");
-    }
-
-    public void registerComponent(String labelID, JComponent component){
-        components.put(labelID, component);
     }
 
     @Override

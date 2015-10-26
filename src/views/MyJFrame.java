@@ -1,5 +1,7 @@
 package views;
 
+import controllers.MyActionListener;
+import controllers.WindowManager;
 import objects.Register;
 
 import javax.swing.*;
@@ -11,7 +13,8 @@ import java.util.Observer;
  */
 public class MyJFrame extends JFrame implements Observer {
     Register model;
-
+    MyActionListener controller;
+    WindowManager manager;
     public MyJFrame(){
         super();
     }
@@ -23,5 +26,13 @@ public class MyJFrame extends JFrame implements Observer {
 
     public void addModel(Register model){
         this.model = model;
+    }
+
+    public void addController(MyActionListener controller){
+        this.controller = controller;
+    }
+
+    public void addWindowManager(WindowManager windowManager){
+        this.manager = windowManager;
     }
 }

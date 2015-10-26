@@ -15,11 +15,7 @@ import java.util.HashMap;
  * Created by darkbobo on 10/24/15.
  */
 public class CollectPaymentListener extends MyActionListener {
-    HashMap<String,JComponent> components;
-    CollectPaymentView view; // view
-    Register model;      // model
     Order order;
-    WindowManager manager;
 
     private static final String CASH_BUTTON = "Cash";
     private static final String CARD_BUTTON = "Card";
@@ -27,18 +23,6 @@ public class CollectPaymentListener extends MyActionListener {
     public CollectPaymentListener(){
         components = new HashMap<>();
         order = new Order();
-    }
-
-    /*public void addModel(Register register){
-        this.model = register;
-    }*/
-
-    public void addView(CollectPaymentView view){
-        this.view = view;
-    }
-
-    public void addWindowManager(WindowManager manager){
-        this.manager = manager;
     }
 
     @Override
@@ -79,8 +63,5 @@ public class CollectPaymentListener extends MyActionListener {
                 }
                 break;
         }
-    }
-    public void registerComponent(String labelID, JComponent component){
-        components.put(labelID, component);
     }
 }

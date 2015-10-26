@@ -12,25 +12,8 @@ import java.util.HashMap;
  * Created by darkbobo on 10/24/15.
  */
 public class CustomerListener extends MyActionListener {
-    HashMap<String,JComponent> components;
-    AddOrderView view; // view
-    //Register model;      // model
-    WindowManager manager;
-
     public CustomerListener(){
         components = new HashMap<>();
-    }
-
-    /*public void addModel(Register register){
-        this.model = register;
-    }*/
-
-    public void addView(AddOrderView view){
-        this.view = view;
-    }
-
-    public void addWindowManager(WindowManager manager){
-        this.manager = manager;
     }
 
     @Override
@@ -67,10 +50,6 @@ public class CustomerListener extends MyActionListener {
                 manager.activateWindow("customerView", "addOrderView");
                 break;
         }
-    }
-
-    public void registerComponent(String labelID, JComponent component){
-        components.put(labelID, component);
     }
 
     public void clearEditTextFields(){

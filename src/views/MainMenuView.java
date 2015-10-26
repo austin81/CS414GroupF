@@ -15,7 +15,6 @@ public class MainMenuView extends MyJFrame {
     private JButton makeLineViewButton;
     private JButton managerControlsButton;
     public JPanel mainMenuPanel;
-    WindowManager manager;
 
     public MainMenuView(){
         setContentPane(mainMenuPanel);
@@ -29,13 +28,13 @@ public class MainMenuView extends MyJFrame {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 // add authentication here
-                manager.activateWindow("mainMenuView", "orderListView");
+                manager.activateWindow("mainMenu", "orderList");
             }
         });
         makeLineViewButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                manager.activateWindow("mainMenuView", "makelineView");
+                manager.activateWindow("mainMenu", "makeline");
             }
         });
         managerControlsButton.addActionListener(new ActionListener() {
@@ -45,8 +44,5 @@ public class MainMenuView extends MyJFrame {
             }
         });
         //setVisible(true);
-    }
-    public void addWindowManager(WindowManager manager){
-        this.manager = manager;
     }
 }

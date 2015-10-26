@@ -66,18 +66,13 @@ public class WindowManager implements WindowStateListener {
     }
 
     public void registerMVC(){
-        (views.get("orderEdit")).addModel(register);
+        for(MyJFrame jFrame : views.values()){
+            jFrame.addModel(register);
+        }
 
-        (views.get("collectPayment")).addModel(register);
-        (views.get("customer")).addModel(register);
-        (views.get("makeline")).addModel(register);
-        (views.get("orderList")).addModel(register);
-
-        ((AddOrderView)views.get("orderEdit")).addController((OrderEditListener) controllers.get("orderEdit"));
-        ((CollectPaymentView)views.get("collectPayment")).addController((CollectPaymentListener) controllers.get("collectPayment"));
-        ((CustomerView) views.get("customer")).addController((CustomerListener) controllers.get("customer"));
-        //((MakelineView)views.get("makeline")).addController(register);
-        ((OrderListView)views.get("orderList")).addController((OrderListListener) controllers.get("orderList"));
+        for(String key : views.keySet()){
+            views.get(key).addController(controllers.get(key));
+        }
 
         for(MyActionListener listener : controllers.values()){
             listener.addModel(register);

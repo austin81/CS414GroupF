@@ -24,8 +24,6 @@ public class CollectPaymentView extends MyJFrame {
     private JButton roundUpFiveButton;
     private JButton roundUpTwentyButton;
     private JPanel cashOptContainer;
-    private CollectPaymentListener controller;
-    private WindowManager manager;
     Order order;
     public CollectPaymentView(){
         collectPaymentContainer.setPreferredSize(new Dimension(getToolkit().getScreenSize().width, getToolkit().getScreenSize().height));
@@ -40,15 +38,6 @@ public class CollectPaymentView extends MyJFrame {
     @Override
     public void update(Observable observable, Object o) {
 
-    }
-
-    public void addController(CollectPaymentListener controller){
-        this.controller = controller;
-        controller.addView(this);
-    }
-
-    public void addWindowManager(WindowManager manager){
-        this.manager = manager;
     }
 
     public void addComponents(){

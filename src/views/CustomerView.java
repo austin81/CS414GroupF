@@ -24,8 +24,6 @@ public class CustomerView extends MyJFrame {
     private JButton cancelButton;
     private JButton saveButton;
     private JButton clearButton;
-    private CustomerListener controller;
-    private WindowManager manager;
     private Order order;
     public CustomerView(){
         customerContainer.setPreferredSize(new Dimension(getToolkit().getScreenSize().width, getToolkit().getScreenSize().height));
@@ -38,10 +36,6 @@ public class CustomerView extends MyJFrame {
     @Override
     public void update(Observable observable, Object o) {
 
-    }
-
-    public void addController(CustomerListener controller){
-        this.controller = controller;
     }
 
     public void addWindowManager(WindowManager manager){

@@ -26,8 +26,6 @@ public class AddOrderView extends MyJFrame {
     private JButton cancelOrderButton;
     private JButton cancelPizzaButton;
     private Order order;
-    private OrderEditListener controller;
-    private WindowManager manager;
 
     public AddOrderView(){
         orderView.setPreferredSize(new Dimension(getToolkit().getScreenSize().width, getToolkit().getScreenSize().height));
@@ -58,14 +56,6 @@ public class AddOrderView extends MyJFrame {
         pizzaSizesList.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
         pizzaSaucesList.setListData(model.getCatalog().getSauces().toArray());
         pizzaSaucesList.setCellRenderer(new ComponentSauce());
-    }
-
-    public void addController(OrderEditListener controller){
-        this.controller = controller;
-    }
-
-    public void addWindowManager(WindowManager manager){
-        this.manager = manager;
     }
 
     @Override

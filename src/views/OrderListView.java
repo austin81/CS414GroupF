@@ -19,8 +19,6 @@ public class OrderListView extends MyJFrame {
     private JList orderList;
     private JButton newOrderButton;
     private JButton orderLookupButton;
-    private OrderListListener controller;
-    private WindowManager manager;
 
     public OrderListView(){
         orderViewContainer.setPreferredSize(new Dimension(getToolkit().getScreenSize().width, getToolkit().getScreenSize().height));
@@ -33,15 +31,6 @@ public class OrderListView extends MyJFrame {
     @Override
     public void update(Observable observable, Object o) {
 
-    }
-
-    public void addController(OrderListListener controller){
-        this.controller = controller;
-        controller.addView(this);
-    }
-
-    public void addWindowManager(WindowManager manager){
-        this.manager = manager;
     }
 
     public void addComponents(){
