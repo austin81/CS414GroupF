@@ -18,28 +18,6 @@ public class MainMenuView extends MyJFrame {
     public MainMenuView(){
         setContentPane(mainMenuPanel);
         pack();
-        model = new Register();
-
-        orderViewButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent actionEvent) {
-                // add authentication here
-                manager.activateWindow("mainMenu", "orderList");
-            }
-        });
-        makeLineViewButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent actionEvent) {
-                manager.activateWindow("mainMenu", "makeline");
-            }
-        });
-        managerControlsButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent actionEvent) {
-
-            }
-        });
-        //setVisible(true);
     }
 
     public void addComponents(){

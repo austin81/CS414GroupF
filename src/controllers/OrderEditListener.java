@@ -103,7 +103,7 @@ public class OrderEditListener extends MyActionListener implements ListSelection
                 order.sendPizzasToMakeLine();
                 model.updateOrder(orderID, order);
                 order = null;
-                manager.activateWindow("orderEditView", "orderListView");
+                manager.activateWindow(manager.ORDER_EDIT, manager.ORDER_LIST);
                 break;
         }
     }

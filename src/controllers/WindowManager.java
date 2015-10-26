@@ -49,6 +49,11 @@ public class WindowManager implements WindowStateListener {
     public void activateWindow(String oldWindow, String newWindow){
         views.get(oldWindow).setVisible(false);
         views.get(newWindow).setVisible(true);
+        if(oldWindow.equals(COLLECT_PAYMENT)){
+            // function to refresh makeline
+
+            ((OrderListView)views.get(ORDER_LIST)).setOrderList();
+        }
     }
 
     public void init(){
