@@ -17,7 +17,7 @@ public class OrderListListener extends MyActionListener implements ListSelection
         System.out.println(actionEvent.paramString());
         switch (actionEvent.getActionCommand()){
             case "New Order":
-                manager.activateWindow(manager.ORDER_LIST, manager.ORDER_EDIT);
+                manager.activateWindow(manager.ORDER_LIST, manager.CUSTOMER);
                 break;
             case "Order Lookup":
 

@@ -25,7 +25,7 @@ public class OrderEditListener extends MyActionListener implements ListSelection
         components = new HashMap<>();
     }
 
-    public void setOrder(){
+    public void setOrderID(int orderID){
         order = model.getOrder(orderID);
         if(order.getPizzas().size() != 0){
             ((JTextField)components.get("totalDisplay")).setText(model.TOTAL_TEXT + order.getOrderTotal());
@@ -103,7 +103,7 @@ public class OrderEditListener extends MyActionListener implements ListSelection
                 order.sendPizzasToMakeLine();
                 model.updateOrder(orderID, order);
                 order = null;
-                manager.activateWindow(manager.ORDER_EDIT, manager.ORDER_LIST);
+                manager.activateWindow(manager.ORDER_EDIT, manager.COLLECT_PAYMENT);
                 break;
         }
     }

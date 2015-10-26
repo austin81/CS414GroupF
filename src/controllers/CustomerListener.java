@@ -46,8 +46,8 @@ public class CustomerListener extends MyActionListener {
                 order.setCustomer(person);
                 int orderID = model.addOrder(order);
                 System.out.println("OrderID: " + orderID);
-                manager.passOrderID("orderEditListener", orderID);
-                manager.activateWindow("customerView", "addOrderView");
+                manager.passOrderID(manager.ORDER_EDIT, orderID);
+                manager.activateWindow(manager.CUSTOMER, manager.ORDER_EDIT);
                 break;
         }
     }

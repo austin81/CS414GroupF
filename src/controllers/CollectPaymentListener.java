@@ -57,7 +57,7 @@ public class CollectPaymentListener extends MyActionListener {
                         options[0]); //default button title
                 if(n == JOptionPane.YES_OPTION){
                     order.payForOrder();
-
+                    manager.activateWindow(manager.COLLECT_PAYMENT, manager.ORDER_LIST);
                 }else{
                     // do nothing
                 }
