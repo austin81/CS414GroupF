@@ -26,6 +26,8 @@ public class OrderListView extends MyJFrame {
         setContentPane(orderViewContainer);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         pack();
+        orderList.setCellRenderer(new ComponentOrder());
+        //setOrderList();
         //setVisible(true);
     }
 
@@ -42,8 +44,10 @@ public class OrderListView extends MyJFrame {
         controller.registerComponent("orderList", orderList);
         controller.registerComponent("newOrderButton", newOrderButton);
         controller.registerComponent("orderLookupButton", orderLookupButton);
+        controller.registerComponent("backButton", backButton);
         orderList.addListSelectionListener(controller);
         newOrderButton.addActionListener(controller);
         orderLookupButton.addActionListener(controller);
+        backButton.addActionListener(controller);
     }
 }

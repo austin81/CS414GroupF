@@ -40,6 +40,14 @@ public class Order {
         setIsPaidFor(false);
     }
 
+    @Override
+    public String toString(){
+        return getOrderID() + "   "
+                + getCustomer().getPhoneNumbers().get(0)
+                + "   " + getCustomer().getName()
+                + "   " + getOrderTotal();
+    }
+
     public int getOrderID() {
         return orderID;
     }
@@ -117,8 +125,9 @@ public class Order {
     public void payForOrder(){
         this.isPaidFor = true;
     }
-
+/*
     public double testingGetOrderTotal(){
         return 12.99;
     }
+*/
 }

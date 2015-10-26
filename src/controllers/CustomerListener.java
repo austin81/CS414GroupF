@@ -39,7 +39,7 @@ public class CustomerListener extends MyActionListener {
                 address.setZipcode(((JTextArea) components.get("zipEditText")).getText());
 
                 Phone phone = new Phone();
-                phone.setNumber(((JTextArea) components.get("zipEditText")).getText());
+                phone.setNumber(((JTextArea) components.get("phoneEditText")).getText());
 
                 Person person = new Person(((JTextArea) components.get("nameEditText")).getText(), address, phone);
                 Order order = new Order();

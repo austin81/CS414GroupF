@@ -22,7 +22,16 @@ public class CollectPaymentListener extends MyActionListener {
 
     public CollectPaymentListener(){
         components = new HashMap<>();
-        order = new Order();
+        //order = new Order();
+    }
+
+    public void setOrderID(int orderID){
+        order = model.getOrder(orderID);
+        //if(order.getPizzas().size() != 0){
+            //((JTextField)components.get("totalDisplay")).setText(model.TOTAL_TEXT + order.getOrderTotal());
+            //((JList)components.get("pizzaList")).setListData(order.getPizzas().toArray());
+
+        //}
     }
 
     @Override
@@ -32,11 +41,11 @@ public class CollectPaymentListener extends MyActionListener {
         switch (actionEvent.getActionCommand()){
             case CASH_BUTTON:
                 (components.get("cashOptContainer")).setVisible(true);
-                ((JButton)components.get("exactChangeButton")).setText("$" + Double.toString(order.testingGetOrderTotal()));
-                ((JButton)components.get("roundUpOneButton")).setText("$" + Integer.toString((int)order.testingGetOrderTotal() + 1) + ".00");
+                ((JButton)components.get("exactChangeButton")).setText("$" + Double.toString(order.getOrderTotal()));
+                ((JButton)components.get("roundUpOneButton")).setText("$" + Integer.toString((int)order.getOrderTotal() + 1) + ".00");
                 // 5*(Math.ceil(Math.abs(number/5)));
-                ((JButton)components.get("roundUpFiveButton")).setText("$" + Integer.toString((int)(5*(Math.ceil(order.testingGetOrderTotal()/5)))) + ".00");
-                ((JButton)components.get("roundUpTwentyButton")).setText("$" + Integer.toString((int)(20*(Math.ceil(order.testingGetOrderTotal()/20)))) + ".00");
+                ((JButton)components.get("roundUpFiveButton")).setText("$" + Integer.toString((int)(5*(Math.ceil(order.getOrderTotal()/5)))) + ".00");
+                ((JButton)components.get("roundUpTwentyButton")).setText("$" + Integer.toString((int)(20*(Math.ceil(order.getOrderTotal()/20)))) + ".00");
                 break;
             case CARD_BUTTON:
                 (components.get("cashOptContainer")).setVisible(false);
@@ -44,7 +53,7 @@ public class CollectPaymentListener extends MyActionListener {
             default:
                 Object[] options = {"Confirm",
                         "Cancel"};
-                double returnAmount = Double.parseDouble(actionEvent.getActionCommand().replace("$", "")) - order.testingGetOrderTotal();
+                double returnAmount = Double.parseDouble(actionEvent.getActionCommand().replace("$", "")) - order.getOrderTotal();
                 returnAmount = Math.round(returnAmount * 100.0) / 100.0;
                 int n = JOptionPane.showOptionDialog(view,
                         "Cash Collected: " + actionEvent.getActionCommand()
