@@ -19,6 +19,7 @@ public class OrderListView extends MyJFrame {
     private JList orderList;
     private JButton newOrderButton;
     private JButton orderLookupButton;
+    private JButton backButton;
 
     public OrderListView(){
         orderViewContainer.setPreferredSize(new Dimension(getToolkit().getScreenSize().width, getToolkit().getScreenSize().height));

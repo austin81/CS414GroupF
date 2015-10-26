@@ -22,6 +22,9 @@ public class OrderListListener extends MyActionListener implements ListSelection
             case "Order Lookup":
 
                 break;
+            case "Back":
+                manager.activateWindow(manager.ORDER_LIST, manager.MAIN_MENU);
+                break;
         }
     }
 }
