@@ -35,4 +35,8 @@ public class MyJFrame extends JFrame implements Observer {
     public void addWindowManager(WindowManager windowManager){
         this.manager = windowManager;
     }
+
+    public void addComponents(){
+
+    }
 }

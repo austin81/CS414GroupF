@@ -18,8 +18,12 @@ public class WindowManager implements WindowStateListener {
     HashMap<String,MyJFrame> views;
     HashMap<String, MyActionListener> controllers;
     Register register;
-
-    JFrame activeWindow;
+    public static final String MAIN_MENU = "mainMenu";
+    public static final String ORDER_EDIT = "orderEdit";
+    public static final String COLLECT_PAYMENT = "collectPayment";
+    public static final String CUSTOMER = "customer";
+    public static final String MAKE_LINE = "makeline";
+    public static final String ORDER_LIST = "orderList";
 
     public WindowManager(){
         register = new Register();
@@ -32,7 +36,7 @@ public class WindowManager implements WindowStateListener {
             jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         }
         // init main menu view
-        views.get("mainMenu").setVisible(true);
+        views.get(MAIN_MENU).setVisible(true);
     }
 
     @Override
@@ -49,20 +53,20 @@ public class WindowManager implements WindowStateListener {
 
     public void init(){
         views = new HashMap<>();
-        views.put("mainMenu", new MainMenuView());
-        views.put("orderEdit", new AddOrderView());
-        views.put("collectPayment", new CollectPaymentView());
-        views.put("customer", new CustomerView());
-        views.put("makeline", new MakelineView());
-        views.put("orderList", new OrderListView());
+        views.put(MAIN_MENU, new MainMenuView());
+        views.put(ORDER_EDIT, new AddOrderView());
+        views.put(COLLECT_PAYMENT, new CollectPaymentView());
+        views.put(CUSTOMER, new CustomerView());
+        views.put(MAKE_LINE, new MakelineView());
+        views.put(ORDER_LIST, new OrderListView());
 
         controllers = new HashMap<>();
         //controllers.put("mainMenuListener", new)
-        controllers.put("orderEdit", new OrderEditListener());
-        controllers.put("collectPayment", new CollectPaymentListener());
-        controllers.put("customer", new CustomerListener());
-        //controllers.put("makeline", new MakelineListener());
-        controllers.put("orderList", new OrderListListener());
+        controllers.put(ORDER_EDIT, new OrderEditListener());
+        controllers.put(COLLECT_PAYMENT, new CollectPaymentListener());
+        controllers.put(CUSTOMER, new CustomerListener());
+        //controllers.put(MAKE_LINE, new MakelineListener());
+        controllers.put(ORDER_LIST, new OrderListListener());
     }
 
     public void registerMVC(){
@@ -80,31 +84,21 @@ public class WindowManager implements WindowStateListener {
     }
 
     public void registerManager(){
-
-        ((MainMenuView)views.get("mainMenu")).addWindowManager(this);
-        ((AddOrderView)views.get("orderEdit")).addWindowManager(this);
-        ((CollectPaymentView)views.get("collectPayment")).addWindowManager(this);
-        ((CustomerView) views.get("customer")).addWindowManager(this);
-        ((MakelineView)views.get("makeline")).addWindowManager(this);
-        ((OrderListView)views.get("orderList")).addWindowManager(this);
-
-        //((MainMenuListener)views.get("mainMenuListener")).addWindowManager(this);
-        ((OrderEditListener)controllers.get("orderEdit")).addWindowManager(this);
-        ((CollectPaymentListener)controllers.get("collectPayment")).addWindowManager(this);
-        ((CustomerListener) controllers.get("customer")).addWindowManager(this);
-        //((MakelineListener)controllers.get("makeline")).addWindowManager(this);
-        ((OrderListListener)controllers.get("orderList")).addWindowManager(this);
+        for(MyJFrame jFrame : views.values()){
+            jFrame.addWindowManager(this);
+        }
+        for(MyActionListener listener : controllers.values()){
+            listener.addWindowManager(this);
+        }
     }
 
     public void registerComponents(){
         //((MainMenuView)views.get("mainMenuView")).addComponents();
-        ((AddOrderView)views.get("orderEdit")).addComponents();
-        ((CollectPaymentView)views.get("collectPayment")).addComponents();
-        ((CustomerView)views.get("customer")).addComponents();
-        ((MakelineView)views.get("makeline")).addComponents();
-        ((OrderListView)views.get("orderList")).addComponents();
+        for(MyJFrame jFrame : views.values()){
+            jFrame.addComponents();
+        }
     }
     public void passOrderID(String toController, int orderID){
-        ((MyActionListener)controllers.get(toController)).setOrderID(orderID);
+        (controllers.get(toController)).setOrderID(orderID);
     }
 }

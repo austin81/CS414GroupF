@@ -1,6 +1,5 @@
 package views;
 
-import controllers.*;
 import objects.Register;
 
 import javax.swing.*;
@@ -19,10 +18,7 @@ public class MainMenuView extends MyJFrame {
     public MainMenuView(){
         setContentPane(mainMenuPanel);
         pack();
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         model = new Register();
-
-
 
         orderViewButton.addActionListener(new ActionListener() {
             @Override
