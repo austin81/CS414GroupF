@@ -7,6 +7,7 @@ import controllers.OrderEditListener;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -16,20 +17,21 @@ import java.util.Observer;
 public class MakelineView extends MyJFrame {
     private JPanel panel1;
     private JList orderList;
-    private JList sizeList;
-    private JList sauceList;
-    private JList toppingList;
-    private JList timeList;
-    private WindowManager manager;
 
     public MakelineView(){
         panel1.setPreferredSize(new Dimension(getToolkit().getScreenSize().width, getToolkit().getScreenSize().height));
+        setContentPane(panel1);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         pack();
 
-//        orderList.setListData(model.getOrders().toArray());
-
         //setVisible(true);
+    }
+
+    public void setOrderList(){
+        if(model.getMakelinePizzas() != null){
+            orderList.setListData(model.getMakelinePizzas().toArray());
+        }
+
     }
 
     @Override
@@ -37,15 +39,10 @@ public class MakelineView extends MyJFrame {
 
     }
 
-    public void addModel(Register model){
-        this.model = model;
-    }
-
 
     public void addComponents() {
+        controller.registerComponent("orderList", orderList);
 
     }
-    public void addWindowManager(WindowManager manager){
-        this.manager = manager;
-    }
+
 }

@@ -68,6 +68,20 @@ public class Register {
         this.orders.addAll(orders);
     }
 
+    public ArrayList<Pizza> getMakelinePizzas(){
+        ArrayList<Pizza> pizzas = new ArrayList<>();
+
+        for(Order o: orders){
+            for(Pizza p: o.getPizzas()){
+
+                if(p.getStatus()== PIZZA_STATUS.MAKELINE){
+                    pizzas.add(p);
+                }
+            }
+        }
+        return pizzas;
+    }
+
     public void updateOrder(int orderID, Order order){
         orders.set(orderID, order);
     }

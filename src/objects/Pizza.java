@@ -13,6 +13,7 @@ public class Pizza {
     PizzaSize size;
     PIZZA_STATUS status;
     double price;
+    int orderID;
 
     public Pizza(){
         toppings = new ArrayList<>();
@@ -49,6 +50,7 @@ public class Pizza {
             return true;
         }
     }
+
 
     public ArrayList<Topping> getToppingList() {
         return toppings;
@@ -117,4 +119,17 @@ public class Pizza {
     public void setPrice(double price) {
         this.price = price;
     }
+
+    public void setOrderID(int orderID) {
+        this.orderID = orderID;
+    }
+
+    public int getOrderID() {
+        return orderID;
+    }
+
+    public String makelineToString(){
+        return orderID + size.toString() + sauce + toppings.toString();
+    }
+
 }

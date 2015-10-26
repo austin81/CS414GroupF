@@ -54,6 +54,9 @@ public class WindowManager implements WindowStateListener {
 
             ((OrderListView)views.get(ORDER_LIST)).setOrderList();
         }
+        if(newWindow.equals(MAKE_LINE)){
+            ((MakelineView)views.get(MAKE_LINE)).setOrderList();
+        }
     }
 
     public void init(){
@@ -70,7 +73,7 @@ public class WindowManager implements WindowStateListener {
         controllers.put(ORDER_EDIT, new OrderEditListener());
         controllers.put(COLLECT_PAYMENT, new CollectPaymentListener());
         controllers.put(CUSTOMER, new CustomerListener());
-        //controllers.put(MAKE_LINE, new MakelineListener());
+        controllers.put(MAKE_LINE, new MakelineListener());
         controllers.put(ORDER_LIST, new OrderListListener());
     }
 
