@@ -41,4 +41,13 @@ public class MainMenuView extends MyJFrame {
         });
         //setVisible(true);
     }
+
+    public void addComponents(){
+        controller.registerComponent("orderViewButton", orderViewButton);
+        controller.registerComponent("makeLineViewButton", makeLineViewButton);
+        controller.registerComponent("managerControlsButton", managerControlsButton);
+        orderViewButton.addActionListener(controller);
+        makeLineViewButton.addActionListener(controller);
+        managerControlsButton.addActionListener(controller);
+    }
 }

@@ -61,7 +61,7 @@ public class WindowManager implements WindowStateListener {
         views.put(ORDER_LIST, new OrderListView());
 
         controllers = new HashMap<>();
-        //controllers.put("mainMenuListener", new)
+        controllers.put(MAIN_MENU, new MainMenuListener());
         controllers.put(ORDER_EDIT, new OrderEditListener());
         controllers.put(COLLECT_PAYMENT, new CollectPaymentListener());
         controllers.put(CUSTOMER, new CustomerListener());
