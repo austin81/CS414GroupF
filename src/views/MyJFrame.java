@@ -12,6 +12,10 @@ import java.util.Observer;
 public class MyJFrame extends JFrame implements Observer {
     Register model;
 
+    public MyJFrame(){
+        super();
+    }
+
     @Override
     public void update(Observable observable, Object o) {
 

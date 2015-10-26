@@ -32,7 +32,7 @@ public class WindowManager implements WindowStateListener {
             jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         }
         // init main menu view
-        views.get("mainMenuView").setVisible(true);
+        views.get("mainMenu").setVisible(true);
     }
 
     @Override
@@ -66,11 +66,12 @@ public class WindowManager implements WindowStateListener {
     }
 
     public void registerMVC(){
-        (views.get("addOrder")).addModel(register);
-        ((CollectPaymentView)views.get("collectPayment")).addModel(register);
-        ((CustomerView) views.get("customer")).addModel(register);
-        ((MakelineView)views.get("makeline")).addModel(register);
-        ((OrderListView)views.get("orderList")).addModel(register);
+        (views.get("orderEdit")).addModel(register);
+
+        (views.get("collectPayment")).addModel(register);
+        (views.get("customer")).addModel(register);
+        (views.get("makeline")).addModel(register);
+        (views.get("orderList")).addModel(register);
 
         ((AddOrderView)views.get("orderEdit")).addController((OrderEditListener) controllers.get("orderEdit"));
         ((CollectPaymentView)views.get("collectPayment")).addController((CollectPaymentListener) controllers.get("collectPayment"));
