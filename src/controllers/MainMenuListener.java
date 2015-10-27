@@ -15,9 +15,10 @@ public class MainMenuListener extends MyActionListener {
     @Override
     public void actionPerformed(ActionEvent actionEvent){
         System.out.println(actionEvent.getActionCommand());
+        String authenticationKey;
         switch (actionEvent.getActionCommand()){
             case "Orders":
-                String s = (String)JOptionPane.showInputDialog(
+                authenticationKey = (String)JOptionPane.showInputDialog(
                         view,
                         "Enter Authentication Code",
                         "Login",
@@ -25,19 +26,37 @@ public class MainMenuListener extends MyActionListener {
                         null,
                         null,
                         null);
-
-//If a string was returned, say so.
-                if ((s != null) && (s.length() > 0) && model.userExists(s)) {
+                if ((authenticationKey != null) && (authenticationKey.length() > 0) && model.userExists(authenticationKey)) {
                     manager.activateWindow(manager.MAIN_MENU, manager.ORDER_LIST);
                     return;
                 }
 
                 break;
             case "Make Line View":
-                manager.activateWindow(manager.MAIN_MENU, manager.MAKE_LINE);
+                authenticationKey = (String)JOptionPane.showInputDialog(
+                        view,
+                        "Enter Authentication Code",
+                        "Login",
+                        JOptionPane.PLAIN_MESSAGE,
+                        null,
+                        null,
+                        null);
+                if ((authenticationKey != null) && (authenticationKey.length() > 0) && model.userExists(authenticationKey)) {
+                    manager.activateWindow(manager.MAIN_MENU, manager.MAKE_LINE);
+                }
                 break;
             case "Manager Controls":
+                authenticationKey = (String)JOptionPane.showInputDialog(
+                        view,
+                        "Enter Authentication Code",
+                        "Login",
+                        JOptionPane.PLAIN_MESSAGE,
+                        null,
+                        null,
+                        null);
+                if ((authenticationKey != null) && (authenticationKey.length() > 0) && model.userExists(authenticationKey)) {
 
+                }
                 break;
         }
     }
