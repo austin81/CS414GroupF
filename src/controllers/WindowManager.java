@@ -30,6 +30,7 @@ public class WindowManager implements WindowStateListener {
 
     public WindowManager(){
         register = new Register();
+        register.setWindowManager(this);
         init();
         registerMVC();
         registerManager();

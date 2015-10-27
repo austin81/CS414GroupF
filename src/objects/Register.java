@@ -3,10 +3,12 @@ package objects;
 import controllers.CollectPaymentListener;
 import controllers.CustomerListener;
 import controllers.OrderEditListener;
+import controllers.WindowManager;
 
 import javax.swing.*;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * Created by darkbobo on 10/5/15.
@@ -20,6 +22,11 @@ public class Register {
     CustomerListener customerListener;
     OrderEditListener orderEditListener;
     CollectPaymentListener collectPaymentListener;
+    HashMap<String, Role> roles;
+    public final String MANAGER_ROLE = "managerRole";
+    public final String CASHIER_ROLE = "cashierRole";
+    public final String CHEF_ROLE = "chefRole";
+    private WindowManager manager;
 
     public static final String TOTAL_TEXT = "Total................";
     public Register() {
@@ -32,8 +39,9 @@ public class Register {
         customerListener.addModel(this);
         orderEditListener.addModel(this);
         collectPaymentListener.addModel(this);
-
-        employees.add(new Employee("name1", new Address("street1", "city1", "state1", "zip1"), new Phone("phone1"), "uname1", "321"));
+        roles = new HashMap<>();
+        initRoles();
+        addEmployee(new Employee("name1", new Address("street1", "city1", "state1", "zip1"), new Phone("phone1"), "uname1", "321", roles.get(MANAGER_ROLE)));
     }
 
     public int getNextOrderID(){
@@ -173,6 +181,10 @@ public class Register {
         this.storeID = storeID;
     }
 
+    public void setWindowManager(WindowManager manager) {
+        this.manager = manager;
+    }
+
     public boolean userExists(String s) {
         for(Employee e : employees){
             if(e.getAuthentication().equals(s)){
@@ -184,5 +196,32 @@ public class Register {
         }else{
             return true;
         }
+    }
+
+    public boolean canEnter(String toWindow){
+        if(getLoggedInEmployee().getRole().equals(roles.get(MANAGER_ROLE))){
+            return true;
+        }
+        if(getLoggedInEmployee().getRole().equals(roles.get(CASHIER_ROLE)) && toWindow.equals(manager.ORDER_LIST)){
+            return true;
+        }
+        if(getLoggedInEmployee().getRole().equals(roles.get(CHEF_ROLE)) && toWindow.equals(manager.MAKE_LINE)){
+            return true;
+        }
+        return false;
+    }
+
+    public ArrayList<Employee> getEmployees(){
+        return employees;
+    }
+
+    public void initRoles(){
+        roles.put(MANAGER_ROLE, new Role("Manager"));
+        roles.put(CASHIER_ROLE, new Role("Cashier"));
+        roles.put(CHEF_ROLE, new Role("Chef"));
+    }
+
+    public HashMap<String, Role> getRoles() {
+        return roles;
     }
 }
