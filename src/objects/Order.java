@@ -121,6 +121,8 @@ public class Order {
         for(SideItem item : sides){
             totalPrice += item.getPrice();
         }
+        int tmpPrice = (int)(totalPrice * 100);
+        totalPrice = tmpPrice / 100.0;
         return totalPrice;
     }
 
