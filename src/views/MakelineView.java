@@ -23,7 +23,7 @@ public class MakelineView extends MyJFrame {
         setContentPane(panel1);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         pack();
-
+        orderList.setCellRenderer(new ComponentMakline());
         //setVisible(true);
     }
 
