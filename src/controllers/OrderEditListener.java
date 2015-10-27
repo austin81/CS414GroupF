@@ -52,9 +52,7 @@ public class OrderEditListener extends MyActionListener implements ListSelection
                 for (int i = 0; i < tmpSelectedToppings.length; i++) {
                     selectedToppings.add(model.getCatalog().getToppings().get(tmpSelectedToppings[i]));
                 }
-
                 // add new pizza to order
-
                 pizza.setToppingList(selectedToppings);
                 pizza.setSauce(model.getCatalog().getSauces().get(((JList) components.get("pizzaSaucesList")).getSelectedIndex()));
                 pizza.setSize(model.getCatalog().getSizes().get(((JList) components.get("pizzaSizesList")).getSelectedIndex()));
@@ -66,7 +64,7 @@ public class OrderEditListener extends MyActionListener implements ListSelection
                     int selectedIndex = ((JList)components.get("pizzaList")).getSelectedIndex();
                     order.updatePizza(selectedIndex, pizza);
                 }
-                ((JList)components.get("pizzaList")).setListData(order.getPizzas().toArray());
+                resetList();
                 clearPizzaSelections();
                 ((JTextField)components.get("totalDisplay")).setText(model.TOTAL_TEXT + order.getOrderTotal());
                 break;
@@ -83,7 +81,7 @@ public class OrderEditListener extends MyActionListener implements ListSelection
                     if(removedPizza != null){
                         order.removePizza(removedPizza);
 
-                        ((JList)components.get("pizzaList")).setListData(order.getPizzas().toArray());
+                        resetList();
                         System.out.println(order.getPizzas().size());
                     }
                 }
@@ -113,9 +111,6 @@ public class OrderEditListener extends MyActionListener implements ListSelection
             case "Exit":
                 order = null;
                 manager.activateWindow(manager.ORDER_EDIT, manager.ORDER_LIST);
-                break;
-            case "Pizzas":
-                // do nothing
                 break;
             case "Sides":
                 ArrayList<Side> sides = model.getCatalog().getSides();
@@ -151,7 +146,7 @@ public class OrderEditListener extends MyActionListener implements ListSelection
         ((JList)components.get("pizzaSizesList")).clearSelection();
         ((JList)components.get("pizzaSaucesList")).clearSelection();
         //((JList)components.get("pizzaList")).clearSelection();
-        ((JButton)components.get("addPizzaButton")).setText("Add Pizza");
+        ((JButton)components.get("addPizzaButton")).setText("Add");
     }
 
     @Override
@@ -160,12 +155,12 @@ public class OrderEditListener extends MyActionListener implements ListSelection
         JList list = (JList) event.getSource();
         if(list.equals(components.get("pizzaList"))) {
 
-            ((JButton)components.get("addPizzaButton")).setText("Update Pizza");
+            ((JButton)components.get("addPizzaButton")).setText("Update");
             String buttonText = "";
             try {
                 buttonText = list.getSelectedValue().toString();
             } catch (NullPointerException e) {
-                ((JButton)components.get("addPizzaButton")).setText("Add Pizza");
+                ((JButton)components.get("addPizzaButton")).setText("Add");
             }
             Pizza pizza = null;
             for (Pizza p : order.getPizzas()) {
