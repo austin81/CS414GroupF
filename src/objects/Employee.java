@@ -10,6 +10,9 @@ public class Employee extends Person {
     private String username;
     private String authentication;
     private Role role;
+    public Employee(){
+        super();
+    }
     public Employee(String name, Address address, Phone phone, String username, String authentication, Role role) {
         super(name,address,phone);
         this.username = username;

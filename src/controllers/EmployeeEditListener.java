@@ -1,16 +1,20 @@
 package controllers;
 
+import objects.Address;
 import objects.Employee;
+import objects.Phone;
 
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
 import java.awt.event.ActionEvent;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
  * Created by darkbobo on 10/27/15.
  */
 public class EmployeeEditListener extends MyActionListener {
+    private Employee employee;
 
     public EmployeeEditListener(){
         components = new HashMap<>();
@@ -24,16 +28,61 @@ public class EmployeeEditListener extends MyActionListener {
                 resetView();
                 break;
             case "Delete":
-
+                if(employee != null) {
+                    model.removeEmployee(employee);
+                    resetView();
+                }
                 break;
             case "Set Authentication Code":
 
                 break;
             case "Cancel":
-
+                resetView();
                 break;
             case "Save":
+                Address address = new Address();
+                address.setCity(((JTextArea) components.get("cityEditText")).getText());
+                address.setState(((JTextArea) components.get("stateEditText")).getText());
+                address.setStreetAddress(((JTextArea) components.get("streetEditText")).getText());
+                address.setZipcode(((JTextArea) components.get("zipEditText")).getText());
+                ArrayList<Address> addresses = new ArrayList<>();
+                addresses.add(address);
 
+                Phone phone = new Phone(((JTextArea)components.get("phoneEditText")).getText());
+                ArrayList<Phone> phones = new ArrayList<>();
+                phones.add(phone);
+
+                boolean isNew = false;
+                if(employee == null){
+                    // add new employee
+                    employee = new Employee();
+                    isNew = true;
+                }
+                employee.setAddresses(addresses);
+                employee.setPhoneNumbers(phones);
+                employee.setName(((JTextArea) components.get("nameEditText")).getText());
+
+                String roleKey = "";
+                switch (((JComboBox)components.get("roleComboBox")).getSelectedItem().toString()){
+                    case "Manager":
+                        roleKey = model.MANAGER_ROLE;
+                        break;
+                    case "Cashier":
+                        roleKey = model.CASHIER_ROLE;
+                        break;
+                    case "Chef":
+                        roleKey = model.CHEF_ROLE;
+                        break;
+                }
+                employee.setRole(model.getRoles().get(roleKey));
+
+                if(isNew) {
+                    model.addEmployee(employee);
+                }else{
+                    // save existing
+                    model.updateEmployee(employee.getUserID(), employee);
+                }
+                resetView();
                 break;
         }
     }
@@ -42,7 +91,7 @@ public class EmployeeEditListener extends MyActionListener {
         System.out.println(event.toString());
         JList list = (JList) event.getSource();
         String employeeButtonText = list.getSelectedValue().toString();
-        Employee employee = null;
+        employee = null;
         for(Employee emp : model.getEmployees()){
             System.out.println(emp.toString());
             if(emp.toString().equals(employeeButtonText)){
@@ -63,6 +112,7 @@ public class EmployeeEditListener extends MyActionListener {
     public void resetView(){
         ((JList)components.get("employeeList")).setListData(model.getEmployees().toArray());
         clearEditTextFields();
+        employee = null;
     }
     public void clearEditTextFields(){
         ((JTextArea)components.get("nameEditText")).setText("");

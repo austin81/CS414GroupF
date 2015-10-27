@@ -175,6 +175,10 @@ public class Register {
         employees.add(employee);
     }
 
+    public void removeEmployee(Employee employee){
+        employees.remove(employee);
+    }
+
     public int getStoreID() {
         return storeID;
     }
@@ -215,6 +219,14 @@ public class Register {
 
     public ArrayList<Employee> getEmployees(){
         return employees;
+    }
+
+    public void updateEmployee(int userID, Employee employee){
+        for(int i = 0; i < getEmployees().size(); i++){
+            if(employees.get(i).getUserID() == userID){
+                employees.set(i, employee);
+            }
+        }
     }
 
     public void initRoles(){

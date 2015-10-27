@@ -21,6 +21,10 @@ public class Person {
         this.phoneNumbers.add(phone);
     }
 
+    public void setName(String name){
+        this.name = name;
+    }
+
     public String getName() {
         return this.name;
     }
@@ -31,6 +35,10 @@ public class Person {
 
     public ArrayList<Phone> getPhoneNumbers() {
         return this.phoneNumbers;
+    }
+
+    public void setPhoneNumbers(ArrayList<Phone> phones){
+        this.phoneNumbers = phones;
     }
 
     public Address getAddress(int index){
