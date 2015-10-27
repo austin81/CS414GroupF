@@ -49,7 +49,6 @@ public class MakelineView extends MyJFrame {
 
                     //order.getPizza(0).setStatus(PIZZA_STATUS.COMPLETED);
 
-
                     //model.getOrder((Integer)orderList.getSelectedValue()).getPizza(0).setStatus(PIZZA_STATUS.COMPLETED);
 
                     model.getOrder((Integer)orderList.getSelectedValue()).getPizza(0).setStatus(PIZZA_STATUS.COMPLETED);

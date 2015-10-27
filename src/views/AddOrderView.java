@@ -25,6 +25,11 @@ public class AddOrderView extends MyJFrame {
     private JTextField totalDisplay;
     private JButton cancelOrderButton;
     private JButton cancelPizzaButton;
+    private JButton pizzasButton;
+    private JButton sidesButton;
+    private JButton drinksButton;
+    private JButton exitButton;
+    private JPanel pizzaContainer;
     private Order order;
 
     public AddOrderView(){
@@ -83,5 +88,14 @@ public class AddOrderView extends MyJFrame {
         sendToMakelineButton.addActionListener(controller);
         controller.registerComponent("cancelPizzaButton", cancelPizzaButton);
         cancelPizzaButton.addActionListener(controller);
+
+        controller.registerComponent("pizzasButton", pizzasButton);
+        controller.registerComponent("sidesButton", sidesButton);
+        controller.registerComponent("drinksButton", drinksButton);
+        controller.registerComponent("exitButton", exitButton);
+        pizzasButton.addActionListener(controller);
+        sidesButton.addActionListener(controller);
+        drinksButton.addActionListener(controller);
+        exitButton.addActionListener(controller);
     }
 }

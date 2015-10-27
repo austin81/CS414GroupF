@@ -1,5 +1,6 @@
 package views;
 
+import objects.OrderItem;
 import objects.Pizza;
 
 import javax.swing.*;
@@ -15,8 +16,8 @@ public class ComponentPizza extends JLabel implements ListCellRenderer {
     }
     @Override
     public JButton getListCellRendererComponent(JList jList, Object value, int index, boolean isSelected, boolean cellHasFocus) {
-        Pizza pizza = (Pizza)value;
-        JButton button = new JButton(pizza.toString());
+        OrderItem item = (OrderItem)value;
+        JButton button = new JButton(item.toString());
         return button;
     }
 }

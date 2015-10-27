@@ -9,11 +9,13 @@ public class PizzaCatalog {
     ArrayList<Topping> toppings;
     ArrayList<Sauce> sauces;
     ArrayList<PizzaSize> sizes;
+    ArrayList<SideItem> sides;
 
     public PizzaCatalog(){
         toppings = new ArrayList<>();
         sauces = new ArrayList<>();
         sizes = new ArrayList<>();
+        sides = new ArrayList<>();
         initData();
     }
 
@@ -39,6 +41,25 @@ public class PizzaCatalog {
 
     public void setSizes(ArrayList<PizzaSize> sizes) {
         this.sizes = sizes;
+    }
+
+    public ArrayList<Side> getSides(){
+        ArrayList<Side> tmpSides = new ArrayList<>();
+        for(SideItem item : sides){
+            if(item.getClass().equals(Side.class)){
+                tmpSides.add((Side)item);
+            }
+        }
+        return tmpSides;
+    }
+    public ArrayList<Drink> getDrinks(){
+        ArrayList<Drink> tmpSides = new ArrayList<>();
+        for(SideItem item : sides){
+            if(item.getClass().equals(Drink.class)){
+                tmpSides.add((Drink)item);
+            }
+        }
+        return tmpSides;
     }
 
     private void initData(){
@@ -71,5 +92,12 @@ public class PizzaCatalog {
         sauces.add(new Sauce("M", "Marinara"));
         sauces.add(new Sauce("O", "Olive Oil"));
         sauces.add(new Sauce("R", "Ranch"));
+
+        sides.add(new Side("Bread Stick", 2.99));
+        sides.add(new Side("Salad", 2.99));
+        sides.add(new Side("Ice Cream", 4.99));
+        sides.add(new Drink("Pepsi", 1.99));
+        sides.add(new Drink("Sierra Mist", 1.99));
+        sides.add(new Drink("Diet Pepsi", 1.99));
     }
 }

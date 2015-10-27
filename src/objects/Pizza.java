@@ -7,7 +7,7 @@ import java.util.ArrayList;
 /**
  * Created by darkbobo on 9/28/15.
  */
-public class Pizza {
+public class Pizza extends OrderItem {
     ArrayList<Topping> toppings;
     Sauce sauce;
     PizzaSize size;

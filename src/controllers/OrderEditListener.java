@@ -1,9 +1,6 @@
 package controllers;
 
-import objects.Order;
-import objects.Pizza;
-import objects.Register;
-import objects.Topping;
+import objects.*;
 import views.AddOrderView;
 import views.CollectPaymentView;
 
@@ -28,9 +25,13 @@ public class OrderEditListener extends MyActionListener implements ListSelection
     public void setOrderID(int orderID){
         order = model.getOrder(orderID);
         this.orderID = orderID;
-        if (order.getPizzas().size() != 0) {
+        resetList();
+    }
+
+    public void resetList(){
+        if (order.getOrderItems().size() != 0) {
             ((JTextField) components.get("totalDisplay")).setText(model.TOTAL_TEXT + order.getOrderTotal());
-            ((JList) components.get("pizzaList")).setListData(order.getPizzas().toArray());
+            ((JList) components.get("pizzaList")).setListData(order.getOrderItems().toArray());
         } else {
             ((JList) components.get("pizzaList")).setListData(new String[0]);
             ((JTextField) components.get("totalDisplay")).setText("");
@@ -44,8 +45,8 @@ public class OrderEditListener extends MyActionListener implements ListSelection
         System.out.println(actionEvent.paramString());
         Pizza pizza = new Pizza();
         switch (actionEvent.getActionCommand()){
-            case "Add Pizza":
-            case "Update Pizza":
+            case "Add":
+            case "Update":
                 ArrayList<Topping> selectedToppings = new ArrayList<>();
                 int[] tmpSelectedToppings = ((JList)components.get("pizzaToppingsList")).getSelectedIndices();
                 for (int i = 0; i < tmpSelectedToppings.length; i++) {
@@ -58,7 +59,7 @@ public class OrderEditListener extends MyActionListener implements ListSelection
                 pizza.setSauce(model.getCatalog().getSauces().get(((JList) components.get("pizzaSaucesList")).getSelectedIndex()));
                 pizza.setSize(model.getCatalog().getSizes().get(((JList) components.get("pizzaSizesList")).getSelectedIndex()));
                 pizza.calculatePrice();
-                if (((JButton)components.get("addPizzaButton")).getText().equals("Add Pizza")) {
+                if (((JButton)components.get("addPizzaButton")).getText().equals("Add")) {
                     order.addPizza(pizza);
                 } else {
                     // update pizza
@@ -69,9 +70,9 @@ public class OrderEditListener extends MyActionListener implements ListSelection
                 clearPizzaSelections();
                 ((JTextField)components.get("totalDisplay")).setText(model.TOTAL_TEXT + order.getOrderTotal());
                 break;
-            case "Cancel Pizza":
-                if(((JButton)components.get("addPizzaButton")).getText().equals("Update Pizza")){
-                    ((JButton)components.get("addPizzaButton")).setText("Add Pizza");
+            case "Cancel Item":
+                if(((JButton)components.get("addPizzaButton")).getText().equals("Pizza")){
+                    ((JButton)components.get("addPizzaButton")).setText("Add");
 
                     Pizza removedPizza = null;
                     for(Pizza p : order.getPizzas()){
@@ -109,6 +110,39 @@ public class OrderEditListener extends MyActionListener implements ListSelection
                 manager.passOrderID(manager.COLLECT_PAYMENT, orderID);
                 manager.activateWindow(manager.ORDER_EDIT, manager.COLLECT_PAYMENT);
                 break;
+            case "Exit":
+                order = null;
+                manager.activateWindow(manager.ORDER_EDIT, manager.ORDER_LIST);
+                break;
+            case "Pizzas":
+                // do nothing
+                break;
+            case "Sides":
+                ArrayList<Side> sides = model.getCatalog().getSides();
+                int sideSelection = JOptionPane.showOptionDialog(view,
+                        "Select a Side",
+                        "Sides",
+                        JOptionPane.YES_NO_CANCEL_OPTION,
+                        JOptionPane.QUESTION_MESSAGE,
+                        null,     //do not use a custom Icon
+                        sides.toArray(),  //the titles of buttons
+                        sides.toArray()[0]); //default button title*/
+                order.addSide(sides.get(sideSelection));
+                resetList();
+                break;
+            case "Drinks":
+                ArrayList<Drink> drinks = model.getCatalog().getDrinks();
+                int drinkSelection = JOptionPane.showOptionDialog(view,
+                        "Select a Drink",
+                        "Drinks",
+                        JOptionPane.YES_NO_OPTION,
+                        JOptionPane.QUESTION_MESSAGE,
+                        null,     //do not use a custom Icon
+                        drinks.toArray(),  //the titles of buttons
+                        drinks.toArray()[0]); //default button title*/
+                order.addSide(drinks.get(drinkSelection));
+                resetList();
+                break;
         }
     }
 
@@ -125,6 +159,7 @@ public class OrderEditListener extends MyActionListener implements ListSelection
         System.out.println(event.toString());
         JList list = (JList) event.getSource();
         if(list.equals(components.get("pizzaList"))) {
+
             ((JButton)components.get("addPizzaButton")).setText("Update Pizza");
             String buttonText = "";
             try {
@@ -155,6 +190,23 @@ public class OrderEditListener extends MyActionListener implements ListSelection
                     tmpIndicies[i] = indicies.get(i);
                 }
                 ((JList)components.get("pizzaToppingsList")).setSelectedIndices(tmpIndicies);
+            }else{
+                // item clicked is a side
+                // *********************************** is duplicating dialog ***************************************
+                int delete = JOptionPane.showConfirmDialog(view,
+                        "Remove Item?",
+                        "Remove",
+                        JOptionPane.YES_NO_OPTION,
+                        JOptionPane.QUESTION_MESSAGE);
+                if(delete == 0) {
+                    for(OrderItem item : order.getOrderItems()){
+                        if (buttonText.equals(item.toString())) {
+                            order.removeItem(item);
+                            break;
+                        }
+                    }
+                }
+                resetList();
             }
         }
     }

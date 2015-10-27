@@ -10,26 +10,31 @@ public class Order {
     private Person customer;
     boolean isPaidFor;
     private ArrayList<Pizza> pizzas;
+    private ArrayList<SideItem> sides;
 
     public Order() {
         pizzas = new ArrayList<>();
+        sides = new ArrayList<>();
     }
 
     public Order(Person customer, Address address) {
         this.customer = customer;
         this.pizzas = new ArrayList<>();
+        sides = new ArrayList<>();
         setIsPaidFor(false);
     }
 
     public Order(int orderID, Person customer) {
         this.orderID = orderID;
         this.customer = customer;
+        sides = new ArrayList<>();
         setIsPaidFor(false);
     }
 
     public Order(Person customer, ArrayList<Pizza> pizzas) {
         this.customer = customer;
         this.pizzas = pizzas;
+        sides = new ArrayList<>();
         setIsPaidFor(false);
     }
 
@@ -37,6 +42,7 @@ public class Order {
         this.orderID = orderID;
         this.customer = customer;
         this.pizzas = pizzas;
+        sides = new ArrayList<>();
         setIsPaidFor(false);
     }
 
@@ -112,6 +118,9 @@ public class Order {
         for(Pizza pizza : pizzas){
             totalPrice += pizza.getPrice();
         }
+        for(SideItem item : sides){
+            totalPrice += item.getPrice();
+        }
         return totalPrice;
     }
 
@@ -131,4 +140,36 @@ public class Order {
         return 12.99;
     }
 */
+    public void addSide(SideItem side){
+        this.sides.add(side);
+    }
+    public ArrayList<Side> getSides(){
+        ArrayList<Side> tmpSides = new ArrayList<>();
+        for(SideItem item : sides){
+            if(item.getClass().equals(Side.class)){
+                tmpSides.add((Side)item);
+            }
+        }
+        return tmpSides;
+    }
+    public ArrayList<Drink> getDrinks(){
+        ArrayList<Drink> tmpSides = new ArrayList<>();
+        for(SideItem item : sides){
+            if(item.getClass().equals(Drink.class)){
+                tmpSides.add((Drink)item);
+            }
+        }
+        return tmpSides;
+    }
+    public ArrayList<OrderItem> getOrderItems(){
+        ArrayList<OrderItem> items = new ArrayList<>();
+        items.addAll(pizzas);
+        items.addAll(sides);
+        return items;
+    }
+    public void removeItem(OrderItem item){
+        if( item instanceof SideItem){
+            sides.remove(item);
+        }
+    }
 }
