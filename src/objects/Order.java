@@ -102,8 +102,8 @@ public class Order {
 
     public void sendPizzasToMakeLine(){
         for(Pizza pizza : pizzas){
+            pizza.setOrderID(orderID);
             pizza.sendPizzaToMakeline();
-            pizza.setOrderID(getOrderID());
         }
     }
 

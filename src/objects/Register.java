@@ -82,6 +82,68 @@ public class Register {
         return pizzas;
     }
 
+    public ArrayList<Integer> getMakelineID(){
+        ArrayList<Integer> id = new ArrayList<>();
+
+        for(Order o: orders){
+            for(Pizza p: o.getPizzas()){
+
+                if(p.getStatus()== PIZZA_STATUS.MAKELINE){
+                    id.add(p.getOrderID());
+                }
+            }
+        }
+        return id;
+    }
+
+    public ArrayList<PizzaSize> getMakelineSizes(){
+        ArrayList<PizzaSize> sizes = new ArrayList<>();
+
+        for(Order o: orders){
+            for(Pizza p: o.getPizzas()){
+
+                if(p.getStatus()== PIZZA_STATUS.MAKELINE){
+                    sizes.add(p.getSize());
+                }
+            }
+        }
+
+        return sizes;
+
+    }
+
+    public ArrayList<Sauce> getMakelineSauces(){
+        ArrayList<Sauce> sauces = new ArrayList<>();
+
+        for(Order o: orders){
+            for(Pizza p: o.getPizzas()){
+
+                if(p.getStatus()== PIZZA_STATUS.MAKELINE){
+                    sauces.add(p.getSauce());
+                }
+            }
+        }
+
+        return sauces;
+
+    }
+
+    public ArrayList<String> getMakelineToppings(){
+        ArrayList<String> toppings = new ArrayList<>();
+
+        for(Order o: orders){
+            for(Pizza p: o.getPizzas()){
+
+                if(p.getStatus()== PIZZA_STATUS.MAKELINE){
+                    toppings.add(p.getToppingList().toString());
+                }
+            }
+        }
+
+        return toppings;
+
+    }
+
     public void updateOrder(int orderID, Order order){
         orders.set(orderID, order);
     }

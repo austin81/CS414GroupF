@@ -23,7 +23,9 @@ public class MakelineListener extends MyActionListener {
         System.out.println(actionEvent.paramString());
         Pizza pizza = new Pizza();
         switch (actionEvent.getActionCommand()) {
-
+            case "Back":
+                manager.activateWindow(manager.MAKE_LINE, manager.MAIN_MENU);
+                break;
         }
     }
 }

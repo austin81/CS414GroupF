@@ -56,6 +56,9 @@ public class WindowManager implements WindowStateListener {
         }
         if(newWindow.equals(MAKE_LINE)){
             ((MakelineView)views.get(MAKE_LINE)).setOrderList();
+            ((MakelineView)views.get(MAKE_LINE)).setSizeList();
+            ((MakelineView)views.get(MAKE_LINE)).setSauceList();
+            ((MakelineView)views.get(MAKE_LINE)).setToppingList();
         }
     }
 
