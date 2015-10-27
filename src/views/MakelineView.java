@@ -4,6 +4,8 @@ import controllers.CollectPaymentListener;
 import controllers.WindowManager;
 import objects.*;
 import controllers.OrderEditListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 import javax.swing.*;
 import java.awt.*;
@@ -21,6 +23,7 @@ public class MakelineView extends MyJFrame {
     private JList sauceList;
     private JList toppingList;
     private JList sizeList;
+    private Order order;
 
     public MakelineView(){
         panel1.setPreferredSize(new Dimension(getToolkit().getScreenSize().width, getToolkit().getScreenSize().height));
@@ -38,14 +41,40 @@ public class MakelineView extends MyJFrame {
         renderer1.setHorizontalAlignment(SwingConstants.CENTER);
         renderer2.setHorizontalAlignment(SwingConstants.CENTER);
         renderer3.setHorizontalAlignment(SwingConstants.CENTER);
+
+        orderList.addKeyListener(new KeyListener() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+
+                    //order.getPizza(0).setStatus(PIZZA_STATUS.COMPLETED);
+
+
+                    //model.getOrder((Integer)orderList.getSelectedValue()).getPizza(0).setStatus(PIZZA_STATUS.COMPLETED);
+
+                    model.getOrder((Integer)orderList.getSelectedValue()).getPizza(0).setStatus(PIZZA_STATUS.COMPLETED);
+
+
+                    manager.activateWindow(manager.MAKE_LINE, manager.MAKE_LINE);
+
+                }
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) { }
+
+            @Override
+            public void keyTyped(KeyEvent e) { }
+        });
+
     }
+
+
 
     public void setOrderList(){
         if(model.getMakelinePizzas() != null){
             orderList.setListData(model.getMakelineID().toArray());
-
         }
-
     }
 
     public void setSizeList(){
