@@ -22,5 +22,8 @@ public class MenuEditListener extends MyActionListener {
     public void valueChanged(ListSelectionEvent event) {
         System.out.println(event.toString());
         JList list = (JList) event.getSource();
+        if(list.getSelectedValue() != null){
+            // check
+        }
     }
 }
