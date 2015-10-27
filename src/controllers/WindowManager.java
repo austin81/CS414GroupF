@@ -24,6 +24,9 @@ public class WindowManager implements WindowStateListener {
     public static final String CUSTOMER = "customer";
     public static final String MAKE_LINE = "makeline";
     public static final String ORDER_LIST = "orderList";
+    public static final String MANAGE_MAIN = "manageMain";
+    public static final String EMPLOYEE_EDIT = "employeeEdit";
+    public static final String MENU_EDIT = "menuEdit";
 
     public WindowManager(){
         register = new Register();
@@ -70,6 +73,9 @@ public class WindowManager implements WindowStateListener {
         views.put(CUSTOMER, new CustomerView());
         views.put(MAKE_LINE, new MakelineView());
         views.put(ORDER_LIST, new OrderListView());
+        views.put(MANAGE_MAIN, new ManagerMainView());
+        views.put(EMPLOYEE_EDIT, new EmployeeEditView());
+        views.put(MENU_EDIT, new MenuEditView());
 
         controllers = new HashMap<>();
         controllers.put(MAIN_MENU, new MainMenuListener());
@@ -78,6 +84,9 @@ public class WindowManager implements WindowStateListener {
         controllers.put(CUSTOMER, new CustomerListener());
         controllers.put(MAKE_LINE, new MakelineListener());
         controllers.put(ORDER_LIST, new OrderListListener());
+        controllers.put(MANAGE_MAIN, new ManagerMainListener());
+        controllers.put(EMPLOYEE_EDIT, new EmployeeEditListener());
+        controllers.put(MENU_EDIT, new MenuEditListener());
     }
 
     public void registerMVC(){

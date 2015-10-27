@@ -55,7 +55,7 @@ public class MainMenuListener extends MyActionListener {
                         null,
                         null);
                 if ((authenticationKey != null) && (authenticationKey.length() > 0) && model.userExists(authenticationKey)) {
-
+                    manager.activateWindow(manager.MAIN_MENU, manager.MANAGE_MAIN);
                 }
                 break;
         }
