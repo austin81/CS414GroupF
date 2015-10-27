@@ -44,6 +44,7 @@ public class EmployeeEditListener extends MyActionListener {
         String employeeButtonText = list.getSelectedValue().toString();
         Employee employee = null;
         for(Employee emp : model.getEmployees()){
+            System.out.println(emp.toString());
             if(emp.toString().equals(employeeButtonText)){
                 employee = emp;
             }
@@ -55,7 +56,7 @@ public class EmployeeEditListener extends MyActionListener {
             ((JTextArea)components.get("cityEditText")).setText(employee.getAddress(0).getCity());
             ((JTextArea)components.get("stateEditText")).setText(employee.getAddress(0).getState());
             ((JTextArea)components.get("zipEditText")).setText(employee.getAddress(0).getZipcode());
-
+            ((JComboBox)components.get("roleComboBox")).setSelectedItem(employee.getRole().toString());
         }
     }
 

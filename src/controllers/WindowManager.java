@@ -64,6 +64,9 @@ public class WindowManager implements WindowStateListener {
             ((MakelineView)views.get(MAKE_LINE)).setSauceList();
             ((MakelineView)views.get(MAKE_LINE)).setToppingList();
         }
+        if(newWindow.equals(EMPLOYEE_EDIT)){
+            ((EmployeeEditListener)controllers.get(EMPLOYEE_EDIT)).resetView();
+        }
     }
 
     public void init(){
