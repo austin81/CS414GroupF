@@ -27,10 +27,13 @@ public class OrderEditListener extends MyActionListener implements ListSelection
 
     public void setOrderID(int orderID){
         order = model.getOrder(orderID);
-        if(order.getPizzas().size() != 0){
-            ((JTextField)components.get("totalDisplay")).setText(model.TOTAL_TEXT + order.getOrderTotal());
-            ((JList)components.get("pizzaList")).setListData(order.getPizzas().toArray());
-
+        this.orderID = orderID;
+        if (order.getPizzas().size() != 0) {
+            ((JTextField) components.get("totalDisplay")).setText(model.TOTAL_TEXT + order.getOrderTotal());
+            ((JList) components.get("pizzaList")).setListData(order.getPizzas().toArray());
+        } else {
+            ((JList) components.get("pizzaList")).setListData(new String[0]);
+            ((JTextField) components.get("totalDisplay")).setText("");
         }
     }
 

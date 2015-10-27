@@ -12,8 +12,10 @@ import java.util.HashMap;
  * Created by darkbobo on 10/24/15.
  */
 public class CustomerListener extends MyActionListener {
+    Order order;
     public CustomerListener(){
         components = new HashMap<>();
+        orderID = -1;
     }
 
     @Override
@@ -26,7 +28,7 @@ public class CustomerListener extends MyActionListener {
         switch (actionEvent.getActionCommand()){
             case "Cancel":
                 clearEditTextFields();
-                manager.activateWindow("customerView", "orderListView");
+                manager.activateWindow("customer", "orderList");
                 break;
             case "Clear":
                 clearEditTextFields();
@@ -42,17 +44,42 @@ public class CustomerListener extends MyActionListener {
                 phone.setNumber(((JTextArea) components.get("phoneEditText")).getText());
 
                 Person person = new Person(((JTextArea) components.get("nameEditText")).getText(), address, phone);
-                Order order = new Order();
-                order.setCustomer(person);
-                int orderID = model.addOrder(order);
+                if(order == null){
+                    order = new Order();
+                    order.setCustomer(person);
+                    orderID = model.addOrder(order);
+                }
+
                 System.out.println("OrderID: " + orderID);
                 manager.passOrderID(manager.ORDER_EDIT, orderID);
                 manager.activateWindow(manager.CUSTOMER, manager.ORDER_EDIT);
+                orderID = -1;
+                order = null;
                 break;
         }
     }
 
     public void clearEditTextFields(){
+        ((JTextArea) components.get("phoneEditText")).setText("");
+        ((JTextArea) components.get("nameEditText")).setText("");
+        ((JTextArea) components.get("streetEditText")).setText("");
+        ((JTextArea) components.get("cityEditText")).setText("");
+        ((JTextArea) components.get("stateEditText")).setText("");
+        ((JTextArea) components.get("zipEditText")).setText("");
+    }
 
+    public void setOrderID(int orderID){
+        if(orderID >= 0) {
+            Order order = model.getOrder(orderID);
+            this.orderID = orderID;
+            ((JTextArea) components.get("phoneEditText")).setText(order.getCustomer().getPhoneNumbers().get(0).getNumber());
+            ((JTextArea) components.get("nameEditText")).setText(order.getCustomer().getName());
+            ((JTextArea) components.get("streetEditText")).setText(order.getCustomer().getAddress(0).getStreetAddress());
+            ((JTextArea) components.get("cityEditText")).setText(order.getCustomer().getAddress(0).getCity());
+            ((JTextArea) components.get("stateEditText")).setText(order.getCustomer().getAddress(0).getState());
+            ((JTextArea) components.get("zipEditText")).setText(order.getCustomer().getAddress(0).getZipcode());
+        }else{
+            clearEditTextFields();
+        }
     }
 }
