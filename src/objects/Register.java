@@ -42,8 +42,8 @@ public class Register {
         roles = new HashMap<>();
         initRoles();
         addEmployee(new Employee("manager1", new Address("street1", "city1", "state1", "zip1"), new Phone("phone1"), "manager1", "321", roles.get(MANAGER_ROLE)));
-        addEmployee(new Employee("chef1", new Address("street1", "city1", "state1", "zip1"), new Phone("phone1"), "chef1", "123", roles.get(CHEF_ROLE)));
-        addEmployee(new Employee("cashier1", new Address("street1", "city1", "state1", "zip1"), new Phone("phone1"), "cashier1", "000", roles.get(CASHIER_ROLE)));
+        addEmployee(new Employee("chef1", new Address("street2", "city2", "state2", "zip2"), new Phone("phone2"), "chef1", "123", roles.get(CHEF_ROLE)));
+        addEmployee(new Employee("cashier1", new Address("street3", "city3", "state3", "zip3"), new Phone("phone3"), "cashier1", "000", roles.get(CASHIER_ROLE)));
     }
 
     public int getNextOrderID(){

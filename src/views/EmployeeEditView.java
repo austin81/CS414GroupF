@@ -23,6 +23,7 @@ public class EmployeeEditView extends MyJFrame{
     private JButton backButton;
     private JButton setAuthenticationCodeButton;
     private JComboBox roleComboBox;
+    private JTextArea usernameEditText;
 
     public EmployeeEditView(){
         viewContainer.setPreferredSize(new Dimension(getToolkit().getScreenSize().width, getToolkit().getScreenSize().height));
@@ -44,6 +45,7 @@ public class EmployeeEditView extends MyJFrame{
         controller.registerComponent("deleteButton", deleteButton);
         controller.registerComponent("backButton", backButton);
         controller.registerComponent("setAuthenticationCodeButton", setAuthenticationCodeButton);
+        controller.registerComponent("usernameEditText", usernameEditText);
 
         employeeList.setCellRenderer(new ComponentEmployeeEdit());
         employeeList.addListSelectionListener(controller);
