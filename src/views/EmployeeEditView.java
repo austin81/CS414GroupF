@@ -46,6 +46,7 @@ public class EmployeeEditView extends MyJFrame{
         controller.registerComponent("setAuthenticationCodeButton", setAuthenticationCodeButton);
 
         employeeList.setCellRenderer(new ComponentEmployeeEdit());
+        employeeList.addListSelectionListener(controller);
 
         for(Role role : model.getRoles().values()){
             roleComboBox.addItem(role.toString());
