@@ -41,7 +41,9 @@ public class Register {
         collectPaymentListener.addModel(this);
         roles = new HashMap<>();
         initRoles();
-        addEmployee(new Employee("name1", new Address("street1", "city1", "state1", "zip1"), new Phone("phone1"), "uname1", "321", roles.get(MANAGER_ROLE)));
+        addEmployee(new Employee("manager1", new Address("street1", "city1", "state1", "zip1"), new Phone("phone1"), "manager1", "321", roles.get(MANAGER_ROLE)));
+        addEmployee(new Employee("chef1", new Address("street1", "city1", "state1", "zip1"), new Phone("phone1"), "chef1", "123", roles.get(CHEF_ROLE)));
+        addEmployee(new Employee("cashier1", new Address("street1", "city1", "state1", "zip1"), new Phone("phone1"), "cashier1", "000", roles.get(CASHIER_ROLE)));
     }
 
     public int getNextOrderID(){
