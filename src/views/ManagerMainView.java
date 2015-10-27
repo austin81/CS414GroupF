@@ -11,6 +11,7 @@ public class ManagerMainView extends MyJFrame {
     private JPanel viewContainer;
     private JButton manageUsersButton;
     private JButton manageMenuButton;
+    private JButton backButton;
 
     public ManagerMainView() {
         viewContainer.setPreferredSize(new Dimension(getToolkit().getScreenSize().width, getToolkit().getScreenSize().height));
@@ -22,8 +23,9 @@ public class ManagerMainView extends MyJFrame {
     public void addComponents(){
         controller.registerComponent("manageUsersButton", manageUsersButton);
         controller.registerComponent("manageMenuButton", manageMenuButton);
-
+        controller.registerComponent("backButton", backButton);
         manageUsersButton.addActionListener(controller);
         manageMenuButton.addActionListener(controller);
+        backButton.addActionListener(controller);
     }
 }

@@ -34,7 +34,23 @@ public class EmployeeEditListener extends MyActionListener {
                 }
                 break;
             case "Set Authentication Code":
-
+                if(employee == null){
+                    JOptionPane.showMessageDialog(view,
+                            "Must save user first",
+                            "Error",
+                            JOptionPane.PLAIN_MESSAGE);
+                }else{
+                    String authenticationKey = (String)JOptionPane.showInputDialog(
+                            view,
+                            "Enter Authentication Code",
+                            "Code",
+                            JOptionPane.PLAIN_MESSAGE,
+                            null,
+                            null,
+                            null);
+                    employee.setAuthentication(authenticationKey);
+                    model.updateEmployee(employee.getUserID(), employee);
+                }
                 break;
             case "Cancel":
                 resetView();
@@ -90,22 +106,25 @@ public class EmployeeEditListener extends MyActionListener {
     public void valueChanged(ListSelectionEvent event) {
         System.out.println(event.toString());
         JList list = (JList) event.getSource();
-        String employeeButtonText = list.getSelectedValue().toString();
-        employee = null;
-        for(Employee emp : model.getEmployees()){
-            System.out.println(emp.toString());
-            if(emp.toString().equals(employeeButtonText)){
-                employee = emp;
+        if(list.getSelectedValue() != null) {
+            String employeeButtonText = list.getSelectedValue().toString();
+            employee = null;
+            for (Employee emp : model.getEmployees()) {
+                System.out.println(emp.toString());
+                if (emp.toString().equals(employeeButtonText)) {
+                    employee = emp;
+                }
             }
-        }
-        if(employee != null){
-            ((JTextArea)components.get("nameEditText")).setText(employee.getName());
-            ((JTextArea)components.get("phoneEditText")).setText(employee.getPhoneNumbers().get(0).getNumber());
-            ((JTextArea)components.get("streetEditText")).setText(employee.getAddress(0).getStreetAddress());
-            ((JTextArea)components.get("cityEditText")).setText(employee.getAddress(0).getCity());
-            ((JTextArea)components.get("stateEditText")).setText(employee.getAddress(0).getState());
-            ((JTextArea)components.get("zipEditText")).setText(employee.getAddress(0).getZipcode());
-            ((JComboBox)components.get("roleComboBox")).setSelectedItem(employee.getRole().toString());
+            if (employee != null) {
+                ((JTextArea) components.get("nameEditText")).setText(employee.getName());
+                ((JTextArea) components.get("phoneEditText")).setText(employee.getPhoneNumbers().get(0).getNumber());
+                ((JTextArea) components.get("streetEditText")).setText(employee.getAddress(0).getStreetAddress());
+                ((JTextArea) components.get("cityEditText")).setText(employee.getAddress(0).getCity());
+                ((JTextArea) components.get("stateEditText")).setText(employee.getAddress(0).getState());
+                ((JTextArea) components.get("zipEditText")).setText(employee.getAddress(0).getZipcode());
+                ((JTextArea) components.get("usernameEditText")).setText(employee.getUsername());
+                ((JComboBox) components.get("roleComboBox")).setSelectedItem(employee.getRole().toString());
+            }
         }
     }
 
@@ -121,5 +140,6 @@ public class EmployeeEditListener extends MyActionListener {
         ((JTextArea)components.get("cityEditText")).setText("");
         ((JTextArea)components.get("stateEditText")).setText("");
         ((JTextArea)components.get("zipEditText")).setText("");
+        ((JTextArea)components.get("usernameEditText")).setText("");
     }
 }
