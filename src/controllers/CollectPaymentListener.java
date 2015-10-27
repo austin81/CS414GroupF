@@ -27,6 +27,7 @@ public class CollectPaymentListener extends MyActionListener {
 
     public void setOrderID(int orderID){
         order = model.getOrder(orderID);
+        (components.get("cashOptContainer")).setVisible(false);
         //if(order.getPizzas().size() != 0){
             //((JTextField)components.get("totalDisplay")).setText(model.TOTAL_TEXT + order.getOrderTotal());
             //((JList)components.get("pizzaList")).setListData(order.getPizzas().toArray());

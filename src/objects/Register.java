@@ -16,6 +16,7 @@ public class Register {
     private Employee loggedInEmployee;
     private int storeID;
     private static PizzaCatalog catalog;
+    private ArrayList<Employee> employees;
     CustomerListener customerListener;
     OrderEditListener orderEditListener;
     CollectPaymentListener collectPaymentListener;
@@ -23,6 +24,7 @@ public class Register {
     public static final String TOTAL_TEXT = "Total................";
     public Register() {
         orders = new ArrayList<>();
+        employees = new ArrayList<>();
         catalog = new PizzaCatalog();
         customerListener = new CustomerListener();
         orderEditListener = new OrderEditListener();
@@ -30,6 +32,8 @@ public class Register {
         customerListener.addModel(this);
         orderEditListener.addModel(this);
         collectPaymentListener.addModel(this);
+
+        employees.add(new Employee("name1", new Address("street1", "city1", "state1", "zip1"), new Phone("phone1"), "uname1", "321"));
     }
 
     public int getNextOrderID(){
@@ -156,6 +160,11 @@ public class Register {
         this.loggedInEmployee = loggedInEmployee;
     }
 
+    public void addEmployee(Employee employee){
+        employee.setUserID(employees.size());
+        employees.add(employee);
+    }
+
     public int getStoreID() {
         return storeID;
     }
@@ -164,15 +173,16 @@ public class Register {
         this.storeID = storeID;
     }
 
-    public CustomerListener getCustomerListener() {
-        return customerListener;
-    }
-
-    public OrderEditListener getOrderEditListener() {
-        return orderEditListener;
-    }
-
-    public CollectPaymentListener getCollectPaymentListener() {
-        return collectPaymentListener;
+    public boolean userExists(String s) {
+        for(Employee e : employees){
+            if(e.getAuthentication().equals(s)){
+                setLoggedInEmployee(e);
+            }
+        }
+        if(getLoggedInEmployee() == null){
+            return false;
+        }else{
+            return true;
+        }
     }
 }

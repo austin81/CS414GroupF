@@ -9,11 +9,10 @@ public class Employee extends Person {
     private int userID;
     private String username;
     private String authentication;
-    public Employee(String name, Address address, Phone phone, String username, String authentication, int userID) {
+    public Employee(String name, Address address, Phone phone, String username, String authentication) {
         super(name,address,phone);
         this.username = username;
         this.authentication = authentication;
-        this.userID = userID;
     }
 
     public int getUserID() {
