@@ -102,6 +102,11 @@ public class Register {
                 }
 
             }
+            for(SideItem s: o.getSides()){
+                if(s.getStatus()== SIDE_STATUS.MAKELINE) {
+                    id.add(s.getOrderID());
+                }
+            }
         }
         return id;
     }
@@ -112,7 +117,7 @@ public class Register {
         for(Order o: orders) {
             for (Pizza p : o.getPizzas()) {
                 if(p.getStatus() == PIZZA_STATUS.MAKELINE) {
-                    items.add(p.getSize() + "     " + p.getSauce() + "     " + p.getToppingList().toString());
+                    items.add(p.getSize() + "        " + p.getSauce() + "        " + p.getToppingList().toString());
                 }
             }
 
