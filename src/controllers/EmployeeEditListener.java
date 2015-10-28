@@ -78,6 +78,7 @@ public class EmployeeEditListener extends MyActionListener {
                 employee.setAddresses(addresses);
                 employee.setPhoneNumbers(phones);
                 employee.setName(((JTextArea) components.get("nameEditText")).getText());
+                employee.setUsername(((JTextArea) components.get("usernameEditText")).getText());
 
                 switch ((ROLE)((JComboBox)components.get("roleComboBox")).getSelectedItem()){
                     case MANAGER:

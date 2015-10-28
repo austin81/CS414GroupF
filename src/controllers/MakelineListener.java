@@ -21,7 +21,6 @@ public class MakelineListener extends MyActionListener {
         String command = actionEvent.getActionCommand();
         System.out.println(command);
         System.out.println(actionEvent.paramString());
-        Pizza pizza = new Pizza();
         switch (actionEvent.getActionCommand()) {
             case "Back":
                 manager.activateWindow(manager.MAKE_LINE, manager.MAIN_MENU);
