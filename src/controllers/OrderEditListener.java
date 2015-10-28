@@ -25,7 +25,6 @@ public class OrderEditListener extends MyActionListener implements ListSelection
     public void setOrderID(int orderID){
         order = model.getOrder(orderID);
         this.orderID = orderID;
-        resetView();
     }
 
     @Override
@@ -144,6 +143,7 @@ public class OrderEditListener extends MyActionListener implements ListSelection
     public void valueChanged(ListSelectionEvent event) {
         System.out.println(event.toString());
         JList list = (JList) event.getSource();
+
         if(list.equals(components.get("pizzaList"))) {
 
             ((JButton)components.get("addPizzaButton")).setText("Update");
@@ -201,7 +201,7 @@ public class OrderEditListener extends MyActionListener implements ListSelection
         ((JList) components.get("pizzaSaucesList")).setListData(model.getCatalog().getSauces().toArray());
         ((JList) components.get("pizzaToppingsList")).setListData(model.getCatalog().getToppings().toArray());
         if (order.getOrderItems().size() != 0) {
-            ((JList) components.get("pizzaList")).setListData(order.getPizzas().toArray());
+            ((JList) components.get("pizzaList")).setListData(order.getOrderItems().toArray());
             ((JTextField) components.get("totalDisplay")).setText(model.TOTAL_TEXT + order.getOrderTotal());
         }else{
             ((JList) components.get("pizzaList")).setListData(new String[0]);

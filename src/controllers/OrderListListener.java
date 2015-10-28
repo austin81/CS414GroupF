@@ -35,18 +35,22 @@ public class OrderListListener extends MyActionListener implements ListSelection
     @Override
     public void valueChanged(ListSelectionEvent listSelectionEvent) {
         JList list = ((JList)components.get("orderList"));
-        String orderString = list.getSelectedValue().toString();
+        if(list.getSelectedValue() != null) {
+            String orderString = list.getSelectedValue().toString();
 
-        Order order = null;
-        for(Order o : model.getOrders()){
-            if(orderString.equals(o.toString())){
-                order = o;
-                System.out.println("ValueChanged, OrderListListener: " + order.toString());
+            Order order = null;
+            for (Order o : model.getOrders()) {
+                if (orderString.equals(o.toString())) {
+                    order = o;
+                    System.out.println("ValueChanged, OrderListListener: " + order.toString());
+                }
             }
-        }
-        if(order != null){
-            manager.passOrderID(manager.CUSTOMER, order.getOrderID());
-            manager.activateWindow(manager.ORDER_LIST, manager.CUSTOMER);
+            System.out.println("OrderList OrderID: " + order.getOrderID());
+            if (order != null) {
+
+                manager.passOrderID(manager.CUSTOMER, order.getOrderID());
+                manager.activateWindow(manager.ORDER_LIST, manager.CUSTOMER);
+            }
         }
     }
 }
