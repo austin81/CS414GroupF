@@ -15,6 +15,7 @@ public class Order {
     private int orderID;
     private Person customer;
     boolean isPaidFor;
+    double amountPaid;
     private ArrayList<Pizza> pizzas;
     private ArrayList<SideItem> sides;
 
@@ -152,8 +153,18 @@ public class Order {
         this.isPaidFor = isPaidFor;
     }
 
-    public void payForOrder(){
+    public void payForOrder(double amount){
+        this.amountPaid += amount;
         this.isPaidFor = true;
+    }
+
+    public double getAmountPaid(){
+        return amountPaid;
+    }
+
+    public double getAmountDue(){
+        double orderTotal = getOrderTotal();
+        return orderTotal - getAmountPaid();
     }
 /*
     public double testingGetOrderTotal(){

@@ -42,19 +42,20 @@ public class CollectPaymentListener extends MyActionListener {
         switch (actionEvent.getActionCommand()){
             case CASH_BUTTON:
                 (components.get("cashOptContainer")).setVisible(true);
-                ((JButton)components.get("exactChangeButton")).setText("$" + Double.toString(order.getOrderTotal()));
-                ((JButton)components.get("roundUpOneButton")).setText("$" + Integer.toString((int)order.getOrderTotal() + 1) + ".00");
+                ((JButton)components.get("exactChangeButton")).setText("$" + Double.toString(order.getAmountDue()));
+                ((JButton)components.get("roundUpOneButton")).setText("$" + Integer.toString((int)order.getAmountDue() + 1) + ".00");
                 // 5*(Math.ceil(Math.abs(number/5)));
-                ((JButton)components.get("roundUpFiveButton")).setText("$" + Integer.toString((int)(5*(Math.ceil(order.getOrderTotal()/5)))) + ".00");
-                ((JButton)components.get("roundUpTwentyButton")).setText("$" + Integer.toString((int)(20*(Math.ceil(order.getOrderTotal()/20)))) + ".00");
+                ((JButton)components.get("roundUpFiveButton")).setText("$" + Integer.toString((int)(5*(Math.ceil(order.getAmountDue() /5)))) + ".00");
+                ((JButton)components.get("roundUpTwentyButton")).setText("$" + Integer.toString((int)(20*(Math.ceil(order.getAmountDue() /20)))) + ".00");
                 break;
             case CARD_BUTTON:
                 (components.get("cashOptContainer")).setVisible(false);
+
                 break;
             default:
                 Object[] options = {"Confirm",
                         "Cancel"};
-                double returnAmount = Double.parseDouble(actionEvent.getActionCommand().replace("$", "")) - order.getOrderTotal();
+                double returnAmount = Double.parseDouble(actionEvent.getActionCommand().replace("$", "")) - order.getAmountDue();
                 returnAmount = Math.round(returnAmount * 100.0) / 100.0;
                 int n = JOptionPane.showOptionDialog(view,
                         "Cash Collected: " + actionEvent.getActionCommand()
@@ -66,7 +67,7 @@ public class CollectPaymentListener extends MyActionListener {
                         options,  //the titles of buttons
                         options[0]); //default button title
                 if(n == JOptionPane.YES_OPTION){
-                    order.payForOrder();
+                    order.payForOrder(order.getOrderTotal() - order.getAmountPaid());
                     manager.activateWindow(manager.COLLECT_PAYMENT, manager.ORDER_LIST);
                 }else{
                     // do nothing
