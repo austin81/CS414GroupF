@@ -11,6 +11,10 @@ import java.util.HashMap;
 /**
  * Created by darkbobo on 10/24/15.
  */
+
+/*
+TODO OrderLookup : open dialog box to enter phone number, get order attached to phone number, send number to CustomerListener
+*/
 public class OrderListListener extends MyActionListener implements ListSelectionListener {
     public OrderListListener(){
         components = new HashMap<>();
@@ -25,7 +29,24 @@ public class OrderListListener extends MyActionListener implements ListSelection
                 manager.activateWindow(manager.ORDER_LIST, manager.CUSTOMER);
                 break;
             case "Order Lookup":
-
+                String phoneNumber = (String)JOptionPane.showInputDialog(
+                        view,
+                        "Enter Phone#",
+                        "Search",
+                        JOptionPane.PLAIN_MESSAGE,
+                        null,
+                        null,
+                        null);
+                int orderID = model.getOrderIDByPhone(phoneNumber);
+                if(orderID >= 0){
+                    manager.passOrderID(manager.CUSTOMER, orderID);
+                    manager.activateWindow(manager.ORDER_LIST, manager.CUSTOMER);
+                }else{
+                    JOptionPane.showMessageDialog(view,
+                            "Order Not Found.",
+                            "Error",
+                            JOptionPane.PLAIN_MESSAGE);
+                }
                 break;
             case "Back":
                 manager.activateWindow(manager.ORDER_LIST, manager.MAIN_MENU);

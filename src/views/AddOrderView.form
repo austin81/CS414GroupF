@@ -94,6 +94,7 @@
                 <properties>
                   <layoutOrientation value="2"/>
                   <model/>
+                  <visibleRowCount value="1"/>
                 </properties>
               </component>
             </children>

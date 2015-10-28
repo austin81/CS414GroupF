@@ -145,6 +145,14 @@ public class Register {
         return sides;
     }
 
+    public int getOrderIDByPhone(String phoneNumber){
+        for(Order o : orders){
+            if(o.getCustomer().getPhoneNumbers().get(0).getNumber().equals(phoneNumber)){
+                return o.getOrderID();
+            }
+        }
+        return -1;
+    }
 
     public void updateOrder(int orderID, Order order){
         orders.set(orderID, order);

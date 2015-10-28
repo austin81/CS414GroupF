@@ -54,9 +54,9 @@ public class AddOrderView extends MyJFrame {
         pizzaSizesList.setCellRenderer(new ComponentSize());
         pizzaSizesList.setLayoutOrientation(JList.HORIZONTAL_WRAP);
         pizzaSizesList.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
+        pizzaSaucesList.setCellRenderer(new ComponentSauce());;
         pizzaSaucesList.setLayoutOrientation(JList.HORIZONTAL_WRAP);
         pizzaSaucesList.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
-        pizzaSaucesList.setCellRenderer(new ComponentSauce());
     }
 
     @Override

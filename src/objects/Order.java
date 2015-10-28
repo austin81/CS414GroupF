@@ -5,6 +5,12 @@ import java.util.ArrayList;
 /**
  * Created by darkbobo on 9/28/15.
  */
+
+/*
+TODO functionality of updating order : have totalPaid, when user edits pizza, total should be OrderTotal - TotalPaid
+*/
+
+
 public class Order {
     private int orderID;
     private Person customer;
