@@ -44,10 +44,15 @@ public class CustomerListener extends MyActionListener {
                 phone.setNumber(((JTextArea) components.get("phoneEditText")).getText());
 
                 Person person = new Person(((JTextArea) components.get("nameEditText")).getText(), address, phone);
+
                 if(order == null){
                     order = new Order();
                     order.setCustomer(person);
                     orderID = model.addOrder(order);
+                }
+                else{
+                    System.out.println("CustomerListener OrderID about to send: " + order.getOrderID());
+                    order.setCustomer(person);
                 }
 
                 System.out.println("OrderID: " + orderID);
@@ -68,10 +73,12 @@ public class CustomerListener extends MyActionListener {
         ((JTextArea) components.get("zipEditText")).setText("");
     }
 
+    @Override
     public void setOrderID(int orderID){
         if(orderID >= 0) {
-            Order order = model.getOrder(orderID);
+            order = model.getOrder(orderID);
             this.orderID = orderID;
+            System.out.println("CustomerListener OrderID: " + order.getOrderID());
             ((JTextArea) components.get("phoneEditText")).setText(order.getCustomer().getPhoneNumbers().get(0).getNumber());
             ((JTextArea) components.get("nameEditText")).setText(order.getCustomer().getName());
             ((JTextArea) components.get("streetEditText")).setText(order.getCustomer().getAddress(0).getStreetAddress());

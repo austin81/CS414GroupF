@@ -32,6 +32,7 @@ public class MenuEditView extends MyJFrame {
         itemNameEditText.setBorder(border);
         shortNameEditText.setBorder(border);
         priceEditText.setBorder(border);
+
     }
 
     public void addComponents(){

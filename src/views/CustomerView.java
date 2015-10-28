@@ -6,6 +6,8 @@ import objects.Order;
 import objects.Register;
 
 import javax.swing.*;
+import javax.swing.border.BevelBorder;
+import javax.swing.border.Border;
 import java.awt.*;
 import java.util.Observable;
 import java.util.Observer;
@@ -30,7 +32,14 @@ public class CustomerView extends MyJFrame {
         setContentPane(customerContainer);
         setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         pack();
-        //setVisible(true);
+
+        Border border = BorderFactory.createBevelBorder(BevelBorder.RAISED, Color.BLUE, Color.BLACK);
+        phoneEditText.setBorder(border);
+        nameEditText.setBorder(border);
+        streetEditText.setBorder(border);
+        cityEditText.setBorder(border);
+        stateEditText.setBorder(border);
+        zipEditText.setBorder(border);
     }
 
     @Override
