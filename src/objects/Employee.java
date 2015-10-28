@@ -9,11 +9,11 @@ public class Employee extends Person {
     private int userID;
     private String username;
     private String authentication;
-    private Role role;
+    private ROLE role;
     public Employee(){
         super();
     }
-    public Employee(String name, Address address, Phone phone, String username, String authentication, Role role) {
+    public Employee(String name, Address address, Phone phone, String username, String authentication, ROLE role) {
         super(name,address,phone);
         this.username = username;
         this.authentication = authentication;
@@ -22,7 +22,7 @@ public class Employee extends Person {
 
     @Override
     public String toString(){
-        return getUserID() + " " + getName() + " " + getRole().name;
+        return getUserID() + " " + getName() + " " + role;
     }
 
     public int getUserID() {
@@ -47,11 +47,11 @@ public class Employee extends Person {
         this.authentication = authentication;
     }
 
-    public void setRole(Role role){
+    public void setRole(ROLE role){
         this.role = role;
     }
 
-    public Role getRole(){
+    public ROLE getRole(){
         return role;
     }
 

@@ -1,6 +1,6 @@
 package views;
 
-import objects.Role;
+import objects.ROLE;
 
 import javax.swing.*;
 import java.awt.*;
@@ -50,9 +50,10 @@ public class EmployeeEditView extends MyJFrame{
         employeeList.setCellRenderer(new ComponentEmployeeEdit());
         employeeList.addListSelectionListener(controller);
 
-        for(Role role : model.getRoles().values()){
-            roleComboBox.addItem(role.toString());
-        }
+
+        roleComboBox.addItem(ROLE.MANAGER);
+        roleComboBox.addItem(ROLE.CHEF);
+        roleComboBox.addItem(ROLE.CASHIER);
 
         cancelButton.addActionListener(controller);
         saveButton.addActionListener(controller);

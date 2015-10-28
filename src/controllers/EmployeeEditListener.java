@@ -3,6 +3,7 @@ package controllers;
 import objects.Address;
 import objects.Employee;
 import objects.Phone;
+import objects.ROLE;
 
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
@@ -78,19 +79,17 @@ public class EmployeeEditListener extends MyActionListener {
                 employee.setPhoneNumbers(phones);
                 employee.setName(((JTextArea) components.get("nameEditText")).getText());
 
-                String roleKey = "";
-                switch (((JComboBox)components.get("roleComboBox")).getSelectedItem().toString()){
-                    case "Manager":
-                        roleKey = model.MANAGER_ROLE;
+                switch ((ROLE)((JComboBox)components.get("roleComboBox")).getSelectedItem()){
+                    case MANAGER:
+                        employee.setRole(ROLE.MANAGER);
                         break;
-                    case "Cashier":
-                        roleKey = model.CASHIER_ROLE;
+                    case CASHIER:
+                        employee.setRole(ROLE.CASHIER);
                         break;
-                    case "Chef":
-                        roleKey = model.CHEF_ROLE;
+                    case CHEF:
+                        employee.setRole(ROLE.CHEF);
                         break;
                 }
-                employee.setRole(model.getRoles().get(roleKey));
 
                 if(isNew) {
                     model.addEmployee(employee);
@@ -123,7 +122,7 @@ public class EmployeeEditListener extends MyActionListener {
                 ((JTextArea) components.get("stateEditText")).setText(employee.getAddress(0).getState());
                 ((JTextArea) components.get("zipEditText")).setText(employee.getAddress(0).getZipcode());
                 ((JTextArea) components.get("usernameEditText")).setText(employee.getUsername());
-                ((JComboBox) components.get("roleComboBox")).setSelectedItem(employee.getRole().toString());
+                ((JComboBox) components.get("roleComboBox")).setSelectedItem(employee.getRole());
             }
         }
     }
