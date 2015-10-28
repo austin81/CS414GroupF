@@ -158,6 +158,8 @@ public class Register {
         this.loggedInEmployee = loggedInEmployee;
     }
 
+    public void clearLoggedInEmployee() {this.loggedInEmployee = null;}
+
     public void addEmployee(Employee employee){
         employee.setUserID(employees.size());
         employees.add(employee);
@@ -182,27 +184,19 @@ public class Register {
     public boolean userExists(String s) {
         for(Employee e : employees){
             if(e.getAuthentication().equals(s)){
-                setLoggedInEmployee(e);
+                return true;
             }
         }
-        if(getLoggedInEmployee() == null){
-            return false;
-        }else{
-            return true;
-        }
+       return false;
     }
 
-    public boolean canEnter(String toWindow){
-        if(getLoggedInEmployee().getRole().equals(ROLE.MANAGER)){
-            return true;
+    public Employee getEmployeeByAuth(String auth) {
+        for(Employee e : employees){
+            if(e.getAuthentication().equals(auth)){
+                return e;
+            }
         }
-        if(getLoggedInEmployee().getRole().equals(ROLE.CASHIER) && toWindow.equals(manager.ORDER_LIST)){
-            return true;
-        }
-        if(getLoggedInEmployee().getRole().equals(ROLE.CHEF) && toWindow.equals(manager.MAKE_LINE)){
-            return true;
-        }
-        return false;
+        return null;
     }
 
     public ArrayList<Employee> getEmployees(){

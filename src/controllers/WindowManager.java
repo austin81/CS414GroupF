@@ -65,6 +65,9 @@ public class WindowManager implements WindowStateListener {
         if(newWindow.equals(EMPLOYEE_EDIT) || newWindow.equals(MENU_EDIT) || newWindow.equals(ORDER_EDIT)){
             (controllers.get(newWindow)).resetView();
         }
+        if(newWindow.equals(MAIN_MENU)){
+            ((MainMenuView)views.get(MAIN_MENU)).clearEmployee();
+        }
     }
 
     public void init(){
