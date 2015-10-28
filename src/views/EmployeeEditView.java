@@ -3,6 +3,8 @@ package views;
 import objects.ROLE;
 
 import javax.swing.*;
+import javax.swing.border.BevelBorder;
+import javax.swing.border.Border;
 import java.awt.*;
 
 /**
@@ -30,6 +32,14 @@ public class EmployeeEditView extends MyJFrame{
         setContentPane(viewContainer);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         pack();
+        Border border = BorderFactory.createBevelBorder(BevelBorder.RAISED, Color.BLUE, Color.BLACK);
+        nameEditText.setBorder(border);
+        phoneEditText.setBorder(border);
+        streetEditText.setBorder(border);
+        cityEditText.setBorder(border);
+        stateEditText.setBorder(border);
+        zipEditText.setBorder(border);
+        usernameEditText.setBorder(border);
     }
     public void addComponents(){
         controller.registerComponent("employeeList", employeeList);

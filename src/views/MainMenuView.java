@@ -3,6 +3,7 @@ package views;
 import objects.Register;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -17,6 +18,7 @@ public class MainMenuView extends MyJFrame {
 
     public MainMenuView(){
         setContentPane(mainMenuPanel);
+        this.setPreferredSize(new Dimension(getToolkit().getScreenSize().width, getToolkit().getScreenSize().height));
         pack();
     }
 

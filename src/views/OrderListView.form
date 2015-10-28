@@ -14,7 +14,9 @@
             <preferred-size width="150" height="50"/>
           </grid>
         </constraints>
-        <properties/>
+        <properties>
+          <font size="26"/>
+        </properties>
       </component>
       <component id="6dfa8" class="javax.swing.JButton" binding="newOrderButton">
         <constraints>
@@ -23,6 +25,7 @@
           </grid>
         </constraints>
         <properties>
+          <font size="36"/>
           <text value="New Order"/>
         </properties>
       </component>
@@ -33,6 +36,7 @@
           </grid>
         </constraints>
         <properties>
+          <font size="36"/>
           <text value="Order Lookup"/>
         </properties>
       </component>
@@ -43,6 +47,7 @@
           </grid>
         </constraints>
         <properties>
+          <font size="36"/>
           <text value="Back"/>
         </properties>
       </component>
