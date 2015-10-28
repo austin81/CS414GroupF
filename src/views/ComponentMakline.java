@@ -16,9 +16,9 @@ public class ComponentMakline extends JLabel implements ListCellRenderer {
 
 
     @Override
-    public JButton getListCellRendererComponent(JList jList, Object value, int index, boolean isSelected, boolean cellHasFocus) {
+    public JCheckBox getListCellRendererComponent(JList jList, Object value, int index, boolean isSelected, boolean cellHasFocus) {
         Pizza pizza = (Pizza)value;
-        JButton button = new JButton(pizza.makelineToString());
+        JCheckBox button = new JCheckBox(pizza.makelineToString());
         return button;
     }
 

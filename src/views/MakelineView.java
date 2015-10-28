@@ -20,42 +20,74 @@ public class MakelineView extends MyJFrame {
     private JPanel panel1;
     private JList orderList;
     private JButton backButton;
-    private JList sauceList;
-    private JList toppingList;
-    private JList sizeList;
-    private Order order;
+    private JList itemList;
+    private JList sideList;
+
 
     public MakelineView(){
         panel1.setPreferredSize(new Dimension(getToolkit().getScreenSize().width, getToolkit().getScreenSize().height));
         setContentPane(panel1);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         pack();
-        //orderList.setCellRenderer(new ComponentMakline());
+        //itemList.setCellRenderer(new ComponentMakline());
         //setVisible(true);
 
         DefaultListCellRenderer renderer0 = (DefaultListCellRenderer) orderList.getCellRenderer();
-        DefaultListCellRenderer renderer1 = (DefaultListCellRenderer) sauceList.getCellRenderer();
-        DefaultListCellRenderer renderer2 = (DefaultListCellRenderer) sizeList.getCellRenderer();
-        DefaultListCellRenderer renderer3 = (DefaultListCellRenderer) toppingList.getCellRenderer();
+
         renderer0.setHorizontalAlignment(SwingConstants.CENTER);
-        renderer1.setHorizontalAlignment(SwingConstants.CENTER);
-        renderer2.setHorizontalAlignment(SwingConstants.CENTER);
-        renderer3.setHorizontalAlignment(SwingConstants.CENTER);
+
+
+        orderList.setFont(new Font("Arial",Font.BOLD,27));
+        itemList.setFont(new Font("Arial",Font.BOLD,27));
+        sideList.setFont(new Font("Arial",Font.BOLD,27));
 
         orderList.addKeyListener(new KeyListener() {
             @Override
             public void keyPressed(KeyEvent e) {
                 if (e.getKeyCode() == KeyEvent.VK_ENTER) {
 
-                    //order.getPizza(0).setStatus(PIZZA_STATUS.COMPLETED);
+                    int numPizzas = model.getOrder(((Integer)orderList.getSelectedValue())).getPizzas().size();
 
-                    //model.getOrder((Integer)orderList.getSelectedValue()).getPizza(0).setStatus(PIZZA_STATUS.COMPLETED);
-
-                    model.getOrder((Integer)orderList.getSelectedValue()).getPizza(0).setStatus(PIZZA_STATUS.COMPLETED);
-
+                    for(int i = 0; i < numPizzas; i++) {
+                        model.getOrder((Integer) orderList.getSelectedValue()).getPizza(i).setStatus(PIZZA_STATUS.COMPLETED);
+                    }
 
                     manager.activateWindow(manager.MAKE_LINE, manager.MAKE_LINE);
 
+                }
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) { }
+
+            @Override
+            public void keyTyped(KeyEvent e) { }
+        });
+
+        itemList.addKeyListener(new KeyListener() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+
+                    int itemsBefore = 0;
+                    for(int i = 0; i < itemList.getSelectedIndex(); i++){
+                        if(orderList.getModel().getElementAt(i) != orderList.getModel().getElementAt(itemList.getSelectedIndex())){
+                            itemsBefore++;
+                        }
+                    }
+
+
+                    System.out.println(itemList.getSelectedValue().getClass()); // == Pizza.class){
+
+                        int pizza = (Integer)orderList.getModel().getElementAt(itemList.getSelectedIndex());
+                        model.getOrder(pizza).getPizza(itemList.getSelectedIndex() -  itemsBefore).setStatus(PIZZA_STATUS.COMPLETED);
+//                    }
+//
+//                    if(itemList.getSelectedValue().getClass() == SideItem.class){
+//                        int pizza = (Integer)orderList.getModel().getElementAt(itemList.getSelectedIndex());
+//                        model.getOrder(pizza).getSide(itemList.getSelectedIndex() - itemsBefore).setStatus(SIDE_STATUS.COMPLETED);
+//                    }
+                    manager.activateWindow(manager.MAKE_LINE, manager.MAKE_LINE);
                 }
             }
 
@@ -76,23 +108,18 @@ public class MakelineView extends MyJFrame {
         }
     }
 
-    public void setSizeList(){
-        if(model.getMakelinePizzas() != null){
-            sizeList.setListData(model.getMakelineSizes().toArray());
+    public void setItemList(){
+        if(model.getMakelinePizzas() != null) {
+            itemList.setListData(model.getMakelineItems().toArray());
         }
     }
 
-    public void setSauceList(){
-        if(model.getMakelinePizzas() != null){
-            sauceList.setListData(model.getMakelineSauces().toArray());
+    public void setSideList(){
+        if(model.getMakelineSides() != null){
+            //sideList.setListData(model);
         }
     }
 
-    public void setToppingList(){
-        if(model.getMakelinePizzas() != null){
-            toppingList.setListData(model.getMakelineToppings().toArray());
-        }
-    }
 
     @Override
     public void update(Observable observable, Object o) {
@@ -102,9 +129,8 @@ public class MakelineView extends MyJFrame {
 
     public void addComponents() {
         controller.registerComponent("orderList", orderList);
-        controller.registerComponent("sizeList", sizeList);
-        controller.registerComponent("sauceList", sauceList);
-        controller.registerComponent("toppingList", toppingList);
+        controller.registerComponent("itemList", itemList);
+        controller.registerComponent("sideList", sideList);
         controller.registerComponent("backButton",  backButton);
 
         backButton.addActionListener(controller);

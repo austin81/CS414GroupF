@@ -78,6 +78,10 @@ public class Order {
         return this.pizzas.get(index);
     }
 
+    public SideItem getSide(int index){
+        return  this.sides.get(index);
+    }
+
     public void addPizza(Pizza pizza){
         if(this.pizzas == null){
             this.pizzas = new ArrayList<>();
@@ -113,6 +117,14 @@ public class Order {
         }
     }
 
+    public void sendSidesToMakeLine(){
+        for(SideItem side: sides){
+            side.setOrderID(orderID);
+            side.sendSideToMakeline();
+        }
+    }
+
+
     public double getOrderTotal(){
         double totalPrice = 0.0;
         for(Pizza pizza : pizzas){
@@ -145,11 +157,13 @@ public class Order {
     public void addSide(SideItem side){
         this.sides.add(side);
     }
+
     public ArrayList<Side> getSides(){
         ArrayList<Side> tmpSides = new ArrayList<>();
         for(SideItem item : sides){
             if(item.getClass().equals(Side.class)){
                 tmpSides.add((Side)item);
+                //item.setStatus(SIDE_STATUS.NEW);
             }
         }
         return tmpSides;

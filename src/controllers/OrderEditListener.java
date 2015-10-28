@@ -93,6 +93,7 @@ public class OrderEditListener extends MyActionListener implements ListSelection
                 break;
             case "Send To Makeline":
                 order.sendPizzasToMakeLine();
+                order.sendSidesToMakeLine();
                 model.updateOrder(orderID, order);
                 order = null;
                 manager.passOrderID(manager.COLLECT_PAYMENT, orderID);

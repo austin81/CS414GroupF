@@ -94,63 +94,52 @@ public class Register {
         ArrayList<Integer> id = new ArrayList<>();
 
         for(Order o: orders){
+
             for(Pizza p: o.getPizzas()){
 
                 if(p.getStatus()== PIZZA_STATUS.MAKELINE){
                     id.add(p.getOrderID());
                 }
+
             }
         }
         return id;
     }
 
-    public ArrayList<PizzaSize> getMakelineSizes(){
-        ArrayList<PizzaSize> sizes = new ArrayList<>();
+    public ArrayList<String> getMakelineItems(){
+        ArrayList<String> items = new ArrayList<>();
 
-        for(Order o: orders){
-            for(Pizza p: o.getPizzas()){
+        for(Order o: orders) {
+            for (Pizza p : o.getPizzas()) {
+                if(p.getStatus() == PIZZA_STATUS.MAKELINE) {
+                    items.add(p.getSize() + "     " + p.getSauce() + "     " + p.getToppingList().toString());
+                }
+            }
 
-                if(p.getStatus()== PIZZA_STATUS.MAKELINE){
-                    sizes.add(p.getSize());
+            for (SideItem s: o.getSides()){
+                if(s.getStatus() == SIDE_STATUS.MAKELINE){
+                    items.add(o.getSides().toString());
+                }
+            }
+
+        }
+        return items;
+    }
+
+    public ArrayList<String> getMakelineSides(){
+        ArrayList<String> sides = new ArrayList<>();
+
+        for(Order o: orders) {
+            for (SideItem s: o.getSides()){
+                if(s.getStatus() == SIDE_STATUS.MAKELINE){
+                    sides.add(s.toString());
                 }
             }
         }
 
-        return sizes;
-
+        return sides;
     }
 
-    public ArrayList<Sauce> getMakelineSauces(){
-        ArrayList<Sauce> sauces = new ArrayList<>();
-
-        for(Order o: orders){
-            for(Pizza p: o.getPizzas()){
-
-                if(p.getStatus()== PIZZA_STATUS.MAKELINE){
-                    sauces.add(p.getSauce());
-                }
-            }
-        }
-
-        return sauces;
-
-    }
-
-    public ArrayList<String> getMakelineToppings(){
-        ArrayList<String> toppings = new ArrayList<>();
-
-        for(Order o: orders){
-            for(Pizza p: o.getPizzas()){
-
-                if(p.getStatus()== PIZZA_STATUS.MAKELINE){
-                    toppings.add(p.getToppingList().toString());
-                }
-            }
-        }
-
-        return toppings;
-
-    }
 
     public void updateOrder(int orderID, Order order){
         orders.set(orderID, order);
