@@ -1,6 +1,11 @@
 package test.objects; 
 
-import org.junit.Test; 
+import objects.Address;
+import objects.Employee;
+import objects.Phone;
+import objects.ROLE;
+import static org.junit.Assert.*;
+import org.junit.Test;
 import org.junit.Before; 
 import org.junit.After; 
 
@@ -11,10 +16,14 @@ import org.junit.After;
 * @since <pre>Oct 27, 2015</pre> 
 * @version 1.0 
 */ 
-public class EmployeeTest { 
+public class EmployeeTest {
+
+    Employee e;
 
 @Before
-public void before() throws Exception { 
+public void before() throws Exception {
+    e = new Employee("bob bobby", new Address("street","city","state","zip"), new Phone("303-555-7930"),"userbob","123", ROLE.CASHIER);
+    e.setUserID(0);
 } 
 
 @After
@@ -28,7 +37,8 @@ public void after() throws Exception {
 */ 
 @Test
 public void testToString() throws Exception { 
-//TODO: Test goes here... 
+    String expected = "0 bob bobby CASHIER";
+    assertEquals(expected,e.toString());
 } 
 
 /** 
@@ -38,7 +48,8 @@ public void testToString() throws Exception {
 */ 
 @Test
 public void testGetUserID() throws Exception { 
-//TODO: Test goes here... 
+    int expected = 0;
+    assertEquals(expected,e.getUserID());
 } 
 
 /** 
@@ -48,7 +59,9 @@ public void testGetUserID() throws Exception {
 */ 
 @Test
 public void testSetUserID() throws Exception { 
-//TODO: Test goes here... 
+    int expected = 1;
+    e.setUserID(expected);
+    assertEquals(expected,e.getUserID());
 } 
 
 /** 
@@ -57,8 +70,9 @@ public void testSetUserID() throws Exception {
 * 
 */ 
 @Test
-public void testGetUsername() throws Exception { 
-//TODO: Test goes here... 
+public void testGetUsername() throws Exception {
+    String expected = "userbob";
+    assertEquals(expected,e.getUsername());
 } 
 
 /** 
@@ -67,8 +81,10 @@ public void testGetUsername() throws Exception {
 * 
 */ 
 @Test
-public void testSetUsername() throws Exception { 
-//TODO: Test goes here... 
+public void testSetUsername() throws Exception {
+    String expected = "bobby";
+    e.setUsername(expected);
+    assertEquals(expected,e.getUsername());
 } 
 
 /** 
@@ -78,7 +94,8 @@ public void testSetUsername() throws Exception {
 */ 
 @Test
 public void testGetAuthentication() throws Exception { 
-//TODO: Test goes here... 
+    String expected = "123";
+    assertEquals(expected,e.getAuthentication());
 } 
 
 /** 
@@ -87,8 +104,10 @@ public void testGetAuthentication() throws Exception {
 * 
 */ 
 @Test
-public void testSetAuthentication() throws Exception { 
-//TODO: Test goes here... 
+public void testSetAuthentication() throws Exception {
+    String expected = "1234";
+    e.setAuthentication(expected);
+    assertEquals(expected, e.getAuthentication());
 } 
 
 /** 
@@ -97,8 +116,9 @@ public void testSetAuthentication() throws Exception {
 * 
 */ 
 @Test
-public void testSetRole() throws Exception { 
-//TODO: Test goes here... 
+public void testSetRole() throws Exception {
+    e.setRole(ROLE.CHEF);
+    assertEquals(e.getRole(),ROLE.CHEF);
 } 
 
 /** 
@@ -107,8 +127,8 @@ public void testSetRole() throws Exception {
 * 
 */ 
 @Test
-public void testGetRole() throws Exception { 
-//TODO: Test goes here... 
+public void testGetRole() throws Exception {
+    assertEquals(e.getRole(),ROLE.CASHIER);
 } 
 
 

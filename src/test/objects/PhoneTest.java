@@ -1,6 +1,8 @@
 package test.objects; 
 
-import org.junit.Test; 
+import static org.junit.Assert.*;
+import objects.Phone;
+import org.junit.Test;
 import org.junit.Before; 
 import org.junit.After; 
 
@@ -11,11 +13,14 @@ import org.junit.After;
 * @since <pre>Oct 27, 2015</pre> 
 * @version 1.0 
 */ 
-public class PhoneTest { 
+public class PhoneTest {
+
+    Phone p;
 
 @Before
 public void before() throws Exception { 
-} 
+    p = new Phone("970-555-0987");
+}
 
 @After
 public void after() throws Exception { 
@@ -28,7 +33,7 @@ public void after() throws Exception {
 */ 
 @Test
 public void testToString() throws Exception { 
-//TODO: Test goes here... 
+    assertEquals(p.toString(), "970-555-0987");
 } 
 
 /** 
@@ -37,8 +42,8 @@ public void testToString() throws Exception {
 * 
 */ 
 @Test
-public void testGetNumber() throws Exception { 
-//TODO: Test goes here... 
+public void testGetNumber() throws Exception {
+    assertEquals(p.getNumber(), "970-555-0987");
 } 
 
 /** 
@@ -48,7 +53,9 @@ public void testGetNumber() throws Exception {
 */ 
 @Test
 public void testSetNumber() throws Exception { 
-//TODO: Test goes here... 
+    String expected = "970-555-1234";
+    p.setNumber(expected);
+    assertEquals(expected,p.getNumber());
 } 
 
 

@@ -1,6 +1,10 @@
 package test.objects; 
 
-import org.junit.Test; 
+
+import objects.Address;
+
+import static org.junit.Assert.*;
+import org.junit.Test;
 import org.junit.Before; 
 import org.junit.After; 
 
@@ -11,11 +15,14 @@ import org.junit.After;
 * @since <pre>Oct 27, 2015</pre> 
 * @version 1.0 
 */ 
-public class AddressTest { 
+public class AddressTest {
+
+    Address a;
 
 @Before
-public void before() throws Exception { 
-} 
+public void before() throws Exception {
+    a = new Address("streetAddr","city","state","90210");
+}
 
 @After
 public void after() throws Exception { 
@@ -27,8 +34,9 @@ public void after() throws Exception {
 * 
 */ 
 @Test
-public void testGetStreetAddress() throws Exception { 
-//TODO: Test goes here... 
+public void testGetStreetAddress() throws Exception {
+    String expected = "streetAddr";
+    assertEquals(expected,a.getStreetAddress());
 } 
 
 /** 
@@ -38,7 +46,9 @@ public void testGetStreetAddress() throws Exception {
 */ 
 @Test
 public void testSetStreetAddress() throws Exception { 
-//TODO: Test goes here... 
+    String expected = "newAddr";
+    a.setStreetAddress("newAddr");
+    assertEquals(expected,a.getStreetAddress());
 } 
 
 /** 
@@ -48,7 +58,8 @@ public void testSetStreetAddress() throws Exception {
 */ 
 @Test
 public void testGetCity() throws Exception { 
-//TODO: Test goes here... 
+    String expected = "city";
+    assertEquals(expected,a.getCity());
 } 
 
 /** 
@@ -58,7 +69,9 @@ public void testGetCity() throws Exception {
 */ 
 @Test
 public void testSetCity() throws Exception { 
-//TODO: Test goes here... 
+    String expected = "newCity";
+    a.setCity(expected);
+    assertEquals(expected,a.getCity());
 } 
 
 /** 
@@ -68,7 +81,8 @@ public void testSetCity() throws Exception {
 */ 
 @Test
 public void testGetState() throws Exception { 
-//TODO: Test goes here... 
+    String expected = "state";
+    assertEquals(expected,a.getState());
 } 
 
 /** 
@@ -78,7 +92,9 @@ public void testGetState() throws Exception {
 */ 
 @Test
 public void testSetState() throws Exception { 
-//TODO: Test goes here... 
+    String expected = "newState";
+    a.setState(expected);
+    assertEquals(expected,a.getState());
 } 
 
 /** 
@@ -88,7 +104,8 @@ public void testSetState() throws Exception {
 */ 
 @Test
 public void testGetZipcode() throws Exception { 
-//TODO: Test goes here... 
+    String expected = "90210";
+    assertEquals(expected,a.getZipcode());
 } 
 
 /** 
@@ -98,7 +115,9 @@ public void testGetZipcode() throws Exception {
 */ 
 @Test
 public void testSetZipcode() throws Exception { 
-//TODO: Test goes here... 
+    String expected = "90210";
+    a.setZipcode(expected);
+    assertEquals(expected,a.getZipcode());
 } 
 
 
