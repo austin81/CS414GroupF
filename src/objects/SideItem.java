@@ -4,8 +4,8 @@ package objects;
  * Created by darkbobo on 10/26/15.
  */
 public class SideItem extends OrderItem {
+    int itemID;
     String name;
-    double price;
 
     public SideItem(){
         super();
@@ -26,5 +26,13 @@ public class SideItem extends OrderItem {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public int getItemID() {
+        return itemID;
+    }
+
+    public void setItemID(int itemID) {
+        this.itemID = itemID;
     }
 }

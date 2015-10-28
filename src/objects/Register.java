@@ -17,7 +17,7 @@ public class Register {
     private ArrayList<Order> orders;
     private Employee loggedInEmployee;
     private int storeID;
-    private static PizzaCatalog catalog;
+    private PizzaCatalog catalog;
     private ArrayList<Employee> employees;
     CustomerListener customerListener;
     OrderEditListener orderEditListener;
@@ -43,7 +43,7 @@ public class Register {
     public int getNextOrderID(){
         return orders.size();
     }
-    public static PizzaCatalog getCatalog(){
+    public PizzaCatalog getCatalog(){
         return catalog;
     }
 
@@ -222,5 +222,4 @@ public class Register {
             }
         }
     }
-
 }

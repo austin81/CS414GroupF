@@ -38,11 +38,7 @@ public class AddOrderView extends MyJFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         pack();
         order = new Order();
-        totalDisplay.setText(model.TOTAL_TEXT + order.getOrderTotal());
-        pizzaList.setListData(order.getPizzas().toArray());
         pizzaList.setCellRenderer(new ComponentPizza());
-
-        pizzaToppingsList.setListData(model.getCatalog().getToppings().toArray());
         pizzaToppingsList.setCellRenderer(new ComponentTopping());
         pizzaToppingsList.setSelectionModel(new DefaultListSelectionModel() {
             @Override
@@ -55,11 +51,9 @@ public class AddOrderView extends MyJFrame {
             }
         });
 
-        pizzaSizesList.setListData(model.getCatalog().getSizes().toArray());
         pizzaSizesList.setCellRenderer(new ComponentSize());
         pizzaSizesList.setLayoutOrientation(JList.HORIZONTAL_WRAP);
         pizzaSizesList.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
-        pizzaSaucesList.setListData(model.getCatalog().getSauces().toArray());
         pizzaSaucesList.setCellRenderer(new ComponentSauce());
     }
 
@@ -96,4 +90,5 @@ public class AddOrderView extends MyJFrame {
         drinksButton.addActionListener(controller);
         exitButton.addActionListener(controller);
     }
+
 }

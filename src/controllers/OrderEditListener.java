@@ -25,17 +25,7 @@ public class OrderEditListener extends MyActionListener implements ListSelection
     public void setOrderID(int orderID){
         order = model.getOrder(orderID);
         this.orderID = orderID;
-        resetList();
-    }
-
-    public void resetList(){
-        if (order.getOrderItems().size() != 0) {
-            ((JTextField) components.get("totalDisplay")).setText(model.TOTAL_TEXT + order.getOrderTotal());
-            ((JList) components.get("pizzaList")).setListData(order.getOrderItems().toArray());
-        } else {
-            ((JList) components.get("pizzaList")).setListData(new String[0]);
-            ((JTextField) components.get("totalDisplay")).setText("");
-        }
+        resetView();
     }
 
     @Override
@@ -64,7 +54,7 @@ public class OrderEditListener extends MyActionListener implements ListSelection
                     int selectedIndex = ((JList)components.get("pizzaList")).getSelectedIndex();
                     order.updatePizza(selectedIndex, pizza);
                 }
-                resetList();
+                resetView();
                 clearPizzaSelections();
                 ((JTextField)components.get("totalDisplay")).setText(model.TOTAL_TEXT + order.getOrderTotal());
                 break;
@@ -81,7 +71,7 @@ public class OrderEditListener extends MyActionListener implements ListSelection
                     if(removedPizza != null){
                         order.removePizza(removedPizza);
 
-                        resetList();
+                        resetView();
                         System.out.println(order.getPizzas().size());
                     }
                 }
@@ -123,7 +113,7 @@ public class OrderEditListener extends MyActionListener implements ListSelection
                         sides.toArray(),  //the titles of buttons
                         sides.toArray()[0]); //default button title*/
                 order.addSide(sides.get(sideSelection));
-                resetList();
+                resetView();
                 break;
             case "Drinks":
                 ArrayList<Drink> drinks = model.getCatalog().getDrinks();
@@ -136,7 +126,7 @@ public class OrderEditListener extends MyActionListener implements ListSelection
                         drinks.toArray(),  //the titles of buttons
                         drinks.toArray()[0]); //default button title*/
                 order.addSide(drinks.get(drinkSelection));
-                resetList();
+                resetView();
                 break;
         }
     }
@@ -201,8 +191,20 @@ public class OrderEditListener extends MyActionListener implements ListSelection
                         }
                     }
                 }
-                resetList();
+                resetView();
             }
+        }
+    }
+    public void resetView(){
+        ((JList) components.get("pizzaSizesList")).setListData(model.getCatalog().getSizes().toArray());
+        ((JList) components.get("pizzaSaucesList")).setListData(model.getCatalog().getSauces().toArray());
+        ((JList) components.get("pizzaToppingsList")).setListData(model.getCatalog().getToppings().toArray());
+        if (order.getOrderItems().size() != 0) {
+            ((JList) components.get("pizzaList")).setListData(order.getPizzas().toArray());
+            ((JTextField) components.get("totalDisplay")).setText(model.TOTAL_TEXT + order.getOrderTotal());
+        }else{
+            ((JList) components.get("pizzaList")).setListData(new String[0]);
+            ((JTextField) components.get("totalDisplay")).setText("");
         }
     }
 }

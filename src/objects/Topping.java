@@ -4,6 +4,7 @@ package objects;
  * Created by darkbobo on 9/28/15.
  */
 public class Topping {
+    int itemID;
     String shortName;
     String fullName;
     public Topping(String shortName){
@@ -47,5 +48,13 @@ public class Topping {
 
     public void setFullName(String fullName) {
         this.fullName = fullName;
+    }
+
+    public int getItemID() {
+        return itemID;
+    }
+
+    public void setItemID(int itemID) {
+        this.itemID = itemID;
     }
 }

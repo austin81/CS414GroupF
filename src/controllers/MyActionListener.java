@@ -52,4 +52,8 @@ public class MyActionListener implements ActionListener, ListSelectionListener {
     public void valueChanged(ListSelectionEvent listSelectionEvent) {
 
     }
+
+    public void resetView(){
+
+    }
 }

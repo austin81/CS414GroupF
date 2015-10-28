@@ -18,15 +18,15 @@ public class WindowManager implements WindowStateListener {
     HashMap<String,MyJFrame> views;
     HashMap<String, MyActionListener> controllers;
     Register register;
-    public static final String MAIN_MENU = "mainMenu";
-    public static final String ORDER_EDIT = "orderEdit";
-    public static final String COLLECT_PAYMENT = "collectPayment";
-    public static final String CUSTOMER = "customer";
-    public static final String MAKE_LINE = "makeline";
-    public static final String ORDER_LIST = "orderList";
-    public static final String MANAGE_MAIN = "manageMain";
-    public static final String EMPLOYEE_EDIT = "employeeEdit";
-    public static final String MENU_EDIT = "menuEdit";
+    public final String MAIN_MENU = "mainMenu";
+    public final String ORDER_EDIT = "orderEdit";
+    public final String COLLECT_PAYMENT = "collectPayment";
+    public final String CUSTOMER = "customer";
+    public final String MAKE_LINE = "makeline";
+    public final String ORDER_LIST = "orderList";
+    public final String MANAGE_MAIN = "manageMain";
+    public final String EMPLOYEE_EDIT = "employeeEdit";
+    public final String MENU_EDIT = "menuEdit";
 
     public WindowManager(){
         register = new Register();
@@ -64,8 +64,8 @@ public class WindowManager implements WindowStateListener {
             ((MakelineView)views.get(MAKE_LINE)).setSauceList();
             ((MakelineView)views.get(MAKE_LINE)).setToppingList();
         }
-        if(newWindow.equals(EMPLOYEE_EDIT)){
-            ((EmployeeEditListener)controllers.get(EMPLOYEE_EDIT)).resetView();
+        if(newWindow.equals(EMPLOYEE_EDIT) || newWindow.equals(MENU_EDIT) || newWindow.equals(ORDER_EDIT)){
+            (controllers.get(newWindow)).resetView();
         }
     }
 
