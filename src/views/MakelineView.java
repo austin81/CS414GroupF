@@ -1,17 +1,11 @@
 package views;
 
-import controllers.CollectPaymentListener;
-import controllers.WindowManager;
 import objects.*;
-import controllers.OrderEditListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-
 import javax.swing.*;
 import java.awt.*;
-import java.util.ArrayList;
 import java.util.Observable;
-import java.util.Observer;
 
 /**
  * Created by Tyler on 10/24/15.
@@ -50,7 +44,8 @@ public class MakelineView extends MyJFrame {
 
                     for(int i = 0; i < numPizzas; i++) {
                         model.getOrder((Integer) orderList.getSelectedValue()).getPizza(i).setStatus(PIZZA_STATUS.COMPLETED);
-                        model.getOrder((Integer) orderList.getSelectedValue()).getSide(i).setStatus(SIDE_STATUS.COMPLETED);
+                        if(!model.getOrder((Integer) orderList.getSelectedValue()).getSides().isEmpty())
+                            model.getOrder((Integer) orderList.getSelectedValue()).getSide(i).setStatus(SIDE_STATUS.COMPLETED);
                     }
 
                     manager.activateWindow(manager.MAKE_LINE, manager.MAKE_LINE);
@@ -70,21 +65,21 @@ public class MakelineView extends MyJFrame {
             public void keyPressed(KeyEvent e) {
                 if (e.getKeyCode() == KeyEvent.VK_ENTER) {
 
-                    int itemsBefore = 0;
+                    int itemsBeforePizza = 0;
                     for(int i = 0; i < itemList.getSelectedIndex(); i++){
                         if(orderList.getModel().getElementAt(i) != orderList.getModel().getElementAt(itemList.getSelectedIndex())){
-                            itemsBefore++;
+                            itemsBeforePizza++;
                         }
                     }
 
                     char check = itemList.getSelectedValue().toString().charAt(0);
                     if(check == '['){
-                        int side = (Integer)orderList.getModel().getElementAt(itemList.getSelectedIndex());
-                        model.getOrder(side).getSide(itemList.getSelectedIndex() - itemsBefore).setStatus(SIDE_STATUS.COMPLETED);
+                        int order = (Integer)orderList.getModel().getElementAt(itemList.getSelectedIndex());
+                        model.getOrder(order).getSide(0).setStatus(SIDE_STATUS.COMPLETED);
                     }
                     else {
                         int pizza = (Integer) orderList.getModel().getElementAt(itemList.getSelectedIndex());
-                        model.getOrder(pizza).getPizza(itemList.getSelectedIndex() - itemsBefore).setStatus(PIZZA_STATUS.COMPLETED);
+                        model.getOrder(pizza).getPizza(itemList.getSelectedIndex() - itemsBeforePizza).setStatus(PIZZA_STATUS.COMPLETED);
                     }
                     manager.activateWindow(manager.MAKE_LINE, manager.MAKE_LINE);
                 }
@@ -129,7 +124,6 @@ public class MakelineView extends MyJFrame {
     public void addComponents() {
         controller.registerComponent("orderList", orderList);
         controller.registerComponent("itemList", itemList);
-       // controller.registerComponent("sideList", sideList);
         controller.registerComponent("backButton",  backButton);
 
         backButton.addActionListener(controller);
