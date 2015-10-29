@@ -49,24 +49,41 @@ public class CollectPaymentListener extends MyActionListener {
                 ((JButton)components.get("roundUpTwentyButton")).setText("$" + Integer.toString((int)(20*(Math.ceil(order.getAmountDue() /20)))) + ".00");
                 break;
             case CARD_BUTTON:
+                Object[] cardOptions = {"Card Swipe",
+                        "Cancel"};
                 (components.get("cashOptContainer")).setVisible(false);
-
+                int n = JOptionPane.showOptionDialog(view,
+                        "Run Card for $" + (order.getOrderTotal() - order.getAmountPaid()),
+                        "Collect Cash",
+                        JOptionPane.YES_NO_CANCEL_OPTION,
+                        JOptionPane.QUESTION_MESSAGE,
+                        null,     //do not use a custom Icon
+                        cardOptions,  //the titles of buttons
+                        cardOptions[0]); //default button title
+                if(n == JOptionPane.YES_OPTION){
+                    order.payForOrder(order.getOrderTotal() - order.getAmountPaid());
+                    manager.activateWindow(manager.COLLECT_PAYMENT, manager.ORDER_LIST);
+                }else{
+                    // do nothing
+                }
+                order.payForOrder(order.getOrderTotal() - order.getAmountPaid());
+                manager.activateWindow(manager.COLLECT_PAYMENT, manager.ORDER_LIST);
                 break;
             default:
-                Object[] options = {"Confirm",
+                Object[] cashOptions = {"Confirm",
                         "Cancel"};
                 double returnAmount = Double.parseDouble(actionEvent.getActionCommand().replace("$", "")) - order.getAmountDue();
                 returnAmount = Math.round(returnAmount * 100.0) / 100.0;
-                int n = JOptionPane.showOptionDialog(view,
+                int cashOptionSelect = JOptionPane.showOptionDialog(view,
                         "Cash Collected: " + actionEvent.getActionCommand()
                         + "\nChange Amount: $" + returnAmount,
                         "Collect Cash",
                         JOptionPane.YES_NO_OPTION,
                         JOptionPane.QUESTION_MESSAGE,
                         null,     //do not use a custom Icon
-                        options,  //the titles of buttons
-                        options[0]); //default button title
-                if(n == JOptionPane.YES_OPTION){
+                        cashOptions,  //the titles of buttons
+                        cashOptions[0]); //default button title
+                if(cashOptionSelect == JOptionPane.YES_OPTION){
                     order.payForOrder(order.getOrderTotal() - order.getAmountPaid());
                     manager.activateWindow(manager.COLLECT_PAYMENT, manager.ORDER_LIST);
                 }else{

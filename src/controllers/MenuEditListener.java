@@ -22,9 +22,13 @@ public class MenuEditListener extends MyActionListener {
         System.out.println(command);
         switch (command){
             case "comboBoxChanged":
-                if(((JComboBox)components.get("typeComboBox")).getSelectedItem().equals("Side") || ((JComboBox)components.get("typeComboBox")).getSelectedItem().equals("Drink")){
+                if(((JComboBox)components.get("typeComboBox")).getSelectedItem().equals("Side")
+                        || ((JComboBox)components.get("typeComboBox")).getSelectedItem().equals("Drink")){
                     components.get("priceContainer").setVisible(true);
                     components.get("shortnameContainer").setVisible(false);
+                }else if(((JComboBox)components.get("typeComboBox")).getSelectedItem().equals("Size")) {
+                    components.get("priceContainer").setVisible(true);
+                    components.get("shortnameContainer").setVisible(true);
                 }else{
                     components.get("priceContainer").setVisible(false);
                     components.get("shortnameContainer").setVisible(true);
@@ -60,12 +64,14 @@ public class MenuEditListener extends MyActionListener {
                             }
                             break;
                         case "Size":
+                            price = Double.parseDouble(priceString);
                             if (model.getCatalog().getEntireCatalog().contains(item)) {
                                 ((PizzaSize)item).setFullName(itemName);
                                 ((PizzaSize)item).setShortName(shortName);
+                                ((PizzaSize)item).setPrice(price);
                                 model.getCatalog().updateItem(((PizzaSize) item).getItemID());
                             } else {
-                                item = new PizzaSize(shortName, itemName);
+                                item = new PizzaSize(shortName, itemName, price);
                                 model.getCatalog().addItem(item);
                             }
                             break;
@@ -122,7 +128,7 @@ public class MenuEditListener extends MyActionListener {
             String buttonText = list.getSelectedValue().toString();
             item = model.getCatalog().getItem(buttonText);
             if(item instanceof PizzaSize){
-                setView("Size", ((PizzaSize) item).getFullName(), ((PizzaSize) item).getShortName(), -1.0);
+                setView("Size", ((PizzaSize) item).getFullName(), ((PizzaSize) item).getShortName(), ((PizzaSize) item).getPrice());
             }else if(item instanceof Sauce){
                 setView("Sauce", ((Sauce) item).getFullName(), ((Sauce) item).getShortName(), -1.0);
             }else if(item instanceof Topping){

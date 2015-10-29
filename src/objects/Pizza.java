@@ -99,15 +99,7 @@ public class Pizza extends OrderItem {
     public void calculatePrice(){
         // should abstract out so pricing calculations are dynamic
         double basePrice = 0;
-        if(this.size.getShortName().equals("S")){
-            basePrice = 3.99;
-        }else if(this.size.getShortName().equals("M")){
-            basePrice = 4.99;
-        }else if(this.size.getShortName().equals("L")){
-            basePrice = 6.99;
-        }else if(this.size.getShortName().equals("XL")){
-            basePrice = 9.99;
-        }
+        basePrice += size.getPrice();
         basePrice += toppings.size();
         setPrice(basePrice);
     }

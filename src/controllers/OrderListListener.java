@@ -66,7 +66,7 @@ public class OrderListListener extends MyActionListener implements ListSelection
                     System.out.println("ValueChanged, OrderListListener: " + order.toString());
                 }
             }
-            System.out.println("OrderList OrderID: " + order.getOrderID());
+
             if (order != null) {
 
                 manager.passOrderID(manager.CUSTOMER, order.getOrderID());

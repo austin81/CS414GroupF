@@ -99,7 +99,25 @@ public class OrderEditListener extends MyActionListener implements ListSelection
                 manager.activateWindow(manager.ORDER_EDIT, manager.COLLECT_PAYMENT);
                 break;
             case "Exit":
-                order = null;
+                Object[] exitOptions = {"Exit",
+                        "Cancel"}   ;
+                int n = JOptionPane.showOptionDialog(view,
+                        "If updating order, changes will be saved.\n"
+                            + "If new order, the order will be removed.",
+                        "Confirm",
+                        JOptionPane.YES_NO_CANCEL_OPTION,
+                        JOptionPane.QUESTION_MESSAGE,
+                        null,     //do not use a custom Icon
+                        exitOptions,  //the titles of buttons
+                        exitOptions[0]); //default button title
+                if(n == JOptionPane.YES_OPTION){
+                    model.removeOrder(order.getOrderID());
+                    order = null;
+                    resetView();
+                    manager.activateWindow(manager.ORDER_EDIT, manager.ORDER_LIST);
+                }else{
+                    // do nothing
+                }
                 manager.activateWindow(manager.ORDER_EDIT, manager.ORDER_LIST);
                 break;
             case "Sides":
@@ -200,12 +218,14 @@ public class OrderEditListener extends MyActionListener implements ListSelection
         ((JList) components.get("pizzaSizesList")).setListData(model.getCatalog().getSizes().toArray());
         ((JList) components.get("pizzaSaucesList")).setListData(model.getCatalog().getSauces().toArray());
         ((JList) components.get("pizzaToppingsList")).setListData(model.getCatalog().getToppings().toArray());
-        if (order.getOrderItems().size() != 0) {
-            ((JList) components.get("pizzaList")).setListData(order.getOrderItems().toArray());
-            ((JTextField) components.get("totalDisplay")).setText(model.TOTAL_TEXT + order.getOrderTotal());
-        }else{
-            ((JList) components.get("pizzaList")).setListData(new String[0]);
-            ((JTextField) components.get("totalDisplay")).setText("");
+        if(order != null) {
+            if (order.getOrderItems().size() != 0) {
+                ((JList) components.get("pizzaList")).setListData(order.getOrderItems().toArray());
+                ((JTextField) components.get("totalDisplay")).setText(model.TOTAL_TEXT + order.getOrderTotal());
+            } else {
+                ((JList) components.get("pizzaList")).setListData(new String[0]);
+                ((JTextField) components.get("totalDisplay")).setText("");
+            }
         }
     }
 }

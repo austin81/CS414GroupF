@@ -41,7 +41,13 @@ public class Register {
     }
 
     public int getNextOrderID(){
-        return orders.size();
+        int orderNumber = 0;
+        for(Order o : orders){
+            if(o.getOrderID() > orderNumber){
+                orderNumber = o.getOrderID();
+            }
+        }
+        return orderNumber + 1;
     }
     public PizzaCatalog getCatalog(){
         return catalog;
@@ -50,8 +56,14 @@ public class Register {
     public ArrayList<Order> getOrders() {
         return orders;
     }
-    public Order getOrder(int index){
-        return this.orders.get(index);
+    public Order getOrder(int orderID){
+        for(Order o : orders){
+            if(o.getOrderID() == orderID){
+                System.out.println("ORDERID FOUND");
+                return o;
+            }
+        }
+        return null;
     }
 
     public int addOrder(Order order){
@@ -63,9 +75,12 @@ public class Register {
         return order.getOrderID();
     }
 
-    public void removeOrder(Order order){
-        if(orders.contains(order)){
-            orders.remove(order);
+    public void removeOrder(int orderID){
+        for(Order o : orders) {
+            if (o.getOrderID() == orderID) {
+                orders.remove(o);
+                break;
+            }
         }
     }
 
@@ -155,7 +170,12 @@ public class Register {
     }
 
     public void updateOrder(int orderID, Order order){
-        orders.set(orderID, order);
+        for(int i = 0; i < orders.size(); i++){
+            if(orders.get(i).getOrderID() == orderID){
+                orders.set(i, order);
+                break;
+            }
+        }
     }
 
     public Employee getLoggedInEmployee() {

@@ -196,10 +196,10 @@ public class PizzaCatalog {
         addItem(new Topping("V", "Feta"));
         addItem(new Topping("W", "Garlic"));
 
-        addItem(new PizzaSize("S", "10\" Small"));
-        addItem(new PizzaSize("M", "12\" Medium"));
-        addItem(new PizzaSize("L", "14\" Large"));
-        addItem(new PizzaSize("XL", "16\"Extra Large"));
+        addItem(new PizzaSize("S", "10\" Small", 3.99));
+        addItem(new PizzaSize("M", "12\" Medium", 4.99));
+        addItem(new PizzaSize("L", "14\" Large", 6.99));
+        addItem(new PizzaSize("XL", "16\"Extra Large", 7.99));
 
         addItem(new Sauce("M", "Marinara"));
         addItem(new Sauce("O", "Olive Oil"));
