@@ -27,7 +27,7 @@ public void before() throws Exception {
     tops = new ArrayList<>();
     tops.add(new Topping("a", "artichoke"));
     tops.add(new Topping("b", "bacon"));
-    p = new Pizza(tops, new Sauce("m","marinara"), new PizzaSize("L","large"), PIZZA_STATUS.NEW, 6.99);
+    p = new Pizza(tops, new Sauce("m","marinara"), new PizzaSize("L","large", 6.99), PIZZA_STATUS.NEW, 6.99);
 } 
 
 @After
@@ -55,7 +55,7 @@ public void testEquals() throws Exception {
     ArrayList<Topping> tops1 = new ArrayList<>();
     tops1.add(new Topping("a", "artichoke"));
     tops1.add(new Topping("b", "bacon"));
-    Pizza p1 = new Pizza(tops1, new Sauce("m","marinara"), new PizzaSize("L","large"), PIZZA_STATUS.NEW, 9.99);
+    Pizza p1 = new Pizza(tops1, new Sauce("m","marinara"), new PizzaSize("L","large", 6.99), PIZZA_STATUS.NEW, 9.99);
     assertEquals(p,p1);
 }
 
@@ -64,7 +64,7 @@ public void testNotEquals() throws Exception {
     ArrayList<Topping> tops1 = new ArrayList<>();
     tops1.add(new Topping("c", "cartichoke"));
     tops1.add(new Topping("b", "bacon"));
-    Pizza p1 = new Pizza(tops1, new Sauce("m","marinara"), new PizzaSize("M","medium"), PIZZA_STATUS.NEW, 9.99);
+    Pizza p1 = new Pizza(tops1, new Sauce("m","marinara"), new PizzaSize("M","medium", 6.99), PIZZA_STATUS.NEW, 9.99);
     assertNotEquals(p, p1);
 }
 
@@ -122,7 +122,7 @@ public void testSetSauce() throws Exception {
 */ 
 @Test
 public void testGetSize() throws Exception { 
-    PizzaSize expected = new PizzaSize("L","large");
+    PizzaSize expected = new PizzaSize("L","large", 6.99);
     assertEquals(expected,p.getSize());
 } 
 
@@ -133,7 +133,7 @@ public void testGetSize() throws Exception {
 */ 
 @Test
 public void testSetSize() throws Exception {
-    PizzaSize expected = new PizzaSize("M","medium");
+    PizzaSize expected = new PizzaSize("M","medium", 5.99);
     p.setSize(expected);
     assertEquals(expected, p.getSize());
 } 
