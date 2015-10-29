@@ -31,9 +31,7 @@ public class OrderListView extends MyJFrame {
         //setVisible(true);
     }
 
-    public void setOrderList(){
-        orderList.setListData(model.getOrders().toArray());
-    }
+
 
     @Override
     public void update(Observable observable, Object o) {

@@ -53,16 +53,11 @@ public class WindowManager implements WindowStateListener {
     public void activateWindow(String oldWindow, String newWindow){
         views.get(oldWindow).setVisible(false);
         views.get(newWindow).setVisible(true);
-        if(oldWindow.equals(COLLECT_PAYMENT) || oldWindow.equals(ORDER_LIST)){
-            // function to refresh makeline
-
-            ((OrderListView)views.get(ORDER_LIST)).setOrderList();
-        }
         if(newWindow.equals(MAKE_LINE)){
             ((MakelineView)views.get(MAKE_LINE)).setOrderList();
             ((MakelineView)views.get(MAKE_LINE)).setItemList();
         }
-        if(newWindow.equals(EMPLOYEE_EDIT) || newWindow.equals(MENU_EDIT) || newWindow.equals(ORDER_EDIT)){
+        if(newWindow.equals(EMPLOYEE_EDIT) || newWindow.equals(MENU_EDIT) || newWindow.equals(ORDER_EDIT) || newWindow.equals(ORDER_LIST)){
             (controllers.get(newWindow)).resetView();
         }
         if(newWindow.equals(MAIN_MENU)){
