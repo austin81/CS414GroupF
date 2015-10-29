@@ -11,7 +11,6 @@ public class Pizza extends OrderItem {
     ArrayList<Topping> toppings;
     Sauce sauce;
     PizzaSize size;
-    PIZZA_STATUS status;
     double price;
     int orderID;
 
@@ -74,18 +73,6 @@ public class Pizza extends OrderItem {
 
     public void setSize(PizzaSize size) {
         this.size = size;
-    }
-
-    public PIZZA_STATUS getStatus(){
-        return status;
-    }
-
-    public void setStatus(PIZZA_STATUS status){
-        this.status = status;
-    }
-
-    public void sendPizzaToMakeline(){
-        this.status = PIZZA_STATUS.MAKELINE;
     }
 
     public void loadPizza(){

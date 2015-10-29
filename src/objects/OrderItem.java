@@ -6,15 +6,18 @@ package objects;
 public class OrderItem {
     double price;
     int orderID;
+    PIZZA_STATUS status;
     public OrderItem(){
 
     }
     public OrderItem(double price){
         this.price = price;
+        this.status = PIZZA_STATUS.NEW;
     }
     public OrderItem(double price, int orderID){
         this.price = price;
         this.orderID = orderID;
+        this.status = PIZZA_STATUS.NEW;
     }
 
     public double getPrice() {
@@ -31,5 +34,25 @@ public class OrderItem {
 
     public void setOrderID(int orderID) {
         this.orderID = orderID;
+    }
+
+    public PIZZA_STATUS getStatus(){
+        return status;
+    }
+
+    public void setStatus(PIZZA_STATUS status){
+        this.status = status;
+    }
+
+    public void sendSideToMakeline(){
+        if(this.status == PIZZA_STATUS.NEW) {
+            this.status = PIZZA_STATUS.MAKELINE;
+        }
+    }
+
+    public void sendPizzaToMakeline(){
+        if(this.status == PIZZA_STATUS.NEW) {
+            this.status = PIZZA_STATUS.MAKELINE;
+        }
     }
 }

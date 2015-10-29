@@ -6,7 +6,6 @@ package objects;
 public class SideItem extends OrderItem {
     int itemID;
     String name;
-    SIDE_STATUS status;
 
     public SideItem(){
         super();
@@ -35,13 +34,5 @@ public class SideItem extends OrderItem {
 
     public void setItemID(int itemID) {
         this.itemID = itemID;
-    }
-
-    public void setStatus(SIDE_STATUS status){ this.status = status; }
-
-    public SIDE_STATUS getStatus(){ return status; }
-
-    public void sendSideToMakeline(){
-        this.status = SIDE_STATUS.MAKELINE;
     }
 }

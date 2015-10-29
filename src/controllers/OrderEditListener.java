@@ -95,10 +95,14 @@ public class OrderEditListener extends MyActionListener implements ListSelection
                 order.sendSidesToMakeLine();
                 model.updateOrder(orderID, order);
                 order = null;
-                manager.passOrderID(manager.COLLECT_PAYMENT, orderID);
-                manager.activateWindow(manager.ORDER_EDIT, manager.COLLECT_PAYMENT);
+                manager.activateWindow(manager.ORDER_EDIT, manager.ORDER_LIST);
                 break;
             case "Exit":
+                for(OrderItem o : order.getOrderItems()){
+                    if(o.getStatus() == PIZZA_STATUS.NEW){
+                        o.setStatus(PIZZA_STATUS.MAKELINE);
+                    }
+                }
                 Object[] exitOptions = {"Exit",
                         "Cancel"}   ;
                 int n = JOptionPane.showOptionDialog(view,
@@ -145,6 +149,14 @@ public class OrderEditListener extends MyActionListener implements ListSelection
                         drinks.toArray()[0]); //default button title*/
                 order.addSide(drinks.get(drinkSelection));
                 resetView();
+                break;
+            case "Collect Order":
+                order.sendPizzasToMakeLine();
+                order.sendSidesToMakeLine();
+                model.updateOrder(orderID, order);
+                order = null;
+                manager.passOrderID(manager.COLLECT_PAYMENT, orderID);
+                manager.activateWindow(manager.ORDER_EDIT, manager.COLLECT_PAYMENT);
                 break;
         }
     }
@@ -195,8 +207,6 @@ public class OrderEditListener extends MyActionListener implements ListSelection
                 }
                 ((JList)components.get("pizzaToppingsList")).setSelectedIndices(tmpIndicies);
             }else{
-                // item clicked is a side
-                // *********************************** is duplicating dialog ***************************************
                 int delete = JOptionPane.showConfirmDialog(view,
                         "Remove Item?",
                         "Remove",

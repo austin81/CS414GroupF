@@ -45,7 +45,7 @@ public class MakelineView extends MyJFrame {
                     for(int i = 0; i < numPizzas; i++) {
                         model.getOrder((Integer) orderList.getSelectedValue()).getPizza(i).setStatus(PIZZA_STATUS.COMPLETED);
                         if(!model.getOrder((Integer) orderList.getSelectedValue()).getSides().isEmpty())
-                            model.getOrder((Integer) orderList.getSelectedValue()).getSide(i).setStatus(SIDE_STATUS.COMPLETED);
+                            model.getOrder((Integer) orderList.getSelectedValue()).getSide(i).setStatus(PIZZA_STATUS.COMPLETED);
                     }
 
                     manager.activateWindow(manager.MAKE_LINE, manager.MAKE_LINE);
@@ -75,7 +75,7 @@ public class MakelineView extends MyJFrame {
                     char check = itemList.getSelectedValue().toString().charAt(0);
                     if(check == '['){
                         int order = (Integer)orderList.getModel().getElementAt(itemList.getSelectedIndex());
-                        model.getOrder(order).getSide(0).setStatus(SIDE_STATUS.COMPLETED);
+                        model.getOrder(order).getSide(0).setStatus(PIZZA_STATUS.COMPLETED);
                     }
                     else {
                         int pizza = (Integer) orderList.getModel().getElementAt(itemList.getSelectedIndex());
