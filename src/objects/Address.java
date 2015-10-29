@@ -20,6 +20,11 @@ public class Address {
         this.zipcode = zipcode;
     }
 
+    @Override
+    public String toString() {
+        return this.getStreetAddress() + " " + this.getCity() + " " + this.getState() + " " + this.getZipcode();
+    }
+
     public String getStreetAddress() {
         return streetAddress;
     }
@@ -50,5 +55,15 @@ public class Address {
 
     public void setZipcode(String zipcode) {
         this.zipcode = zipcode;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o instanceof Address) {
+            if (o.toString().equals(this.toString())) {
+                return true;
+            }
+        }
+        return false;
     }
 }

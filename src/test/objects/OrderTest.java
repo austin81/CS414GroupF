@@ -1,6 +1,10 @@
 package test.objects; 
 
-import org.junit.Test; 
+import objects.Address;
+import objects.Order;
+import objects.Person;
+import objects.Phone;
+import org.junit.Test;
 import org.junit.Before; 
 import org.junit.After; 
 
@@ -11,10 +15,13 @@ import org.junit.After;
 * @since <pre>Oct 27, 2015</pre> 
 * @version 1.0 
 */ 
-public class OrderTest { 
+public class OrderTest {
+
+    Order o;
 
 @Before
-public void before() throws Exception { 
+public void before() throws Exception {
+    o = new Order(0, new Person("testPerson", new Address("street","city","state","zip"), new Phone("454-454-4545")));
 } 
 
 @After
@@ -28,7 +35,7 @@ public void after() throws Exception {
 */ 
 @Test
 public void testToString() throws Exception { 
-//TODO: Test goes here... 
+
 } 
 
 /** 

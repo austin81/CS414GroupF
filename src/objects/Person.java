@@ -56,7 +56,7 @@ public class Person {
         if(this.addresses == null){
             this.addresses = new ArrayList<>();
         }
-        this.addresses.addAll(addresses);
+        this.addresses = addresses;
     }
 
 }

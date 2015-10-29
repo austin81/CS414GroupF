@@ -1,8 +1,14 @@
 package test.objects; 
 
-import org.junit.Test; 
+import static org.junit.Assert.*;
+import objects.Address;
+import objects.Person;
+import objects.Phone;
+import org.junit.Test;
 import org.junit.Before; 
-import org.junit.After; 
+import org.junit.After;
+
+import java.util.ArrayList;
 
 /** 
 * Person Tester. 
@@ -13,9 +19,12 @@ import org.junit.After;
 */ 
 public class PersonTest { 
 
+    Person p;
+
 @Before
 public void before() throws Exception { 
-} 
+    p = new Person("billy", new Address("345 street st", "cityville", "ST", "99999"), new Phone("343-434-3434"));
+}
 
 @After
 public void after() throws Exception { 
@@ -28,7 +37,9 @@ public void after() throws Exception {
 */ 
 @Test
 public void testSetName() throws Exception { 
-//TODO: Test goes here... 
+    String expected = "dude";
+    p.setName(expected);
+    assertEquals(expected,p.getName());
 } 
 
 /** 
@@ -38,7 +49,8 @@ public void testSetName() throws Exception {
 */ 
 @Test
 public void testGetName() throws Exception { 
-//TODO: Test goes here... 
+    String expected = "billy";
+    assertEquals(expected,p.getName());
 } 
 
 /** 
@@ -48,7 +60,9 @@ public void testGetName() throws Exception {
 */ 
 @Test
 public void testGetAddresses() throws Exception { 
-//TODO: Test goes here... 
+    ArrayList<Address> expected = new ArrayList<>();
+    expected.add(new Address("345 street st", "cityville", "ST", "99999"));
+    assertEquals(expected,p.getAddresses());
 } 
 
 /** 
@@ -58,7 +72,9 @@ public void testGetAddresses() throws Exception {
 */ 
 @Test
 public void testGetPhoneNumbers() throws Exception { 
-//TODO: Test goes here... 
+    ArrayList<Phone> expected = new ArrayList<>();
+    expected.add(new Phone("343-434-3434"));
+    assertEquals(expected,p.getPhoneNumbers());
 } 
 
 /** 
@@ -67,8 +83,11 @@ public void testGetPhoneNumbers() throws Exception {
 * 
 */ 
 @Test
-public void testSetPhoneNumbers() throws Exception { 
-//TODO: Test goes here... 
+public void testSetPhoneNumbers() throws Exception {
+    ArrayList<Phone> expected = new ArrayList<>();
+    expected.add(new Phone("123-123-1234"));
+    p.setPhoneNumbers(expected);
+    assertEquals(expected, p.getPhoneNumbers());
 } 
 
 /** 
@@ -78,7 +97,8 @@ public void testSetPhoneNumbers() throws Exception {
 */ 
 @Test
 public void testGetAddress() throws Exception { 
-//TODO: Test goes here... 
+    Address expected = new Address("345 street st", "cityville", "ST", "99999");
+    assertEquals(expected,p.getAddress(0));
 } 
 
 /** 
@@ -87,8 +107,10 @@ public void testGetAddress() throws Exception {
 * 
 */ 
 @Test
-public void testAddAddress() throws Exception { 
-//TODO: Test goes here... 
+public void testAddAddress() throws Exception {
+    Address expected = new Address("666 street st", "cityville", "ST", "88888");
+    p.addAddress(expected);
+    assertEquals(expected, p.getAddress(1));
 } 
 
 /** 
@@ -97,8 +119,11 @@ public void testAddAddress() throws Exception {
 * 
 */ 
 @Test
-public void testSetAddresses() throws Exception { 
-//TODO: Test goes here... 
+public void testSetAddresses() throws Exception {
+    ArrayList<Address> expected = new ArrayList<>();
+    expected.add(new Address("666 street st", "cityville", "ST", "88888"));
+    p.setAddresses(expected);
+    assertEquals(expected,p.getAddresses());
 } 
 
 

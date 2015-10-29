@@ -1,6 +1,8 @@
 package test.objects; 
 
-import org.junit.Test; 
+import static org.junit.Assert.*;
+import objects.SideItem;
+import org.junit.Test;
 import org.junit.Before; 
 import org.junit.After; 
 
@@ -11,10 +13,12 @@ import org.junit.After;
 * @since <pre>Oct 27, 2015</pre> 
 * @version 1.0 
 */ 
-public class SideItemTest { 
+public class SideItemTest {
+    SideItem s;
 
 @Before
-public void before() throws Exception { 
+public void before() throws Exception {
+    s = new SideItem("garlic knots",3.50);
 } 
 
 @After
@@ -28,7 +32,7 @@ public void after() throws Exception {
 */ 
 @Test
 public void testToString() throws Exception { 
-//TODO: Test goes here... 
+    assertEquals(s.toString(),"garlic knots   3.5");
 } 
 
 /** 
@@ -38,7 +42,7 @@ public void testToString() throws Exception {
 */ 
 @Test
 public void testGetName() throws Exception { 
-//TODO: Test goes here... 
+    assertEquals(s.getName(),"garlic knots");
 } 
 
 /** 
@@ -48,7 +52,8 @@ public void testGetName() throws Exception {
 */ 
 @Test
 public void testSetName() throws Exception { 
-//TODO: Test goes here... 
+    s.setName("garlic balls");
+    assertEquals(s.getName(),"garlic balls");
 } 
 
 

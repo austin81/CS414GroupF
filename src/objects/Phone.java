@@ -20,4 +20,14 @@ public class Phone {
     public String getNumber() { return number; }
 
     public void setNumber(String number) { /*check if valid number*/this.number = number;}
+
+    @Override
+    public boolean equals(Object o) {
+        if (o instanceof Phone) {
+            if (o.toString().equals(this.toString())) {
+                return true;
+            }
+        }
+        return false;
+    }
 }

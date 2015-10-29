@@ -1,6 +1,8 @@
 package test.objects; 
 
-import org.junit.Test; 
+import static org.junit.Assert.*;
+import objects.Topping;
+import org.junit.Test;
 import org.junit.Before; 
 import org.junit.After; 
 
@@ -11,10 +13,13 @@ import org.junit.After;
 * @since <pre>Oct 27, 2015</pre> 
 * @version 1.0 
 */ 
-public class ToppingTest { 
+public class ToppingTest {
+
+    Topping t1;
 
 @Before
-public void before() throws Exception { 
+public void before() throws Exception {
+    t1 = new Topping("A","anchovies");
 } 
 
 @After
@@ -28,7 +33,8 @@ public void after() throws Exception {
 */ 
 @Test
 public void testToString() throws Exception { 
-//TODO: Test goes here... 
+    String expected = "anchovies";
+    assertEquals(expected,t1.toString());
 } 
 
 /** 
@@ -37,9 +43,16 @@ public void testToString() throws Exception {
 * 
 */ 
 @Test
-public void testEquals() throws Exception { 
-//TODO: Test goes here... 
-} 
+public void testEquals() throws Exception {
+    Topping t2 = new Topping("A","anchovies");
+    assertEquals(t1,t2);
+
+}
+@Test
+public void testNotEquals() throws Exception {
+    Topping t3 = new Topping("B","beans");
+    assertNotEquals(t1,t3);
+}
 
 /** 
 * 
@@ -48,7 +61,7 @@ public void testEquals() throws Exception {
 */ 
 @Test
 public void testGetShortName() throws Exception { 
-//TODO: Test goes here... 
+    assertEquals(t1.getShortName(),"A");
 } 
 
 /** 
@@ -58,7 +71,8 @@ public void testGetShortName() throws Exception {
 */ 
 @Test
 public void testSetShortName() throws Exception { 
-//TODO: Test goes here... 
+    t1.setShortName("E");
+    assertEquals(t1.getShortName(),"E");
 } 
 
 /** 
@@ -68,7 +82,7 @@ public void testSetShortName() throws Exception {
 */ 
 @Test
 public void testGetFullName() throws Exception { 
-//TODO: Test goes here... 
+    assertEquals(t1.getFullName(),"anchovies");
 } 
 
 /** 
@@ -77,8 +91,9 @@ public void testGetFullName() throws Exception {
 * 
 */ 
 @Test
-public void testSetFullName() throws Exception { 
-//TODO: Test goes here... 
+public void testSetFullName() throws Exception {
+    t1.setFullName("hocuspocus");
+    assertEquals(t1.getFullName(),"hocuspocus");
 } 
 
 

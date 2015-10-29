@@ -1,8 +1,14 @@
 package test.objects; 
 
-import org.junit.Test; 
+import static org.junit.Assert.*;
+
+import com.sun.jmx.remote.internal.ArrayQueue;
+import objects.*;
+import org.junit.Test;
 import org.junit.Before; 
-import org.junit.After; 
+import org.junit.After;
+
+import java.util.ArrayList;
 
 /** 
 * Pizza Tester. 
@@ -11,10 +17,17 @@ import org.junit.After;
 * @since <pre>Oct 27, 2015</pre> 
 * @version 1.0 
 */ 
-public class PizzaTest { 
+public class PizzaTest {
 
-@Before
-public void before() throws Exception { 
+    Pizza p;
+    ArrayList<Topping> tops;
+
+    @Before
+public void before() throws Exception {
+    tops = new ArrayList<>();
+    tops.add(new Topping("a", "artichoke"));
+    tops.add(new Topping("b", "bacon"));
+    p = new Pizza(tops, new Sauce("m","marinara"), new PizzaSize("L","large"), PIZZA_STATUS.NEW, 6.99);
 } 
 
 @After
@@ -28,7 +41,8 @@ public void after() throws Exception {
 */ 
 @Test
 public void testToString() throws Exception { 
-//TODO: Test goes here... 
+    String expected = "large marinara " + tops.toString() + " $6.99";
+    assertEquals(expected,p.toString());
 } 
 
 /** 
@@ -37,9 +51,22 @@ public void testToString() throws Exception {
 * 
 */ 
 @Test
-public void testEquals() throws Exception { 
-//TODO: Test goes here... 
-} 
+public void testEquals() throws Exception {
+    ArrayList<Topping> tops1 = new ArrayList<>();
+    tops1.add(new Topping("a", "artichoke"));
+    tops1.add(new Topping("b", "bacon"));
+    Pizza p1 = new Pizza(tops1, new Sauce("m","marinara"), new PizzaSize("L","large"), PIZZA_STATUS.NEW, 9.99);
+    assertEquals(p,p1);
+}
+
+@Test
+public void testNotEquals() throws Exception {
+    ArrayList<Topping> tops1 = new ArrayList<>();
+    tops1.add(new Topping("c", "cartichoke"));
+    tops1.add(new Topping("b", "bacon"));
+    Pizza p1 = new Pizza(tops1, new Sauce("m","marinara"), new PizzaSize("M","medium"), PIZZA_STATUS.NEW, 9.99);
+    assertNotEquals(p, p1);
+}
 
 /** 
 * 
@@ -48,7 +75,7 @@ public void testEquals() throws Exception {
 */ 
 @Test
 public void testGetToppingList() throws Exception { 
-//TODO: Test goes here... 
+    assertEquals(tops,p.getToppingList());
 } 
 
 /** 
@@ -57,8 +84,12 @@ public void testGetToppingList() throws Exception {
 * 
 */ 
 @Test
-public void testSetToppingList() throws Exception { 
-//TODO: Test goes here... 
+public void testSetToppingList() throws Exception {
+    ArrayList<Topping> tops1 = new ArrayList<>();
+    tops1.add(new Topping("c", "cartichoke"));
+    tops1.add(new Topping("b", "bacon"));
+    p.setToppingList(tops1);
+    assertEquals(tops1,p.getToppingList());
 } 
 
 /** 
@@ -67,8 +98,9 @@ public void testSetToppingList() throws Exception {
 * 
 */ 
 @Test
-public void testGetSauce() throws Exception { 
-//TODO: Test goes here... 
+public void testGetSauce() throws Exception {
+    Sauce expected = new Sauce("m","marinara");
+    assertEquals(expected,p.getSauce());
 } 
 
 /** 
@@ -78,7 +110,9 @@ public void testGetSauce() throws Exception {
 */ 
 @Test
 public void testSetSauce() throws Exception { 
-//TODO: Test goes here... 
+    Sauce expected = new Sauce("r","ranch");
+    p.setSauce(expected);
+    assertEquals(p.getSauce(),expected);
 } 
 
 /** 
@@ -88,7 +122,8 @@ public void testSetSauce() throws Exception {
 */ 
 @Test
 public void testGetSize() throws Exception { 
-//TODO: Test goes here... 
+    PizzaSize expected = new PizzaSize("L","large");
+    assertEquals(expected,p.getSize());
 } 
 
 /** 
@@ -97,8 +132,10 @@ public void testGetSize() throws Exception {
 * 
 */ 
 @Test
-public void testSetSize() throws Exception { 
-//TODO: Test goes here... 
+public void testSetSize() throws Exception {
+    PizzaSize expected = new PizzaSize("M","medium");
+    p.setSize(expected);
+    assertEquals(expected, p.getSize());
 } 
 
 /** 
@@ -108,7 +145,7 @@ public void testSetSize() throws Exception {
 */ 
 @Test
 public void testGetStatus() throws Exception { 
-//TODO: Test goes here... 
+    assertEquals(p.getStatus(),PIZZA_STATUS.NEW);
 } 
 
 /** 
@@ -118,7 +155,8 @@ public void testGetStatus() throws Exception {
 */ 
 @Test
 public void testSetStatus() throws Exception { 
-//TODO: Test goes here... 
+    p.setStatus(PIZZA_STATUS.COMPLETED);
+    assertEquals(p.getStatus(),PIZZA_STATUS.COMPLETED);
 } 
 
 /** 
@@ -128,7 +166,8 @@ public void testSetStatus() throws Exception {
 */ 
 @Test
 public void testSendPizzaToMakeline() throws Exception { 
-//TODO: Test goes here... 
+    p.sendPizzaToMakeline();
+    assertEquals(p.getStatus(),PIZZA_STATUS.MAKELINE);
 } 
 
 /** 
@@ -137,8 +176,9 @@ public void testSendPizzaToMakeline() throws Exception {
 * 
 */ 
 @Test
-public void testLoadPizza() throws Exception { 
-//TODO: Test goes here... 
+public void testLoadPizza() throws Exception {
+    p.loadPizza();
+    assertEquals(p.getStatus(),PIZZA_STATUS.LOADED);
 } 
 
 /** 
@@ -147,8 +187,9 @@ public void testLoadPizza() throws Exception {
 * 
 */ 
 @Test
-public void testCompletePizza() throws Exception { 
-//TODO: Test goes here... 
+public void testCompletePizza() throws Exception {
+    p.completePizza();
+    assertEquals(p.getStatus(),PIZZA_STATUS.COMPLETED);
 } 
 
 /** 
@@ -157,8 +198,9 @@ public void testCompletePizza() throws Exception {
 * 
 */ 
 @Test
-public void testCalculatePrice() throws Exception { 
-//TODO: Test goes here... 
+public void testCalculatePrice() throws Exception {
+    p.calculatePrice();
+    assertEquals(8.99,p.getPrice(),0.00);
 } 
 
 /** 
@@ -167,8 +209,9 @@ public void testCalculatePrice() throws Exception {
 * 
 */ 
 @Test
-public void testGetPrice() throws Exception { 
-//TODO: Test goes here... 
+public void testGetPrice() throws Exception {
+    p.calculatePrice();
+    assertEquals(8.99,p.getPrice(),0.00);
 } 
 
 /** 
@@ -177,8 +220,9 @@ public void testGetPrice() throws Exception {
 * 
 */ 
 @Test
-public void testSetPrice() throws Exception { 
-//TODO: Test goes here... 
+public void testSetPrice() throws Exception {
+    p.setPrice(7.88);
+    assertEquals(p.getPrice(), 7.88, 0.00);
 } 
 
 /** 
@@ -187,8 +231,9 @@ public void testSetPrice() throws Exception {
 * 
 */ 
 @Test
-public void testSetOrderID() throws Exception { 
-//TODO: Test goes here... 
+public void testSetOrderID() throws Exception {
+    p.setOrderID(0);
+    assertEquals(p.getOrderID(),0);
 } 
 
 /** 
@@ -208,7 +253,8 @@ public void testGetOrderID() throws Exception {
 */ 
 @Test
 public void testMakelineToString() throws Exception { 
-//TODO: Test goes here... 
+    String expected = "large " + "marinara " + tops.toString() + " $" + p.getPrice();
+    assertEquals(expected,p.toString());
 } 
 
 
