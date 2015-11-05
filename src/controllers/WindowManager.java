@@ -4,18 +4,15 @@ import objects.Register;
 import views.*;
 
 import javax.swing.*;
-import java.awt.*;
-import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowStateListener;
 import java.util.HashMap;
-import java.util.Observable;
 
 /**
  * Created by darkbobo on 10/25/15.
  */
 public class WindowManager implements WindowStateListener {
-    HashMap<String,MyJFrame> views;
+    HashMap<String, MyJFrame> views;
     HashMap<String, MyActionListener> controllers;
     Register register;
     public final String MAIN_MENU = "mainMenu";

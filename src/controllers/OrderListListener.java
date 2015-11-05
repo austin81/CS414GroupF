@@ -74,4 +74,8 @@ public class OrderListListener extends MyActionListener implements ListSelection
             }
         }
     }
+
+    public void resetView(){
+        ((JList)components.get("orderList")).setListData(model.getOrders().toArray());
+    }
 }

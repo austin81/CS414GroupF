@@ -32,7 +32,7 @@ public class CustomerView extends MyJFrame {
         setContentPane(customerContainer);
         setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         pack();
-
+        System.out.println("CustomerView Constructor");
         Border border = BorderFactory.createBevelBorder(BevelBorder.RAISED, Color.BLUE, Color.BLACK);
         phoneEditText.setBorder(border);
         nameEditText.setBorder(border);
@@ -42,10 +42,6 @@ public class CustomerView extends MyJFrame {
         zipEditText.setBorder(border);
     }
 
-    @Override
-    public void update(Observable observable, Object o) {
-
-    }
 
     public void addWindowManager(WindowManager manager){
         this.manager = manager;

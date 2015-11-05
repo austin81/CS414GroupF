@@ -48,4 +48,5 @@ public class OrderListView extends MyJFrame {
         orderLookupButton.addActionListener(controller);
         backButton.addActionListener(controller);
     }
+
 }
