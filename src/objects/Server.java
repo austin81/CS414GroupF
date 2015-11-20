@@ -2,6 +2,7 @@ package objects;
 
 
 import java.rmi.Naming;
+
 public class Server {
     private String url;
     public Server(String url) {

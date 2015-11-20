@@ -1,9 +1,11 @@
 package objects;
 
+import java.io.Serializable;
+
 /**
  * Created by darkbobo on 10/27/15.
  */
-public class OrderItem {
+public class OrderItem implements Serializable{
     double price;
     int orderID;
     PIZZA_STATUS status;

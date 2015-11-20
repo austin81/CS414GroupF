@@ -1,12 +1,13 @@
 package objects;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Objects;
 
 /**
  * Created by darkbobo on 10/22/15.
  */
-public class PizzaCatalog {
+public class PizzaCatalog implements Serializable {
     ArrayList<Topping> toppings;
     ArrayList<Sauce> sauces;
     ArrayList<PizzaSize> sizes;
