@@ -14,7 +14,7 @@ import java.util.HashMap;
 /**
  * Created by darkbobo on 10/5/15.
  */
-public class Register extends UnicastRemoteObject implements RegisterInt{
+public class Register {
     private ArrayList<Order> orders;
     private Employee loggedInEmployee;
     private int storeID;
@@ -26,8 +26,7 @@ public class Register extends UnicastRemoteObject implements RegisterInt{
     private WindowManager manager;
 
     public static final String TOTAL_TEXT = "Total................";
-    public Register() throws java.rmi.RemoteException{
-        super();
+    public Register(){
         orders = new ArrayList<>();
         employees = new ArrayList<>();
         catalog = new PizzaCatalog();
@@ -241,11 +240,4 @@ public class Register extends UnicastRemoteObject implements RegisterInt{
         }
     }
 
-    public ArrayList<Order> getOrdersRMI() throws java.rmi.RemoteException {
-        return orders;
-    }
-
-    public PizzaCatalog getCatalogRMI() throws java.rmi.RemoteException {
-        return catalog;
-    }
 }

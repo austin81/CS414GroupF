@@ -28,7 +28,6 @@ public class WindowManager implements WindowStateListener {
     public final String MENU_EDIT = "menuEdit";
 
     public WindowManager(){
-        try {
             register = new Register();
             register.setWindowManager(this);
             init();
@@ -41,10 +40,6 @@ public class WindowManager implements WindowStateListener {
             }
             // init main menu view
             views.get(MAIN_MENU).setVisible(true);
-        }
-        catch (RemoteException re) {
-            System.out.println(re);
-        }
     }
 
     @Override

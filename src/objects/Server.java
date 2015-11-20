@@ -7,7 +7,7 @@ public class Server {
     public Server(String url) {
         this.url = url;
         try {
-            RegisterInt b = new Register();
+            RegisterInt b = new RegisterRMI();
             Naming.rebind(url, b);
             System.out.println("Server running...");
         } catch (Exception e) {
