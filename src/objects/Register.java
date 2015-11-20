@@ -7,13 +7,14 @@ import controllers.WindowManager;
 
 import javax.swing.*;
 import java.awt.event.ActionListener;
+import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
  * Created by darkbobo on 10/5/15.
  */
-public class Register {
+public class Register extends UnicastRemoteObject implements RegisterInt{
     private ArrayList<Order> orders;
     private Employee loggedInEmployee;
     private int storeID;
@@ -25,7 +26,8 @@ public class Register {
     private WindowManager manager;
 
     public static final String TOTAL_TEXT = "Total................";
-    public Register() {
+    public Register() throws java.rmi.RemoteException{
+        super();
         orders = new ArrayList<>();
         employees = new ArrayList<>();
         catalog = new PizzaCatalog();
@@ -53,7 +55,7 @@ public class Register {
         return catalog;
     }
 
-    public ArrayList<Order> getOrders() {
+    public ArrayList<Order> getOrders(){
         return orders;
     }
     public Order getOrder(int orderID){
@@ -237,5 +239,13 @@ public class Register {
                 employees.set(i, employee);
             }
         }
+    }
+
+    public ArrayList<Order> getOrdersRMI() throws java.rmi.RemoteException {
+        return orders;
+    }
+
+    public PizzaCatalog getCatalogRMI() throws java.rmi.RemoteException {
+        return catalog;
     }
 }

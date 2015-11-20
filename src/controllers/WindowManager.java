@@ -6,6 +6,8 @@ import views.*;
 import javax.swing.*;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowStateListener;
+import java.rmi.Remote;
+import java.rmi.RemoteException;
 import java.util.HashMap;
 
 /**
@@ -26,18 +28,23 @@ public class WindowManager implements WindowStateListener {
     public final String MENU_EDIT = "menuEdit";
 
     public WindowManager(){
-        register = new Register();
-        register.setWindowManager(this);
-        init();
-        registerMVC();
-        registerManager();
-        registerComponents();
-        for(MyJFrame jFrame : views.values()){
-            jFrame.setVisible(false);
-            jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        try {
+            register = new Register();
+            register.setWindowManager(this);
+            init();
+            registerMVC();
+            registerManager();
+            registerComponents();
+            for (MyJFrame jFrame : views.values()) {
+                jFrame.setVisible(false);
+                jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            }
+            // init main menu view
+            views.get(MAIN_MENU).setVisible(true);
         }
-        // init main menu view
-        views.get(MAIN_MENU).setVisible(true);
+        catch (RemoteException re) {
+            System.out.println(re);
+        }
     }
 
     @Override
