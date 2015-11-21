@@ -89,5 +89,20 @@ public class RegisterClient {
 
     }
 
+    public void updateOrder(int orderId, Order order) {
+        try{
+            r.updateOrderRMI(orderId, order);
+        } catch(RemoteException re) {
+            System.out.println(re);
+        }
+    }
+
+    public void removeOrder(int orderId) {
+        try{
+            r.removeOrderRMI(orderId);
+        } catch(RemoteException re) {
+            System.out.println(re);
+        }
+    }
 
 }

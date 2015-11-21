@@ -32,8 +32,6 @@ public class RegisterRMI extends UnicastRemoteObject implements RegisterInt {
         register.getCatalog().deleteItem(o);
         return getCatalogRMI();
     }
-
-
     public Order getOrderRMI(int o) throws RemoteException {
         return register.getOrder(o);
     }
@@ -44,5 +42,10 @@ public class RegisterRMI extends UnicastRemoteObject implements RegisterInt {
     public ArrayList<Order> getOrdersRMI() throws RemoteException{
         return register.getOrders();
     }
-
+    public void updateOrderRMI(int orderId, Order order) throws RemoteException{
+        register.updateOrder(orderId, order);
+    }
+    public void removeOrderRMI(int orderId) throws RemoteException{
+        register.removeOrder(orderId);
+    }
 }
