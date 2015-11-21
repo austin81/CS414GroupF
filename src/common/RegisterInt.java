@@ -1,9 +1,6 @@
 package common;
 
-import objects.Employee;
-import objects.Order;
-import objects.PizzaCatalog;
-import objects.Register;
+import objects.*;
 import objects.Employee;
 import java.util.ArrayList;
 
@@ -28,6 +25,9 @@ public interface RegisterInt extends java.rmi.Remote{
     void clearLoggedInEmployeeRMI() throws java.rmi.RemoteException;
     ArrayList<Employee> getEmployeesRMI() throws java.rmi.RemoteException;
     void addEmployeeRMI(Employee e) throws java.rmi.RemoteException;
+    ArrayList<Pizza> getMakelinePizzas() throws java.rmi.RemoteException;
+    ArrayList<String> getMakelineSides() throws java.rmi.RemoteException;
+
     ArrayList<Integer> getMakelineIDRMI() throws java.rmi.RemoteException;
     ArrayList<Integer> getMakelineItemsRMI() throws java.rmi.RemoteException;
 }

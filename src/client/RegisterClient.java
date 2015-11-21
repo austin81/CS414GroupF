@@ -1,14 +1,11 @@
 package client;
 
 import common.RegisterInt;
-import objects.Employee;
+import objects.*;
 import controllers.CollectPaymentListener;
 import controllers.CustomerListener;
 import controllers.OrderEditListener;
 import controllers.WindowManager;
-import objects.Order;
-import objects.PizzaCatalog;
-import objects.Register;
 
 import java.net.MalformedURLException;
 import java.rmi.Naming;
@@ -196,6 +193,24 @@ public class RegisterClient {
             r.addEmployeeRMI(e);
         } catch (RemoteException re) {
             System.out.println(re);
+        }
+    }
+
+    public ArrayList<Pizza> getMakelinePizzas(){
+        try {
+            return r.getMakelinePizzas();
+        } catch (RemoteException re) {
+            System.out.println(re);
+            return null;
+        }
+    }
+
+    public ArrayList<String> getMakelineSides(){
+        try {
+            return r.getMakelineSides();
+        } catch (RemoteException re) {
+            System.out.println(re);
+            return null;
         }
     }
 

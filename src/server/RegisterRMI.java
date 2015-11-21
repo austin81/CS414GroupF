@@ -1,10 +1,7 @@
 package server;
 
 import common.RegisterInt;
-import objects.Employee;
-import objects.Order;
-import objects.PizzaCatalog;
-import objects.Register;
+import objects.*;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
@@ -80,5 +77,15 @@ public class RegisterRMI extends UnicastRemoteObject implements RegisterInt {
     }
     public void addEmployeeRMI(Employee e) throws RemoteException {
         register.addEmployee(e);
+    }
+
+    @Override
+    public ArrayList<Pizza> getMakelinePizzas() throws RemoteException {
+        return register.getMakelinePizzas();
+    }
+
+    @Override
+    public ArrayList<String> getMakelineSides() throws RemoteException {
+        return register.getMakelineSides();
     }
 }
