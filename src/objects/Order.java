@@ -1,5 +1,6 @@
 package objects;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
@@ -11,7 +12,7 @@ TODO functionality of updating order : have totalPaid, when user edits pizza, to
 */
 
 
-public class Order {
+public class Order implements Serializable{
     private int orderID;
     private Person customer;
     boolean isPaidFor;

@@ -1,9 +1,11 @@
 package objects;
 
+import java.io.Serializable;
+
 /**
  * Created by darkbobo on 9/28/15.
  */
-public class Address {
+public class Address implements Serializable{
     String streetAddress;
     String city;
     String state;

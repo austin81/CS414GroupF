@@ -1,9 +1,11 @@
 package objects;
 
+import java.io.Serializable;
+
 /**
  * Created by clark on 10/7/15.
  */
-public class Phone {
+public class Phone implements Serializable{
     private String number;
 
     public Phone(){

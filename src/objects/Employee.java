@@ -1,11 +1,12 @@
 package objects;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * Created by darkbobo on 10/5/15.
  */
-public class Employee extends Person {
+public class Employee extends Person implements Serializable{
     private int userID;
     private String username;
     private String authentication;
