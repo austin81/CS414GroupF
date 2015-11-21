@@ -30,6 +30,9 @@ public class AddOrderView extends MyJFrame {
     private JButton drinksButton;
     private JButton exitButton;
     private JPanel pizzaContainer;
+    private JLabel toppingLabel;
+    private JLabel saucesLabel;
+    private JLabel sizesLabel;
     private Order order;
 
     public AddOrderView(){
