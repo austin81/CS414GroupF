@@ -49,7 +49,7 @@ public class RegisterClient {
         }
     }
 
-    publci PizzaCatalog deleteItem(Object o){
+    public PizzaCatalog deleteItem(Object o){
         try{
             return r.deleteItemRMI(o);
         }catch(RemoteException re){
