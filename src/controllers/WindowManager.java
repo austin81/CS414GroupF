@@ -18,7 +18,6 @@ import java.util.HashMap;
 public class WindowManager implements WindowStateListener {
     HashMap<String, MyJFrame> views;
     HashMap<String, MyActionListener> controllers;
-    Register register;
     String url;
     Server server;
     RegisterClient client;
@@ -33,8 +32,14 @@ public class WindowManager implements WindowStateListener {
     public final String MENU_EDIT = "menuEdit";
 
     public WindowManager(String host, String port){
-            register = new Register();
-            register.setWindowManager(this);
+            // start the server
+            url = new String("rmi://" + host + ":" + port + "/Service");
+            server = new Server(url);
+
+            // start the client
+            client = new RegisterClient(url);
+
+            client.setWindowManager(this);
             init();
             registerMVC();
             registerManager();
@@ -43,12 +48,6 @@ public class WindowManager implements WindowStateListener {
                 jFrame.setVisible(false);
                 jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             }
-            // start the server
-            url = new String("rmi://" + host + ":" + port + "/Service");
-            server = new Server(url);
-
-            // start the client
-            client = new RegisterClient(url);
 
             // init main menu view
             views.get(MAIN_MENU).setVisible(true);
@@ -102,7 +101,7 @@ public class WindowManager implements WindowStateListener {
 
     public void registerMVC(){
         for(MyJFrame jFrame : views.values()){
-            jFrame.addModel(register);
+            jFrame.addModel(client);
         }
 
         for(String key : views.keySet()){
@@ -110,7 +109,7 @@ public class WindowManager implements WindowStateListener {
         }
 
         for(MyActionListener listener : controllers.values()){
-            listener.addModel(register);
+            listener.addModel(client);
         }
     }
 

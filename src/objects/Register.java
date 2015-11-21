@@ -20,22 +20,11 @@ public class Register {
     private int storeID;
     private PizzaCatalog catalog;
     private ArrayList<Employee> employees;
-    CustomerListener customerListener;
-    OrderEditListener orderEditListener;
-    CollectPaymentListener collectPaymentListener;
-    private WindowManager manager;
 
-    public static final String TOTAL_TEXT = "Total................";
     public Register(){
         orders = new ArrayList<>();
         employees = new ArrayList<>();
         catalog = new PizzaCatalog();
-        customerListener = new CustomerListener();
-        orderEditListener = new OrderEditListener();
-        collectPaymentListener = new CollectPaymentListener();
-        customerListener.addModel(this);
-        orderEditListener.addModel(this);
-        collectPaymentListener.addModel(this);
         addEmployee(new Employee("manager1", new Address("street1", "city1", "state1", "zip1"), new Phone("phone1"), "manager1", "321", ROLE.MANAGER));
         addEmployee(new Employee("chef1", new Address("street2", "city2", "state2", "zip2"), new Phone("phone2"), "chef1", "123", ROLE.CHEF));
         addEmployee(new Employee("cashier1", new Address("street3", "city3", "state3", "zip3"), new Phone("phone3"), "cashier1", "000", ROLE.CASHIER));
@@ -205,10 +194,6 @@ public class Register {
 
     public void setStoreID(int storeID) {
         this.storeID = storeID;
-    }
-
-    public void setWindowManager(WindowManager manager) {
-        this.manager = manager;
     }
 
     public boolean userExists(String s) {

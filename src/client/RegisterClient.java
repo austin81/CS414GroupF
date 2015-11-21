@@ -2,6 +2,10 @@ package client;
 
 import common.RegisterInt;
 import objects.Employee;
+import controllers.CollectPaymentListener;
+import controllers.CustomerListener;
+import controllers.OrderEditListener;
+import controllers.WindowManager;
 import objects.Order;
 import objects.PizzaCatalog;
 import objects.Register;
@@ -21,11 +25,18 @@ public class RegisterClient {
     RegisterInt r;
     public static final String TOTAL_TEXT = "Total................";
 
+    CustomerListener customerListener;
+    OrderEditListener orderEditListener;
+    CollectPaymentListener collectPaymentListener;
+    WindowManager manager;
+
     public RegisterClient(String url) {
-        r = null;
         try {
             r = (RegisterInt)
                     Naming.lookup(url);
+            customerListener.addModel(this);
+            orderEditListener.addModel(this);
+            collectPaymentListener.addModel(this);
         } catch (MalformedURLException murle) {
             System.out.println("MalformedURLException");
             System.out.println(murle);
@@ -40,6 +51,10 @@ public class RegisterClient {
             System.exit(-1);
         }
 
+    }
+
+    public void setWindowManager(WindowManager manager) {
+        this.manager = manager;
     }
 
     //have controllers call RegisterInt methods here.

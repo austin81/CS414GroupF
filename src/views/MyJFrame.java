@@ -1,5 +1,6 @@
 package views;
 
+import client.RegisterClient;
 import controllers.MyActionListener;
 import controllers.WindowManager;
 import objects.Register;
@@ -12,7 +13,7 @@ import java.util.Observer;
  * Created by darkbobo on 10/25/15.
  */
 public class MyJFrame extends JFrame implements Observer {
-    Register model;
+    RegisterClient model;
     MyActionListener controller;
     WindowManager manager;
     public MyJFrame(){
@@ -24,7 +25,7 @@ public class MyJFrame extends JFrame implements Observer {
 
     }
 
-    public void addModel(Register model){
+    public void addModel(RegisterClient model){
         this.model = model;
     }
 
