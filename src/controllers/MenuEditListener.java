@@ -39,7 +39,7 @@ public class MenuEditListener extends MyActionListener {
                 break;
             case "Delete":
                 if(item != null){
-                    model.deleteItemRMI(item);
+                    model.deleteItem(item);
                 }
                 resetView();
                 break;
