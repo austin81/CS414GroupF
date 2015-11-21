@@ -46,7 +46,7 @@ public class RegisterClient {
             return r.getCatalogRMI();
         } catch(RemoteException re) {
             System.out.println(re);
-            return
+            return null;
         }
     }
 
@@ -58,6 +58,14 @@ public class RegisterClient {
             return null;
         }
 
+    }
+    public PizzaCatalog updateItem(Object o){
+        try{
+            return r.updateItemRMI(o);
+        }catch(RemoteException re){
+            System.out.println(re);
+            return null;
+        }
     }
 
 }

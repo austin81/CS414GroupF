@@ -57,7 +57,7 @@ public class MenuEditListener extends MyActionListener {
                             if (model.getCatalog().getEntireCatalog().contains(item)) {
                                 ((Topping)item).setFullName(itemName);
                                 ((Topping)item).setShortName(shortName);
-                                model.getCatalog().updateItem(((Topping) item).getItemID());
+                                model.updateItem(((Topping) item).getItemID());
                             } else {
                                 item = new Topping(shortName, itemName);
                                 model.getCatalog().addItem(item);
@@ -69,7 +69,7 @@ public class MenuEditListener extends MyActionListener {
                                 ((PizzaSize)item).setFullName(itemName);
                                 ((PizzaSize)item).setShortName(shortName);
                                 ((PizzaSize)item).setPrice(price);
-                                model.getCatalog().updateItem(((PizzaSize) item).getItemID());
+                                model.updateItem(((PizzaSize) item).getItemID());
                             } else {
                                 item = new PizzaSize(shortName, itemName, price);
                                 model.getCatalog().addItem(item);
@@ -79,7 +79,7 @@ public class MenuEditListener extends MyActionListener {
                             if (model.getCatalog().getEntireCatalog().contains(item)) {
                                 ((Sauce)item).setFullName(itemName);
                                 ((Sauce)item).setShortName(shortName);
-                                model.getCatalog().updateItem(((Sauce) item).getItemID());
+                                model.updateItem(((Sauce) item).getItemID());
                             } else {
                                 item = new Sauce(shortName, itemName);
                                 model.getCatalog().addItem(item);
@@ -90,7 +90,7 @@ public class MenuEditListener extends MyActionListener {
                             if (model.getCatalog().getEntireCatalog().contains(item)) {
                                 ((Side)item).setName(itemName);
                                 ((Side)item).setPrice(price);
-                                model.getCatalog().updateItem(((Side) item).getItemID());
+                                model.updateItem(((Side) item).getItemID());
                             } else {
                                 item = new Side(itemName, price);
                                 model.getCatalog().addItem(item);
@@ -101,7 +101,7 @@ public class MenuEditListener extends MyActionListener {
                             if (model.getCatalog().getEntireCatalog().contains(item)) {
                                 ((Drink)item).setName(itemName);
                                 ((Drink)item).setPrice(price);
-                                model.getCatalog().updateItem(((Drink) item).getItemID());
+                                model.updateItem(((Drink) item).getItemID());
                             } else {
                                 item = new Drink(itemName, price);
                                 model.getCatalog().addItem(item);
