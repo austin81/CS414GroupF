@@ -53,4 +53,8 @@ public class RegisterRMI extends UnicastRemoteObject implements RegisterInt {
     public void removeOrderRMI(int orderId) throws RemoteException{
         register.removeOrder(orderId);
     }
+
+    public int addOrderRMI(Order order) throws RemoteException {
+        return register.addOrder(order);
+    }
 }

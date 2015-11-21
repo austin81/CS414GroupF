@@ -114,4 +114,12 @@ public class RegisterClient {
         }
     }
 
+
+    public int addOrder(Order order) {
+        try{
+            r.addOrderRMI(order);
+        } catch(RemoteException re) {
+            System.out.println(re);
+        }
+    }
 }
