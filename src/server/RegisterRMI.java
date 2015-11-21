@@ -33,8 +33,8 @@ public class RegisterRMI extends UnicastRemoteObject implements RegisterInt {
         return getCatalogRMI();
     }
 
-    @Override
-    public Register getOrderRMI() throws RemoteException {
+
+    public Order getOrderRMI(int o) throws RemoteException {
         return null;
     }
     public PizzaCatalog updateItemRMI(Object o) throws RemoteException{
@@ -44,4 +44,5 @@ public class RegisterRMI extends UnicastRemoteObject implements RegisterInt {
     public ArrayList<Order> getOrdersRMI() throws RemoteException{
         return register.getOrders();
     }
+
 }
