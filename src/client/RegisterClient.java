@@ -46,6 +46,7 @@ public class RegisterClient {
             return r.getCatalogRMI();
         } catch(RemoteException re) {
             System.out.println(re);
+            return
         }
     }
 
@@ -54,7 +55,9 @@ public class RegisterClient {
             return r.deleteItemRMI(o);
         }catch(RemoteException re){
             System.out.println(re);
+            return null;
         }
+
     }
 
 }

@@ -28,6 +28,6 @@ public class RegisterRMI extends UnicastRemoteObject implements RegisterInt {
     }
     public PizzaCatalog deleteItemRMI(Object o) throws RemoteException{
         register.getCatalog().deleteItem(o);
-        return register.getCatalog();
+        return getCatalogRMI();
     }
 }
