@@ -19,7 +19,6 @@ public class WindowManager implements WindowStateListener {
     HashMap<String, MyJFrame> views;
     HashMap<String, MyActionListener> controllers;
     String url;
-    Server server;
     RegisterClient client;
     public final String MAIN_MENU = "mainMenu";
     public final String ORDER_EDIT = "orderEdit";
@@ -32,11 +31,9 @@ public class WindowManager implements WindowStateListener {
     public final String MENU_EDIT = "menuEdit";
 
     public WindowManager(String host, String port){
-            // start the server
-            url = new String("rmi://" + host + ":" + port + "/Service");
-            server = new Server(url);
 
             // start the client
+            url = new String("rmi://" + host + ":" + port + "/Service");
             client = new RegisterClient(url);
 
             client.setWindowManager(this);

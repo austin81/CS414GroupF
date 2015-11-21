@@ -31,6 +31,9 @@ public class RegisterClient {
         try {
             r = (RegisterInt)
                     Naming.lookup(url);
+            customerListener = new CustomerListener();
+            orderEditListener = new OrderEditListener();
+            collectPaymentListener = new CollectPaymentListener();
             customerListener.addModel(this);
             orderEditListener.addModel(this);
             collectPaymentListener.addModel(this);
