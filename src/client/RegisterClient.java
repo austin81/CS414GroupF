@@ -17,8 +17,8 @@ import java.util.ArrayList;
  */
 public class RegisterClient {
 
-    Register register;
     RegisterInt r;
+    public static final String TOTAL_TEXT = "Total................";
 
     public RegisterClient(String url) {
         r = null;
