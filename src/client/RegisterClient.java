@@ -79,4 +79,15 @@ public class RegisterClient {
         }
     }
 
+    public Order getOrder(int o){
+        try{
+            return r.getOrderRMI(o);
+        }catch(RemoteException re){
+            System.out.println(re);
+            return null;
+        }
+
+    }
+
+
 }
