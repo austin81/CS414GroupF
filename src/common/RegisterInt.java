@@ -13,4 +13,5 @@ public interface RegisterInt extends java.rmi.Remote{
     PizzaCatalog deleteItemRMI(Object o) throws java.rmi.RemoteException;
     PizzaCatalog updateItemRMI(Object o) throws java.rmi.RemoteException;
     ArrayList<Order> getOrdersRMI() throws java.rmi.RemoteException;
+    PizzaCatalog addItemRMI(Object o) throws java.rmi.RemoteException;
 }
