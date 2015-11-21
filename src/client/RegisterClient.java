@@ -182,10 +182,19 @@ public class RegisterClient {
         }
     }
 
-    public void addEmployee(Employee e){
-        try{
-            r.addEmployee(e);
-        }catch(RemoteException re){
+    public ArrayList<Employee> getEmployees() {
+        try {
+            return r.getEmployeesRMI();
+        } catch (RemoteException re) {
+            System.out.println(re);
+            return null;
+        }
+    }
+
+    public void addEmployee(Employee e) {
+        try {
+            r.addEmployeeRMI(e);
+        } catch (RemoteException re) {
             System.out.println(re);
         }
     }

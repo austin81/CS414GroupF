@@ -59,13 +59,9 @@ public class RegisterRMI extends UnicastRemoteObject implements RegisterInt {
     public int addOrderRMI(Order order) throws RemoteException {
         return register.addOrder(order);
     }
-
-    @Override
     public void removeEmployeeRMI(Employee employee) throws RemoteException {
         register.removeEmployee(employee);
     }
-
-    @Override
     public void updateEmployee(int ID, Employee employee) throws RemoteException {
         register.updateEmployee(ID, employee);
     }
@@ -76,9 +72,10 @@ public class RegisterRMI extends UnicastRemoteObject implements RegisterInt {
     public void setLoggedInEmployeeRMI(Employee e) throws RemoteException{
         register.setLoggedInEmployee(e);
     }
-
-    @Override
-    public void addEmployee(Employee e) throws RemoteException {
+    public ArrayList<Employee> getEmployeesRMI() throws RemoteException{
+        return register.getEmployees();
+    }
+    public void addEmployeeRMI(Employee e) throws RemoteException {
         register.addEmployee(e);
     }
 }
