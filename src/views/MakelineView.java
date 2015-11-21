@@ -39,13 +39,16 @@ public class MakelineView extends MyJFrame {
             @Override
             public void keyPressed(KeyEvent e) {
                 if (e.getKeyCode() == KeyEvent.VK_ENTER) {
-
-                    int numPizzas = model.getOrder(((Integer)orderList.getSelectedValue())).getPizzas().size();
+                    int orderNum = (Integer) orderList.getSelectedValue();
+                    int numPizzas = model.getOrder(orderNum).getPizzas().size();
 
                     for(int i = 0; i < numPizzas; i++) {
-                        model.getOrder((Integer) orderList.getSelectedValue()).getPizza(i).setStatus(PIZZA_STATUS.COMPLETED);
-                        if(!model.getOrder((Integer) orderList.getSelectedValue()).getSides().isEmpty())
-                            model.getOrder((Integer) orderList.getSelectedValue()).getSide(i).setStatus(PIZZA_STATUS.COMPLETED);
+                        Order completed = model.getOrder(orderNum);
+                        completed.getPizza(i).setStatus(PIZZA_STATUS.COMPLETED);
+                        if(!completed.getSides().isEmpty()) {
+                            completed.getSide(i).setStatus(PIZZA_STATUS.COMPLETED);
+                        }
+                        model.updateOrder(orderNum,completed);
                     }
 
                     manager.activateWindow(manager.MAKE_LINE, manager.MAKE_LINE);
@@ -75,11 +78,15 @@ public class MakelineView extends MyJFrame {
                     char check = itemList.getSelectedValue().toString().charAt(0);
                     if(check == '['){
                         int order = (Integer)orderList.getModel().getElementAt(itemList.getSelectedIndex());
-                        model.getOrder(order).getSide(0).setStatus(PIZZA_STATUS.COMPLETED);
+                        Order completed = model.getOrder(order);
+                        completed.getSide(0).setStatus(PIZZA_STATUS.COMPLETED);
+                        model.updateOrder(order,completed);
                     }
                     else {
                         int pizza = (Integer) orderList.getModel().getElementAt(itemList.getSelectedIndex());
-                        model.getOrder(pizza).getPizza(itemList.getSelectedIndex() - itemsBeforePizza).setStatus(PIZZA_STATUS.COMPLETED);
+                        Order completed = model.getOrder(pizza);
+                        completed.getPizza(itemList.getSelectedIndex() - itemsBeforePizza).setStatus(PIZZA_STATUS.COMPLETED);
+                        model.updateOrder(pizza,completed);
                     }
                     manager.activateWindow(manager.MAKE_LINE, manager.MAKE_LINE);
                 }
