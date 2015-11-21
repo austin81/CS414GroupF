@@ -59,5 +59,13 @@ public class RegisterClient {
         }
 
     }
+    public PizzaCatalog updateItem(Object o){
+        try{
+            return r.updateItemRMI(o);
+        }catch(RemoteException re){
+            System.out.println(re);
+            return null;
+        }
+    }
 
 }
