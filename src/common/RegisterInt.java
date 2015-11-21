@@ -25,4 +25,5 @@ public interface RegisterInt extends java.rmi.Remote{
     void updateEmployee(int ID, Employee employee) throws java.rmi.RemoteException;
     Employee getEmployeeByAuthRMI(String auth) throws java.rmi.RemoteException;
     void setLoggedInEmployeeRMI(Employee e) throws java.rmi.RemoteException;
+    void addEmployee(Employee e) throws java.rmi.RemoteException;
 }

@@ -181,4 +181,12 @@ public class RegisterClient {
             System.out.println(re);
         }
     }
+
+    public void addEmployee(Employee e){
+        try{
+            r.addEmployee(e);
+        }catch(RemoteException re){
+            System.out.println(re);
+        }
+    }
 }
