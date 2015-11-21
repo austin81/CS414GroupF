@@ -7,6 +7,7 @@ import objects.Register;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
+import java.util.ArrayList;
 
 /**
  * Created by clark on 11/20/15.
@@ -39,5 +40,8 @@ public class RegisterRMI extends UnicastRemoteObject implements RegisterInt {
     public PizzaCatalog updateItemRMI(Object o) throws RemoteException{
         register.getCatalog().updateItem(o);
         return getCatalogRMI();
+    }
+    public ArrayList<Order> getOrdersRMI() throws RemoteException{
+        return register.getOrders();
     }
 }
