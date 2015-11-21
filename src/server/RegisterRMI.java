@@ -88,4 +88,14 @@ public class RegisterRMI extends UnicastRemoteObject implements RegisterInt {
     public ArrayList<String> getMakelineSides() throws RemoteException {
         return register.getMakelineSides();
     }
+
+    @Override
+    public ArrayList<Integer> getMakelineIDRMI() throws RemoteException {
+        return register.getMakelineID();
+    }
+
+    @Override
+    public ArrayList<String> getMakelineItemsRMI() throws RemoteException {
+        return register.getMakelineItems();
+    }
 }

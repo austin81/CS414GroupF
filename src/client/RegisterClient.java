@@ -223,7 +223,7 @@ public class RegisterClient {
         }
     }
 
-    public ArrayList<Integer> getMakelineItems(){
+    public ArrayList<String> getMakelineItems(){
         try{
             return r.getMakelineItemsRMI();
         }catch (RemoteException re) {

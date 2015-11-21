@@ -27,7 +27,6 @@ public interface RegisterInt extends java.rmi.Remote{
     void addEmployeeRMI(Employee e) throws java.rmi.RemoteException;
     ArrayList<Pizza> getMakelinePizzas() throws java.rmi.RemoteException;
     ArrayList<String> getMakelineSides() throws java.rmi.RemoteException;
-
     ArrayList<Integer> getMakelineIDRMI() throws java.rmi.RemoteException;
-    ArrayList<Integer> getMakelineItemsRMI() throws java.rmi.RemoteException;
+    ArrayList<String> getMakelineItemsRMI() throws java.rmi.RemoteException;
 }
