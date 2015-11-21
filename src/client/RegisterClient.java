@@ -114,13 +114,21 @@ public class RegisterClient {
         }
     }
 
+    public int getOrderIDByPhone(String phoneNumber) {
+        try {
+            return r.getOrderIDByPhone(phoneNumber);
+        } catch(RemoteException re) {
+            System.out.println(re);
+            return -1;
+        }
+    }
 
     public int addOrder(Order order) {
         try{
             return r.addOrderRMI(order);
         } catch(RemoteException re) {
             System.out.println(re);
-            return 0;
+            return -1;
         }
     }
 }
