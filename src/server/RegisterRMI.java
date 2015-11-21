@@ -1,4 +1,8 @@
-package objects;
+package server;
+
+import common.RegisterInt;
+import objects.PizzaCatalog;
+import objects.Register;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
@@ -8,13 +12,18 @@ import java.rmi.server.UnicastRemoteObject;
  */
 public class RegisterRMI extends UnicastRemoteObject implements RegisterInt {
 
-    Register r;
+    Register register;
 
     public RegisterRMI() throws RemoteException{
         super();
-        r = new Register();
+        register = new Register();
+    }
+
+    public RegisterRMI(Register r) throws RemoteException{
+        super();
+        this.register = r;
     }
     public PizzaCatalog getCatalogRMI() throws RemoteException{
-        return r.getCatalog();
+        return register.getCatalog();
     }
 }

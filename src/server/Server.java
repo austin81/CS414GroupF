@@ -1,5 +1,7 @@
-package objects;
+package server;
 
+
+import common.RegisterInt;
 
 import java.rmi.Naming;
 

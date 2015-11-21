@@ -7,6 +7,6 @@ import controllers.WindowManager;
  */
 public class Main {
     public static void main(String[] args){
-        WindowManager manager = new WindowManager();
+        WindowManager manager = new WindowManager(args[0],args[1]);
     }
 }

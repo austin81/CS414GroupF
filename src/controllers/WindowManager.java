@@ -1,6 +1,8 @@
 package controllers;
 
+import client.RegisterClient;
 import objects.Register;
+import server.Server;
 import views.*;
 
 import javax.swing.*;
@@ -17,6 +19,9 @@ public class WindowManager implements WindowStateListener {
     HashMap<String, MyJFrame> views;
     HashMap<String, MyActionListener> controllers;
     Register register;
+    String url;
+    Server server;
+    RegisterClient client;
     public final String MAIN_MENU = "mainMenu";
     public final String ORDER_EDIT = "orderEdit";
     public final String COLLECT_PAYMENT = "collectPayment";
@@ -27,7 +32,7 @@ public class WindowManager implements WindowStateListener {
     public final String EMPLOYEE_EDIT = "employeeEdit";
     public final String MENU_EDIT = "menuEdit";
 
-    public WindowManager(){
+    public WindowManager(String host, String port){
             register = new Register();
             register.setWindowManager(this);
             init();
@@ -38,6 +43,13 @@ public class WindowManager implements WindowStateListener {
                 jFrame.setVisible(false);
                 jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             }
+            // start the server
+            url = new String("rmi://" + host + ":" + port + "/Service");
+            new Server(url);
+
+            // start the client
+            new RegisterClient(url);
+
             // init main menu view
             views.get(MAIN_MENU).setVisible(true);
     }

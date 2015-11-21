@@ -1,4 +1,6 @@
-package objects;
+package common;
+
+import objects.PizzaCatalog;
 
 import java.util.ArrayList;
 
