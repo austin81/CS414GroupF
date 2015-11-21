@@ -1,6 +1,7 @@
 package client;
 
 import common.RegisterInt;
+import objects.Order;
 import objects.PizzaCatalog;
 import objects.Register;
 
@@ -66,6 +67,16 @@ public class RegisterClient {
             System.out.println(re);
             return null;
         }
+    }
+
+    public Order getOrder(int o){
+        try{
+            return r.getOrderRMI(o);
+        }catch(RemoteException re){
+            System.out.println(re);
+            return null;
+        }
+
     }
 
 }

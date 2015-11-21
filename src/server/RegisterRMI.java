@@ -1,6 +1,7 @@
 package server;
 
 import common.RegisterInt;
+import objects.Order;
 import objects.PizzaCatalog;
 import objects.Register;
 
@@ -29,6 +30,11 @@ public class RegisterRMI extends UnicastRemoteObject implements RegisterInt {
     public PizzaCatalog deleteItemRMI(Object o) throws RemoteException{
         register.getCatalog().deleteItem(o);
         return getCatalogRMI();
+    }
+
+    @Override
+    public Register getOrderRMI() throws RemoteException {
+        return null;
     }
     public PizzaCatalog updateItemRMI(Object o) throws RemoteException{
         register.getCatalog().updateItem(o);
