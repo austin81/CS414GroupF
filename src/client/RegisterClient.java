@@ -198,4 +198,22 @@ public class RegisterClient {
             System.out.println(re);
         }
     }
+
+    public ArrayList<Integer> getMakelineID(){
+        try{
+            return r.getMakelineIDRMI();
+        } catch (RemoteException re) {
+            System.out.println(re);
+            return null;
+        }
+    }
+
+    public ArrayList<Integer> getMakelineItems(){
+        try{
+            return r.getMakelineItemsRMI();
+        }catch (RemoteException re) {
+            System.out.println(re);
+            return null;
+        }
+    }
 }
