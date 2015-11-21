@@ -156,4 +156,11 @@ public class RegisterClient {
             return null;
         }
     }
+    public void setLoggedInEmployee(Employee e){
+        try{
+            r.setLoggedInEmployeeRMI(e);
+        }catch(RemoteException re){
+            System.out.println(re);
+        }
+    }
 }

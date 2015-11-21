@@ -62,4 +62,7 @@ public class RegisterRMI extends UnicastRemoteObject implements RegisterInt {
     public Employee getEmployeeByAuthRMI(String auth) throws RemoteException{
         return register.getEmployeeByAuth(auth);
     }
+    public void setLoggedInEmployeeRMI(Employee e) throws RemoteException{
+        register.setLoggedInEmployee(e);
+    }
 }
