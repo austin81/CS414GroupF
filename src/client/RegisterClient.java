@@ -7,6 +7,7 @@ import objects.Register;
 import java.net.MalformedURLException;
 import java.rmi.Naming;
 import java.rmi.NotBoundException;
+import java.rmi.Remote;
 import java.rmi.RemoteException;
 
 /**
@@ -44,6 +45,14 @@ public class RegisterClient {
         try{
             return r.getCatalogRMI();
         } catch(RemoteException re) {
+            System.out.println(re);
+        }
+    }
+
+    public PizzaCatalog deleteItem(Object o){
+        try{
+            return r.deleteItemRMI(o);
+        }catch(RemoteException re){
             System.out.println(re);
         }
     }
