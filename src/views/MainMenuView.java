@@ -22,11 +22,6 @@ public class MainMenuView extends MyJFrame {
         pack();
     }
 
-    public void clearEmployee() {
-        //breaking MVC pattern... sorry
-        model.clearLoggedInEmployee();
-    }
-
     public void addComponents(){
         controller.registerComponent("orderViewButton", orderViewButton);
         controller.registerComponent("makeLineViewButton", makeLineViewButton);

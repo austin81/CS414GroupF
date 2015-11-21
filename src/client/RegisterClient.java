@@ -216,4 +216,12 @@ public class RegisterClient {
             return null;
         }
     }
+
+    public void clearLoggedInEmployee() {
+        try{
+            r.clearLoggedInEmployeeRMI();
+        } catch (RemoteException re) {
+            System.out.println(re);
+        }
+    }
 }

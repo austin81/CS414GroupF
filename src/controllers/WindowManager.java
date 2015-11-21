@@ -71,7 +71,7 @@ public class WindowManager implements WindowStateListener {
             (controllers.get(newWindow)).resetView();
         }
         if(newWindow.equals(MAIN_MENU)){
-            ((MainMenuView)views.get(MAIN_MENU)).clearEmployee();
+            client.clearLoggedInEmployee();
         }
     }
 
