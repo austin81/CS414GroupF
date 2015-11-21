@@ -60,7 +60,7 @@ public class MenuEditListener extends MyActionListener {
                                 model.updateItem(((Topping) item).getItemID());
                             } else {
                                 item = new Topping(shortName, itemName);
-                                model.getCatalog().addItem(item);
+                                model.addItem(item);
                             }
                             break;
                         case "Size":
@@ -72,7 +72,7 @@ public class MenuEditListener extends MyActionListener {
                                 model.updateItem(((PizzaSize) item).getItemID());
                             } else {
                                 item = new PizzaSize(shortName, itemName, price);
-                                model.getCatalog().addItem(item);
+                                model.addItem(item);
                             }
                             break;
                         case "Sauce":
@@ -82,7 +82,7 @@ public class MenuEditListener extends MyActionListener {
                                 model.updateItem(((Sauce) item).getItemID());
                             } else {
                                 item = new Sauce(shortName, itemName);
-                                model.getCatalog().addItem(item);
+                                model.addItem(item);
                             }
                             break;
                         case "Side":
@@ -93,7 +93,7 @@ public class MenuEditListener extends MyActionListener {
                                 model.updateItem(((Side) item).getItemID());
                             } else {
                                 item = new Side(itemName, price);
-                                model.getCatalog().addItem(item);
+                                model.addItem(item);
                             }
                             break;
                         case "Drink":
@@ -104,7 +104,7 @@ public class MenuEditListener extends MyActionListener {
                                 model.updateItem(((Drink) item).getItemID());
                             } else {
                                 item = new Drink(itemName, price);
-                                model.getCatalog().addItem(item);
+                                model.addItem(item);
                             }
                             break;
                     }

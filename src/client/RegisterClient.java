@@ -70,6 +70,15 @@ public class RegisterClient {
         }
     }
 
+    public PizzaCatalog addItem(Object o){
+        try{
+            return r.addItemRMI(o);
+        }catch(RemoteException re){
+            System.out.println(re);
+            return null;
+        }
+    }
+
     public ArrayList<Order> getOrders() {
         try {
             return r.getOrdersRMI();
