@@ -1,6 +1,7 @@
 package client;
 
 import common.RegisterInt;
+import objects.Order;
 import objects.PizzaCatalog;
 import objects.Register;
 
@@ -9,6 +10,7 @@ import java.rmi.Naming;
 import java.rmi.NotBoundException;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
+import java.util.ArrayList;
 
 /**
  * Created by clark on 11/20/15.
@@ -63,6 +65,15 @@ public class RegisterClient {
         try{
             return r.updateItemRMI(o);
         }catch(RemoteException re){
+            System.out.println(re);
+            return null;
+        }
+    }
+
+    public ArrayList<Order> getOrders() {
+        try {
+            return r.getOrdersRMI();
+        } catch(RemoteException re) {
             System.out.println(re);
             return null;
         }
