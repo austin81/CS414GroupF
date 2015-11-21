@@ -3,7 +3,7 @@ package common;
 import objects.Order;
 import objects.PizzaCatalog;
 import objects.Register;
-
+import objects.Employee;
 import java.util.ArrayList;
 
 /**
@@ -19,4 +19,5 @@ public interface RegisterInt extends java.rmi.Remote{
     void updateOrderRMI(int orderId, Order order) throws java.rmi.RemoteException;
     void removeOrderRMI(int orderId) throws java.rmi.RemoteException;
     int addOrderRMI(Order order)throws java.rmi.RemoteException;
+    Employee getEmployeeByAuthRMI(String auth) throws java.rmi.RemoteException;
 }

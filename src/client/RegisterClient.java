@@ -1,6 +1,7 @@
 package client;
 
 import common.RegisterInt;
+import objects.Employee;
 import objects.Order;
 import objects.PizzaCatalog;
 import objects.Register;
@@ -121,6 +122,15 @@ public class RegisterClient {
         } catch(RemoteException re) {
             System.out.println(re);
             return 0;
+        }
+    }
+
+    public Employee getEmployeeByAuth(String auth){
+        try{
+            return r.getEmployeeByAuthRMI(auth);
+        }catch(RemoteException re){
+            System.out.println(re);
+            return null;
         }
     }
 }

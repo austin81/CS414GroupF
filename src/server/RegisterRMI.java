@@ -1,6 +1,7 @@
 package server;
 
 import common.RegisterInt;
+import objects.Employee;
 import objects.Order;
 import objects.PizzaCatalog;
 import objects.Register;
@@ -56,5 +57,8 @@ public class RegisterRMI extends UnicastRemoteObject implements RegisterInt {
 
     public int addOrderRMI(Order order) throws RemoteException {
         return register.addOrder(order);
+    }
+    public Employee getEmployeeByAuthRMI(String auth) throws RemoteException{
+        return register.getEmployeeByAuth(auth);
     }
 }
