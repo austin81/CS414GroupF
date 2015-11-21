@@ -156,6 +156,24 @@ public class RegisterClient {
             return null;
         }
     }
+
+    public void removeEmployee(Employee employee) {
+        try{
+            r.removeEmployeeRMI(employee);
+        } catch(RemoteException re) {
+            System.out.println(re);
+        }
+    }
+
+    public void updateEmployee(int ID, Employee employee) {
+        try{
+            r.updateEmployee(ID, employee);
+        } catch(RemoteException re) {
+            System.out.println(re);
+        }
+    }
+
+
     public void setLoggedInEmployee(Employee e){
         try{
             r.setLoggedInEmployeeRMI(e);

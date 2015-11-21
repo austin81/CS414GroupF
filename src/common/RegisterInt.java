@@ -1,5 +1,6 @@
 package common;
 
+import objects.Employee;
 import objects.Order;
 import objects.PizzaCatalog;
 import objects.Register;
@@ -20,6 +21,8 @@ public interface RegisterInt extends java.rmi.Remote{
     void removeOrderRMI(int orderId) throws java.rmi.RemoteException;
     int getOrderIDByPhone(String phoneNumber) throws java.rmi.RemoteException;
     int addOrderRMI(Order order)throws java.rmi.RemoteException;
+    void removeEmployeeRMI(Employee employee) throws java.rmi.RemoteException;
+    void updateEmployee(int ID, Employee employee) throws java.rmi.RemoteException;
     Employee getEmployeeByAuthRMI(String auth) throws java.rmi.RemoteException;
     void setLoggedInEmployeeRMI(Employee e) throws java.rmi.RemoteException;
 }
