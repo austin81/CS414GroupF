@@ -45,10 +45,10 @@ public class WindowManager implements WindowStateListener {
             }
             // start the server
             url = new String("rmi://" + host + ":" + port + "/Service");
-            new Server(url);
+            server = new Server(url);
 
             // start the client
-            new RegisterClient(url);
+            client = new RegisterClient(url);
 
             // init main menu view
             views.get(MAIN_MENU).setVisible(true);

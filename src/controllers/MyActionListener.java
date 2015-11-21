@@ -1,5 +1,6 @@
 package controllers;
 
+import client.RegisterClient;
 import objects.Register;
 import views.MyJFrame;
 
@@ -15,7 +16,7 @@ import java.util.HashMap;
  */
 public class MyActionListener implements ActionListener, ListSelectionListener {
     public int orderID;
-    public Register model;
+    public RegisterClient model;
     HashMap<String, JComponent> components;
     WindowManager manager;
     MyJFrame view;
@@ -28,7 +29,7 @@ public class MyActionListener implements ActionListener, ListSelectionListener {
         this.orderID = orderID;
     }
 
-    public void addModel(Register model){
+    public void addModel(RegisterClient model){
         this.model = model;
     }
 

@@ -1,6 +1,7 @@
 package client;
 
 import common.RegisterInt;
+import objects.PizzaCatalog;
 import objects.Register;
 
 import java.net.MalformedURLException;
@@ -13,8 +14,11 @@ import java.rmi.RemoteException;
  */
 public class RegisterClient {
 
+    Register register;
+    RegisterInt r;
+
     public RegisterClient(String url) {
-        RegisterInt r = null;
+        r = null;
         try {
             r = (RegisterInt)
                     Naming.lookup(url);
@@ -35,5 +39,13 @@ public class RegisterClient {
     }
 
     //have controllers call RegisterInt methods here.
+
+    public PizzaCatalog getCatalog() {
+        try{
+            return r.getCatalogRMI();
+        } catch(RemoteException re) {
+            System.out.println(re);
+        }
+    }
 
 }
