@@ -46,7 +46,7 @@ public class RegisterClient {
             return r.getCatalogRMI();
         } catch(RemoteException re) {
             System.out.println(re);
-            return
+            return null;
         }
     }
 
