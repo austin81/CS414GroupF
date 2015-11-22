@@ -15,6 +15,7 @@ public class MainMenuView extends MyJFrame {
     private JButton makeLineViewButton;
     private JButton managerControlsButton;
     public JPanel mainMenuPanel;
+    private JButton customerButton;
 
     public MainMenuView(){
         setContentPane(mainMenuPanel);
@@ -26,8 +27,10 @@ public class MainMenuView extends MyJFrame {
         controller.registerComponent("orderViewButton", orderViewButton);
         controller.registerComponent("makeLineViewButton", makeLineViewButton);
         controller.registerComponent("managerControlsButton", managerControlsButton);
+        controller.registerComponent("customerButton", customerButton);
         orderViewButton.addActionListener(controller);
         makeLineViewButton.addActionListener(controller);
         managerControlsButton.addActionListener(controller);
+        customerButton.addActionListener(controller);
     }
 }

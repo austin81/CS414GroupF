@@ -30,6 +30,7 @@ public class WindowManager implements WindowStateListener {
     public final String EMPLOYEE_EDIT = "employeeEdit";
     public final String MENU_EDIT = "menuEdit";
     public final String LOYALTY_EDIT = "loyaltyEdit";
+    public final String Kiosk = "kiosk";
 
     public WindowManager(String host, String port){
 
@@ -65,7 +66,7 @@ public class WindowManager implements WindowStateListener {
             ((MakelineView)views.get(MAKE_LINE)).setOrderList();
             ((MakelineView)views.get(MAKE_LINE)).setItemList();
         }
-        if(newWindow.equals(EMPLOYEE_EDIT) || newWindow.equals(MENU_EDIT) || newWindow.equals(ORDER_EDIT) || newWindow.equals(ORDER_LIST) || newWindow.equals(LOYALTY_EDIT)){
+        if(newWindow.equals(EMPLOYEE_EDIT) || newWindow.equals(MENU_EDIT) || newWindow.equals(ORDER_EDIT) || newWindow.equals(ORDER_LIST) || newWindow.equals(LOYALTY_EDIT) /*|| newWindow.equals(Kiosk)*/){
             (controllers.get(newWindow)).resetView();
         }
         if(newWindow.equals(MAIN_MENU)){
