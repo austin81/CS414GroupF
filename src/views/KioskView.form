@@ -253,4 +253,10 @@
       </vspacer>
     </children>
   </grid>
+  <buttonGroups>
+    <group name="group">
+      <member id="b3fbe"/>
+      <member id="d6d7b"/>
+    </group>
+  </buttonGroups>
 </form>

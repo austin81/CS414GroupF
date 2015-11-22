@@ -43,6 +43,7 @@ public class KioskListener extends MyActionListener implements ListSelectionList
                 pizza.setSauce(model.getCatalog().getSauces().get(((JList) components.get("pizzaSaucesList")).getSelectedIndex()));
                 pizza.setSize(model.getCatalog().getSizes().get(((JList) components.get("pizzaSizesList")).getSelectedIndex()));
                 pizza.calculatePrice();
+                System.out.println(pizza);
                 if (((JButton)components.get("addPizzaButton")).getText().equals("Add")) {
                     order.addPizza(pizza);
                 } else {
