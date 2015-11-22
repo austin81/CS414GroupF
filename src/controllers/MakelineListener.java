@@ -22,6 +22,9 @@ public class MakelineListener extends MyActionListener {
             case "Back":
                 manager.activateWindow(manager.MAKE_LINE, manager.MAIN_MENU);
                 break;
+            case "Refresh":
+                manager.activateWindow(manager.MAKE_LINE, manager.MAKE_LINE);
+                break;
         }
     }
 }

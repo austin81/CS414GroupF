@@ -23,6 +23,7 @@ public class Server {
 
     public static void main(String args[]) {
         String url = new String("rmi://" + args[0] + ":" + args[1] + "/Service");
+        System.out.println("IP: " + args[0] +"\n"+ "Port: " + args[1]);
         new Server(url);
     }
 }

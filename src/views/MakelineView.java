@@ -3,6 +3,8 @@ package views;
 import objects.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.*;
 import java.awt.*;
 import java.util.Observable;
@@ -15,6 +17,7 @@ public class MakelineView extends MyJFrame {
     private JList orderList;
     private JButton backButton;
     private JList itemList;
+    private JButton refreshButton;
     private JList sideList;
 
 
@@ -34,6 +37,25 @@ public class MakelineView extends MyJFrame {
         orderList.setFont(new Font("Arial",Font.BOLD,27));
         itemList.setFont(new Font("Arial",Font.BOLD,27));
  //       sideList.setFont(new Font("Arial",Font.BOLD,27));
+
+        // timer does not work
+        // the timer refreshes every 15 seconds to make line view no matter what window you're currently in
+
+//        Timer timer = new Timer(15000, new ActionListener() {
+//            public void actionPerformed(ActionEvent evt) {
+//                if( "need something here" ) {
+//                    manager.activateWindow(manager.MAKE_LINE, manager.MAKE_LINE);
+//                    System.out.println("refreshed");
+//                }
+//                else{
+//                    System.out.println("tried to refresh");
+//                }
+//            }
+//        });
+//
+//        timer.setRepeats(true);
+//        timer.setCoalesce(true);
+//        timer.start();
 
         orderList.addKeyListener(new KeyListener() {
             @Override
@@ -132,8 +154,10 @@ public class MakelineView extends MyJFrame {
         controller.registerComponent("orderList", orderList);
         controller.registerComponent("itemList", itemList);
         controller.registerComponent("backButton",  backButton);
+        controller.registerComponent("refreshButton", refreshButton);
 
         backButton.addActionListener(controller);
+        refreshButton.addActionListener(controller);
     }
 
 }
