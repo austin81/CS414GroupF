@@ -22,7 +22,7 @@ public class MainMenuListener extends MyActionListener {
         Employee e;
         switch (actionEvent.getActionCommand()){
             case "Customer":
-//                manager.activateWindow(manager.MAIN_MENU, manager.Kiosk);
+                manager.activateWindow(manager.MAIN_MENU, manager.Kiosk);
                 break;
             case "Orders":
                 authenticationKey = (String)JOptionPane.showInputDialog(

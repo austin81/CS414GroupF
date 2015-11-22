@@ -66,7 +66,7 @@ public class WindowManager implements WindowStateListener {
             ((MakelineView)views.get(MAKE_LINE)).setOrderList();
             ((MakelineView)views.get(MAKE_LINE)).setItemList();
         }
-        if(newWindow.equals(EMPLOYEE_EDIT) || newWindow.equals(MENU_EDIT) || newWindow.equals(ORDER_EDIT) || newWindow.equals(ORDER_LIST) || newWindow.equals(LOYALTY_EDIT) /*|| newWindow.equals(Kiosk)*/){
+        if(newWindow.equals(EMPLOYEE_EDIT) || newWindow.equals(MENU_EDIT) || newWindow.equals(ORDER_EDIT) || newWindow.equals(ORDER_LIST) || newWindow.equals(LOYALTY_EDIT) || newWindow.equals(Kiosk)){
             (controllers.get(newWindow)).resetView();
         }
         if(newWindow.equals(MAIN_MENU)){
@@ -86,6 +86,7 @@ public class WindowManager implements WindowStateListener {
         views.put(EMPLOYEE_EDIT, new EmployeeEditView());
         views.put(MENU_EDIT, new MenuEditView());
         views.put(LOYALTY_EDIT, new LoyaltyView());
+        views.put(Kiosk, new KioskView());
 
         controllers = new HashMap<>();
         controllers.put(MAIN_MENU, new MainMenuListener());
@@ -98,6 +99,7 @@ public class WindowManager implements WindowStateListener {
         controllers.put(EMPLOYEE_EDIT, new EmployeeEditListener());
         controllers.put(MENU_EDIT, new MenuEditListener());
         controllers.put(LOYALTY_EDIT, new LoyaltyEditListener());
+        controllers.put(Kiosk, new KioskListener());
     }
 
     public void registerMVC(){
