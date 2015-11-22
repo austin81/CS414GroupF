@@ -124,7 +124,6 @@ public class MenuEditListener extends MyActionListener {
         System.out.println(event.toString());
         JList list = (JList) event.getSource();
         if(list.getSelectedValue() != null){
-            // check
             String buttonText = list.getSelectedValue().toString();
             item = model.getCatalog().getItem(buttonText);
             if(item instanceof PizzaSize){

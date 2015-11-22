@@ -1,5 +1,6 @@
 package client;
 
+import com.sun.org.apache.bcel.internal.generic.LOR;
 import common.RegisterInt;
 import objects.*;
 import controllers.CollectPaymentListener;
@@ -240,6 +241,15 @@ public class RegisterClient {
             r.clearLoggedInEmployeeRMI();
         } catch (RemoteException re) {
             System.out.println(re);
+        }
+    }
+
+    public LoyaltyProgram getLoyaltyProgram() {
+        try {
+            return r.getLoyaltyProgramRMI();
+        } catch (RemoteException re) {
+            System.out.println(re);
+            return null;
         }
     }
 }

@@ -29,11 +29,12 @@ public class WindowManager implements WindowStateListener {
     public final String MANAGE_MAIN = "manageMain";
     public final String EMPLOYEE_EDIT = "employeeEdit";
     public final String MENU_EDIT = "menuEdit";
+    public final String LOYALTY_EDIT = "loyaltyEdit";
 
     public WindowManager(String host, String port){
 
             // start the client
-            url = new String("rmi://" + host + ":" + port + "/Service");
+            url = "rmi://" + host + ":" + port + "/Service";
             client = new RegisterClient(url);
 
             client.setWindowManager(this);
@@ -64,7 +65,7 @@ public class WindowManager implements WindowStateListener {
             ((MakelineView)views.get(MAKE_LINE)).setOrderList();
             ((MakelineView)views.get(MAKE_LINE)).setItemList();
         }
-        if(newWindow.equals(EMPLOYEE_EDIT) || newWindow.equals(MENU_EDIT) || newWindow.equals(ORDER_EDIT) || newWindow.equals(ORDER_LIST)){
+        if(newWindow.equals(EMPLOYEE_EDIT) || newWindow.equals(MENU_EDIT) || newWindow.equals(ORDER_EDIT) || newWindow.equals(ORDER_LIST) || newWindow.equals(LOYALTY_EDIT)){
             (controllers.get(newWindow)).resetView();
         }
         if(newWindow.equals(MAIN_MENU)){
@@ -83,6 +84,7 @@ public class WindowManager implements WindowStateListener {
         views.put(MANAGE_MAIN, new ManagerMainView());
         views.put(EMPLOYEE_EDIT, new EmployeeEditView());
         views.put(MENU_EDIT, new MenuEditView());
+        views.put(LOYALTY_EDIT, new LoyaltyView());
 
         controllers = new HashMap<>();
         controllers.put(MAIN_MENU, new MainMenuListener());
@@ -94,6 +96,7 @@ public class WindowManager implements WindowStateListener {
         controllers.put(MANAGE_MAIN, new ManagerMainListener());
         controllers.put(EMPLOYEE_EDIT, new EmployeeEditListener());
         controllers.put(MENU_EDIT, new MenuEditListener());
+        controllers.put(LOYALTY_EDIT, new LoyaltyEditListener());
     }
 
     public void registerMVC(){

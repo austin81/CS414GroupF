@@ -20,11 +20,15 @@ public class Register {
     private int storeID;
     private PizzaCatalog catalog;
     private ArrayList<Employee> employees;
+    private LoyaltyProgram program;
 
     public Register(){
         orders = new ArrayList<>();
         employees = new ArrayList<>();
         catalog = new PizzaCatalog();
+        program = new LoyaltyProgram();
+        program.addReward(10, new Pizza(new ArrayList<Topping>(),catalog.getSauces().get(0),catalog.getSizes().get(0),PIZZA_STATUS.NEW,12.00));
+        program.addReward(15, new Pizza(new ArrayList<Topping>(),catalog.getSauces().get(1),catalog.getSizes().get(1),PIZZA_STATUS.NEW,10.00));
         addEmployee(new Employee("manager1", new Address("street1", "city1", "state1", "zip1"), new Phone("phone1"), "manager1", "321", ROLE.MANAGER));
         addEmployee(new Employee("chef1", new Address("street2", "city2", "state2", "zip2"), new Phone("phone2"), "chef1", "123", ROLE.CHEF));
         addEmployee(new Employee("cashier1", new Address("street3", "city3", "state3", "zip3"), new Phone("phone3"), "cashier1", "000", ROLE.CASHIER));
@@ -224,6 +228,10 @@ public class Register {
                 employees.set(i, employee);
             }
         }
+    }
+
+    public LoyaltyProgram getLoyaltyProgram() {
+        return program;
     }
 
 }

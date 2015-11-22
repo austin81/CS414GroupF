@@ -98,4 +98,7 @@ public class RegisterRMI extends UnicastRemoteObject implements RegisterInt {
     public ArrayList<String> getMakelineItemsRMI() throws RemoteException {
         return register.getMakelineItems();
     }
+    public LoyaltyProgram getLoyaltyProgramRMI() throws RemoteException {
+        return register.getLoyaltyProgram();
+    }
 }

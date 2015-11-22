@@ -3,6 +3,7 @@ package common;
 import objects.*;
 import objects.Employee;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * Created by clark on 11/20/15.
@@ -29,4 +30,5 @@ public interface RegisterInt extends java.rmi.Remote{
     ArrayList<String> getMakelineSides() throws java.rmi.RemoteException;
     ArrayList<Integer> getMakelineIDRMI() throws java.rmi.RemoteException;
     ArrayList<String> getMakelineItemsRMI() throws java.rmi.RemoteException;
+    LoyaltyProgram getLoyaltyProgramRMI() throws java.rmi.RemoteException;
 }

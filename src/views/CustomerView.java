@@ -26,7 +26,7 @@ public class CustomerView extends MyJFrame {
     private JButton cancelButton;
     private JButton saveButton;
     private JButton clearButton;
-    private Order order;
+
     public CustomerView(){
         customerContainer.setPreferredSize(new Dimension(getToolkit().getScreenSize().width, getToolkit().getScreenSize().height));
         setContentPane(customerContainer);

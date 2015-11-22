@@ -10,6 +10,7 @@ public class Person implements Serializable{
     private String name;
     private ArrayList<Address> addresses;
     private ArrayList<Phone> phoneNumbers;
+    private Account loyaltyAccount;
 
     public Person(){
 
@@ -20,6 +21,7 @@ public class Person implements Serializable{
         this.name = name;
         this.addresses.add(address);
         this.phoneNumbers.add(phone);
+        this.loyaltyAccount = new Account(phone);
     }
 
     public void setName(String name){
@@ -58,6 +60,12 @@ public class Person implements Serializable{
             this.addresses = new ArrayList<>();
         }
         this.addresses = addresses;
+    }
+    public Account getLoyaltyAccount() {
+        return loyaltyAccount;
+    }
+    public void setLoyaltyAccount(Account a) {
+        this.loyaltyAccount = a;
     }
 
 }
