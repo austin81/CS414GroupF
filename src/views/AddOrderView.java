@@ -33,6 +33,8 @@ public class AddOrderView extends MyJFrame {
     private JLabel toppingLabel;
     private JLabel saucesLabel;
     private JLabel sizesLabel;
+    private JRadioButton pickUpButton;
+    private JRadioButton deliveryButton;
     private Order order;
 
     public AddOrderView(){
@@ -91,9 +93,13 @@ public class AddOrderView extends MyJFrame {
         controller.registerComponent("sidesButton", sidesButton);
         controller.registerComponent("drinksButton", drinksButton);
         controller.registerComponent("exitButton", exitButton);
+        controller.registerComponent("pickUpButton", pickUpButton);
+        controller.registerComponent("deliveryButton",deliveryButton);
         sidesButton.addActionListener(controller);
         drinksButton.addActionListener(controller);
         exitButton.addActionListener(controller);
+        pickUpButton.addActionListener(controller);
+        deliveryButton.addActionListener(controller);
     }
 
 }
