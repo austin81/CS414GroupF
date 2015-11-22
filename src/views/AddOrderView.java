@@ -90,6 +90,9 @@ public class AddOrderView extends MyJFrame {
         controller.registerComponent("cancelPizzaButton", cancelPizzaButton);
         cancelPizzaButton.addActionListener(controller);
 
+        pickUpButton.setActionCommand("pickup");
+        deliveryButton.setActionCommand("delivery");
+
         controller.registerComponent("sidesButton", sidesButton);
         controller.registerComponent("drinksButton", drinksButton);
         controller.registerComponent("exitButton", exitButton);

@@ -17,6 +17,7 @@ public class Order implements Serializable{
     private Person customer;
     boolean isPaidFor;
     double amountPaid;
+    OrderType type;
     private ArrayList<Pizza> pizzas;
     private ArrayList<SideItem> sides;
 
@@ -59,7 +60,8 @@ public class Order implements Serializable{
         return getOrderID() + "   "
                 + getCustomer().getPhoneNumbers().get(0)
                 + "   " + getCustomer().getName()
-                + "   " + getOrderTotal();
+                + "   " + getOrderTotal()
+                + "   " + getOrderType();
     }
 
     public int getOrderID() {
@@ -89,6 +91,10 @@ public class Order implements Serializable{
     public SideItem getSide(int index){
         return  this.sides.get(index);
     }
+
+    public OrderType getOrderType(){ return type; }
+
+    public void setOrderType(OrderType type){ this.type = type; }
 
     public void addPizza(Pizza pizza){
         if(this.pizzas == null){

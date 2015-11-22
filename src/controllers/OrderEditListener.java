@@ -155,6 +155,12 @@ public class OrderEditListener extends MyActionListener implements ListSelection
                 manager.passOrderID(manager.COLLECT_PAYMENT, orderID);
                 manager.activateWindow(manager.ORDER_EDIT, manager.COLLECT_PAYMENT);
                 break;
+            case "pickup":
+                order.setOrderType(OrderType.pickUp);
+                break;
+            case "delivery":
+                order.setOrderType(OrderType.delivery);
+                break;
         }
     }
 
