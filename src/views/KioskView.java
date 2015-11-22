@@ -4,6 +4,7 @@ import objects.Order;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.Observable;
 
 /**
  * Created by berryhillb on 11/22/15.
@@ -49,5 +50,44 @@ public class KioskView extends MyJFrame {
                 }
             }
         });
+    }
+
+    @Override
+    public void update(Observable observable, Object o) {
+        System.out.println("AddOrderView: Observer is: " + observable.getClass() + ", object passed is: " + o.getClass());
+    }
+
+    public void addComponents(){
+        controller.registerComponent("pizzaToppingsList", pizzaToppingsList);
+        controller.registerComponent("pizzaSizesList", pizzaSizesList);
+        controller.registerComponent("pizzaSaucesList", pizzaSaucesList);
+        controller.registerComponent("pizzaList", pizzaList);
+        pizzaList.addListSelectionListener(controller);
+        controller.registerComponent("totalDisplay", totalDisplay);
+
+        controller.registerComponent("addPizzaButton", addPizzaButton);
+        addPizzaButton.addActionListener(controller);
+        controller.registerComponent("collectOrderButton", collectOrderButton);
+        collectOrderButton.addActionListener(controller);
+        controller.registerComponent("cancelCurrent", cancelCurrent);
+        cancelCurrent.addActionListener(controller);
+        controller.registerComponent("cancelOrderButton", cancelOrderButton);
+        cancelOrderButton.addActionListener(controller);
+        controller.registerComponent("cancelPizzaButton", cancelPizzaButton);
+        cancelPizzaButton.addActionListener(controller);
+
+        pickUpButton.setActionCommand("pickup");
+        deliveryButton.setActionCommand("delivery");
+
+        controller.registerComponent("sidesButton", sidesButton);
+        controller.registerComponent("drinksButton", drinksButton);
+        controller.registerComponent("exitButton", exitButton);
+        controller.registerComponent("pickUpButton", pickUpButton);
+        controller.registerComponent("deliveryButton",deliveryButton);
+        sidesButton.addActionListener(controller);
+        drinksButton.addActionListener(controller);
+        exitButton.addActionListener(controller);
+        pickUpButton.addActionListener(controller);
+        deliveryButton.addActionListener(controller);
     }
 }
