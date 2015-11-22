@@ -30,7 +30,8 @@ public class LoyaltyProgram implements Serializable{
     public ArrayList<Object> getProgramArrayList() {
         ArrayList<Object> ret = new ArrayList<>();
         for (HashMap.Entry<Integer,Pizza> entry : rewards.entrySet()) {
-            String r = entry.getKey() + " points... " + entry.getValue();
+            Pizza val = entry.getValue();
+            String r = entry.getKey() + " points... Size:" + val.getSize() + " Num Toppings:" + val.getToppingList().size();
             ret.add(r);
         }
         return ret;

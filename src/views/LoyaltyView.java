@@ -4,6 +4,8 @@ import javax.swing.*;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.Border;
 import java.awt.*;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 
 /**
  * Created by clark on 11/21/15.
@@ -52,4 +54,5 @@ public class LoyaltyView extends MyJFrame{
         toppingsComboBox.addActionListener(controller);
         sizeComboBox.addActionListener(controller);
     }
+
 }
