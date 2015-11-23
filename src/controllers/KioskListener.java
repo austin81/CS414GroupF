@@ -149,7 +149,7 @@ public class KioskListener extends MyActionListener implements ListSelectionList
                 model.updateOrder(orderID, order);
                 order = null;
                 manager.passOrderID(manager.COLLECT_PAYMENT, orderID);
-                manager.activateWindow(manager.Kiosk, manager.COLLECT_PAYMENT);
+                manager.activateWindow(manager.Kiosk, manager.MAIN_MENU);
                 break;
             case "pickup":
                 order.setOrderType(OrderType.pickUp);
