@@ -1,0 +1,842 @@
+commit 5011b01b3aa107f3ec5a73a72d4be7acbbef1c7b
+Author: Austin Clark <austin.clark@hpe.com>
+Date:   Sun Nov 22 17:00:01 2015 -0700
+
+    README
+
+commit 62bb84ef92bf3b5b75d6f8d0d6fca0ccb2a7fe98
+Author: Bryon Berryhill <berryhillb@yahoo.com>
+Date:   Sun Nov 22 16:37:19 2015 -0700
+
+    still no luck with the NPEs
+
+commit 3de6c69e7fc98085564d4c45fa444baf8576996a
+Author: Bryon Berryhill <berryhillb@yahoo.com>
+Date:   Sun Nov 22 14:09:15 2015 -0700
+
+    forgot to group the delivery & pickup buttons to make only one clickable at a time
+
+commit 68d74899a396c30d3be15d6c865dd91e60b7c88a
+Author: Bryon Berryhill <berryhillb@yahoo.com>
+Date:   Sun Nov 22 13:55:19 2015 -0700
+
+    got the pizza sizes to be buttons and clickable
+
+commit ff554f054645ff3f0fc59a6458db9daed78d9b53
+Merge: f29135e 3212193
+Author: Bryon Berryhill <berryhillb@yahoo.com>
+Date:   Sun Nov 22 13:39:33 2015 -0700
+
+    Merge remote-tracking branch 'origin/master'
+
+commit f29135e6fc4bbf64f6859e7adc8d8011ccb474d9
+Author: Bryon Berryhill <berryhillb@yahoo.com>
+Date:   Sun Nov 22 13:39:23 2015 -0700
+
+    getting different null pointer exception
+
+commit 3212193692ca759bf3f710f74c1eb0eff1bde842
+Author: Austin Clark <austin.clark@hpe.com>
+Date:   Sun Nov 22 13:34:06 2015 -0700
+
+    more loyalty.
+
+commit c53449c621202020640a3688043237a048b3a02b
+Author: Bryon Berryhill <berryhillb@yahoo.com>
+Date:   Sun Nov 22 12:53:39 2015 -0700
+
+    made a kiosk view and have it open on customer button click... no password needed
+
+commit f6c4613c002d34887c0a88532f2f3d3eaf75ac9b
+Author: Bryon Berryhill <berryhillb@yahoo.com>
+Date:   Sun Nov 22 12:17:59 2015 -0700
+
+    working on kiosk view and seeing what i can do with the loyalty program
+
+commit b4efb7aadbeb2add054ad9deef66df4630773806
+Author: Bryon Berryhill <berryhillb@yahoo.com>
+Date:   Sun Nov 22 11:36:06 2015 -0700
+
+    here's my orderType class
+
+commit 2e2206b38d6f1f0640e1f8d0be11302918485d3e
+Author: Bryon Berryhill <berryhillb@yahoo.com>
+Date:   Sat Nov 21 21:15:22 2015 -0700
+
+    pickup & delivery radio buttons work now
+
+commit 0da2bbe7681e1d225cc5bd57e9bc1d0f45c4b45c
+Author: Austin Clark <austin.clark@hpe.com>
+Date:   Sat Nov 21 19:36:44 2015 -0700
+
+    Start on loyalty program. Manager view halfway done!
+
+commit 70b236bb41b60787c7fff9413a47e93f322db043
+Author: Bryon Berryhill <berryhillb@yahoo.com>
+Date:   Sat Nov 21 19:06:56 2015 -0700
+
+    pickup & delivery radio buttons are clickable but don't do anything.
+
+commit 2338a66a0051b9c5425e37c70d8162b75ea40fe3
+Author: Tyler927 <tkjones927@gmail.com>
+Date:   Sat Nov 21 19:05:58 2015 -0700
+
+    refresh makline button
+
+commit f8ebde3de62c813e9cff19e17841444b071efe3d
+Author: Bryon Berryhill <berryhillb@yahoo.com>
+Date:   Sat Nov 21 15:48:39 2015 -0700
+
+    made labels for order window
+
+commit d70936b5948a5eaf6037ad7213c3b1e64985d76b
+Author: Austin Clark <austin.clark@hpe.com>
+Date:   Sat Nov 21 15:47:52 2015 -0700
+
+    Fix makeline errors
+
+commit 8e4fef91884652def8704cfa7cf8fb914056f750
+Author: Austin Clark <austin.clark@hpe.com>
+Date:   Sat Nov 21 15:04:31 2015 -0700
+
+    make objects serializable
+
+commit fc1f0e9563b9deec124b0cc55636b00b74aa5b3b
+Author: Austin Clark <austin.clark@hpe.com>
+Date:   Sat Nov 21 15:00:25 2015 -0700
+
+    Separate Server and fix RegisterClient bug.
+
+commit 233afd6badaf9691a5175e70c8706210a4440c20
+Author: Bryon Berryhill <berryhillb@yahoo.com>
+Date:   Sat Nov 21 14:48:40 2015 -0700
+
+    fixed a bug
+
+commit 100753654bd6f84b5e0d2fe12ec3247e90970817
+Author: Tyler927 <tkjones927@gmail.com>
+Date:   Sat Nov 21 14:43:45 2015 -0700
+
+    getMakelinePizzas and sides RMI
+
+commit 96dd0a166121abb5796db29bc61c737cffb2ad02
+Author: Austin Clark <austin.clark@hpe.com>
+Date:   Sat Nov 21 14:43:09 2015 -0700
+
+    add clearLoggedInEmployeesRMI()
+
+commit 562b9887600c5c1e9d69ae3d5ccb408aa96bddcb
+Author: Bryon Berryhill <berryhillb@yahoo.com>
+Date:   Sat Nov 21 14:41:58 2015 -0700
+
+    did getEmployeeByAuthRMI
+
+commit e7000a02094451f0eb9ffec5832f3caa1e743328
+Author: Austin Clark <austin.clark@hpe.com>
+Date:   Sat Nov 21 14:30:50 2015 -0700
+
+    add getEmployeesRMI()
+
+commit 2eb55256bea0c5c2990c075c632250c3aa86b703
+Author: Tyler927 <tkjones927@gmail.com>
+Date:   Sat Nov 21 14:25:45 2015 -0700
+
+    addEmployeeRMI
+
+commit 3a812a48d921ebe341b01c76c3c4400d2545e1da
+Author: Tyler927 <tkjones927@gmail.com>
+Date:   Sat Nov 21 14:23:11 2015 -0700
+
+    getEmployeeRMI and updateEmployeeRMI
+
+commit 4f2a1e032f6487db1382ad375c6ed7862666894b
+Author: Bryon Berryhill <berryhillb@yahoo.com>
+Date:   Sat Nov 21 14:21:17 2015 -0700
+
+    did getEmployeeByAuthRMI
+
+commit 3618432d36b232ac741e3a5c4b3acf73969f07b8
+Author: Austin Clark <austin.clark@hpe.com>
+Date:   Sat Nov 21 14:20:31 2015 -0700
+
+    Give view properties to RegisterClient from Register
+
+commit 439477240e74afb63ef324cd91df7035a308d135
+Merge: 712a151 54d3252
+Author: Bryon Berryhill <berryhillb@yahoo.com>
+Date:   Sat Nov 21 14:14:15 2015 -0700
+
+    Merge remote-tracking branch 'origin/master'
+
+commit 712a151d34c48c77073eb56850bbe9807ecab881
+Author: Bryon Berryhill <berryhillb@yahoo.com>
+Date:   Sat Nov 21 14:14:08 2015 -0700
+
+    did getEmployeeByAuthRMI
+
+commit 54d32526fdbd41ac6bcb01a3f90c0054a8926289
+Author: Austin Clark <austin.clark@hpe.com>
+Date:   Sat Nov 21 14:05:26 2015 -0700
+
+    Add getOrderByPhoneRMI
+
+commit 143697217244714cea7e4cef1d5e16f2216c17eb
+Author: Tyler927 <tkjones927@gmail.com>
+Date:   Sat Nov 21 14:03:09 2015 -0700
+
+    addOrderRMI
+
+commit 5afabc7bcdb98d13fe75f3b6d8bfc434ad70df56
+Author: Tyler927 <tkjones927@gmail.com>
+Date:   Sat Nov 21 13:57:19 2015 -0700
+
+    addOrderRMI
+
+commit a69645638ef92aff620ace8aa2f92efd712a5bab
+Author: Bryon Berryhill <berryhillb@yahoo.com>
+Date:   Sat Nov 21 13:55:44 2015 -0700
+
+    refactored addItem to addItemRMI
+
+commit ce5ef044a5e728b28cd207a2de9f259d01a9aeca
+Merge: c72a956 3103fa4
+Author: Bryon Berryhill <berryhillb@yahoo.com>
+Date:   Sat Nov 21 13:53:26 2015 -0700
+
+    Merge remote-tracking branch 'origin/master'
+    
+    # Conflicts:
+    #	src/common/RegisterInt.java
+    #	src/server/RegisterRMI.java
+
+commit 3103fa4a438290751c0fa5ff12ae10251ffcbf54
+Author: Austin Clark <austin.clark@hpe.com>
+Date:   Sat Nov 21 13:52:36 2015 -0700
+
+    Add total string to RegisterClient
+
+commit 05b422ac6fb2ecc6f954edc328a107133aca7eeb
+Author: Austin Clark <austin.clark@hpe.com>
+Date:   Sat Nov 21 13:50:55 2015 -0700
+
+    Adds updateOrderRMI and removeOrderRMI
+
+commit c72a956f2e447a098ed3e336e0dc161967baca2a
+Merge: 8c576e0 3dbbe24
+Author: Bryon Berryhill <berryhillb@yahoo.com>
+Date:   Sat Nov 21 13:46:54 2015 -0700
+
+    Merge remote-tracking branch 'origin/master'
+
+commit 3dbbe241bbcc7e161fb1213ad41bfc8c255730d4
+Author: Tyler927 <tkjones927@gmail.com>
+Date:   Sat Nov 21 13:44:19 2015 -0700
+
+    getOrderRMI
+
+commit 8c576e08f46b3f7e8e5ba6880c71768a0c39ef29
+Merge: 13bb55e e74ad53
+Author: Bryon Berryhill <berryhillb@yahoo.com>
+Date:   Sat Nov 21 13:42:18 2015 -0700
+
+    Merge remote-tracking branch 'origin/master'
+    
+    # Conflicts:
+    #	src/server/RegisterRMI.java
+
+commit e74ad5366df280bb2f0e97a5f455fb08dfc94685
+Author: Tyler927 <tkjones927@gmail.com>
+Date:   Sat Nov 21 13:41:48 2015 -0700
+
+    getOrderRMI
+
+commit 65ae7225f8c5b2b60588cd0fc62540c4998ae75f
+Merge: 71cd25a b26236e
+Author: Tyler927 <tkjones927@gmail.com>
+Date:   Sat Nov 21 13:37:33 2015 -0700
+
+    Merge remote-tracking branch 'origin/master'
+    
+    # Conflicts:
+    #	src/client/RegisterClient.java
+    #	src/common/RegisterInt.java
+
+commit 13bb55ee0837d45933aceb4d427c63e56395dadf
+Author: Bryon Berryhill <berryhillb@yahoo.com>
+Date:   Sat Nov 21 13:36:49 2015 -0700
+
+    Merge branch 'master' of /Users/berryhillb/Documents/Super Folder/school/cs414/CS414GroupF with conflicts.
+
+commit 71cd25ad638aa63b37b38a57bf093b294b1b5a23
+Author: Tyler927 <tkjones927@gmail.com>
+Date:   Sat Nov 21 13:36:49 2015 -0700
+
+    Merge branch 'master' of /Users/Tyler/Documents/workspace414/CS414GroupF2 with conflicts.
+
+commit b26236e5e99cf1f95b58f0cc678a4ee704d55b8f
+Author: Austin Clark <austin.clark@hpe.com>
+Date:   Sat Nov 21 13:32:02 2015 -0700
+
+    Adds getOrdersRMI
+
+commit d11f6577541793320cf022b333d9454ad0dab811
+Merge: a4c61f0 4c9fe99
+Author: Tyler927 <tkjones927@gmail.com>
+Date:   Sat Nov 21 13:30:43 2015 -0700
+
+    Merge remote-tracking branch 'origin/master'
+    
+    # Conflicts:
+    #	src/common/RegisterInt.java
+
+commit 4c9fe9958faad8b8fe22d854f500fd1cfa284588
+Author: Bryon Berryhill <berryhillb@yahoo.com>
+Date:   Sat Nov 21 13:22:13 2015 -0700
+
+    refactored updateItem to updateItemRMI
+
+commit 6446fe87c3f6bbdbbcc037de9439c69c362424b8
+Author: Bryon Berryhill <berryhillb@yahoo.com>
+Date:   Sat Nov 21 13:11:18 2015 -0700
+
+    added return null to getCatalogRMI()
+
+commit a4c61f0259dec51e9eed00e785d6240a6b89e236
+Merge: e2f926b e210dde
+Author: Tyler927 <tkjones927@gmail.com>
+Date:   Sat Nov 21 13:08:09 2015 -0700
+
+    Merge remote-tracking branch 'origin/master'
+
+commit e210dde9e7438c454e79c361c9d5155164894545
+Author: Bryon Berryhill <berryhillb@yahoo.com>
+Date:   Sat Nov 21 13:08:01 2015 -0700
+
+    added to register client
+
+commit e2f926b9ff716df5680d6c7af89ed47c3a91342a
+Merge: effee3a 48f128f
+Author: Tyler927 <tkjones927@gmail.com>
+Date:   Sat Nov 21 13:05:42 2015 -0700
+
+    Merge remote-tracking branch 'origin/master'
+
+commit 48f128faf44ddf02f878d9ab90574d476bc18bd0
+Author: Bryon Berryhill <berryhillb@yahoo.com>
+Date:   Sat Nov 21 13:03:11 2015 -0700
+
+    added to register client
+
+commit a2915884860cd2912e09b54130d7211b9a681a65
+Author: Bryon Berryhill <berryhillb@yahoo.com>
+Date:   Sat Nov 21 13:02:03 2015 -0700
+
+    added to register client
+
+commit effee3a0712e4d1a42b25bf4d65595a05443f2e7
+Author: Tyler927 <tkjones927@gmail.com>
+Date:   Sat Nov 21 13:01:41 2015 -0700
+
+    Merge branch 'master' of /Users/Tyler/Documents/workspace414/CS414GroupF2 with conflicts.
+
+commit c56d5496070b0c4d7468d743ac5ee79ccfab0042
+Author: Bryon Berryhill <berryhillb@yahoo.com>
+Date:   Sat Nov 21 12:54:56 2015 -0700
+
+    working on deleteItemRMI(Object o)
+
+commit 16c805b5bd8c4428783f605ab08c8dd20dc2dc79
+Author: Austin Clark <austin.clark@hpe.com>
+Date:   Sat Nov 21 12:27:01 2015 -0700
+
+    Add Server and Client to main menu view
+
+commit a4efd25e72efb1b0ee6da268b7f62ca6f5b65d0e
+Author: Austin Clark <austin.clark@hpe.com>
+Date:   Sat Nov 21 12:00:37 2015 -0700
+
+    Add Server and Client to main menu view
+
+commit 73024bf6eb9e172e24b8abd4fbf9a5c3cbb33a0c
+Author: Austin Clark <austin.clark@hpe.com>
+Date:   Fri Nov 20 16:01:17 2015 -0700
+
+    Make PizzaCatalog and all related classes serializable
+
+commit a070a791b9b8719456750228f6d9f8e875015047
+Author: Austin Clark <austin.clark@hpe.com>
+Date:   Fri Nov 20 15:52:39 2015 -0700
+
+    Decouple RMI server to un-break Main.java
+
+commit 836696c239d5cfd1f1c2ba30e4fff73edc7f8731
+Author: Austin Clark <austin.clark@hpe.com>
+Date:   Fri Nov 20 15:27:23 2015 -0700
+
+    Added basic RMI server as POC.
+
+commit 623982d0127c94f1fea29e30a09f1caecf3f5c23
+Author: darkbobo <curtis.mayott@gmail.com>
+Date:   Thu Nov 5 09:42:19 2015 -0700
+
+    there is something wrong with the customer view not holding focus. when the focus of the OrderListView gets sent to the CustomerView (via the list item click), you must select a text field in the customer view orelse when you click save a new window will open (MainMenuView). I have tried view.toFront, view.requestFocus, view.setState, view.setAlwaysOnTop, etc, nothing seems to work, even requesting the focus for the textArea's component within the CustomerView does not put focus there.
+
+commit 05a4d9244c8e5773ca7b3bd6a508eeef85d29a68
+Author: Austin Clark <austin.clark@hpe.com>
+Date:   Wed Oct 28 22:06:51 2015 -0600
+
+    Remove unimplemented unit tests
+
+commit 54d537168d383a7aeaf4d919b8e5239e8d42e44b
+Author: darkbobo <curtis.mayott@gmail.com>
+Date:   Wed Oct 28 21:21:09 2015 -0600
+
+    updated UMLDiagram
+
+commit d40c7d75033764da661d71944971593a4306751c
+Author: Tyler927 <tkjones927@gmail.com>
+Date:   Wed Oct 28 21:15:03 2015 -0600
+
+    Added UML class diagram
+
+commit e2305a6c90c794613ee95f854e9ec97058729415
+Author: darkbobo <curtis.mayott@gmail.com>
+Date:   Wed Oct 28 19:33:00 2015 -0600
+
+    OrderItem now has the status variable
+    updated sendPizzaToMakeline & sendSideToMakeline to not change items to MAKE_LINE unless they are in new status
+    -- because:
+    OrderEdit's Collect button was not doing anything.
+    Now:
+    - Send To Makeline only sets pizza's status's to MAKE_LINE
+    - Collect now sends pizzas to makeline AND navigates to CollectPayment window
+
+commit 2aee79be9d8132c00395ebf84542069ed434f048
+Author: darkbobo <curtis.mayott@gmail.com>
+Date:   Wed Oct 28 19:11:43 2015 -0600
+
+    edited PizzaTest to handle new PizzaSize variable (price)
+
+commit a1760d732c031be482469901c4c93ec8d54dc2bf
+Author: darkbobo <curtis.mayott@gmail.com>
+Date:   Wed Oct 28 19:08:17 2015 -0600
+
+    Sizes prices are now customizable.
+    Exit button (OrderEdit) now has functionality.
+    Fixed error that arose from making the exit button have functionality.
+       - involved editing register.getOrder to be an orderID instead of an index, because the orderID might not be the same as the index
+       - remove order now takes an orderID
+       - getNextOrderID now gets the uppermost orderID and adds one
+
+commit 68d0ce6ef74b50869638f5b9e4ccdc1d2918ff42
+Author: Austin Clark <austin.clark@hpe.com>
+Date:   Wed Oct 28 19:05:52 2015 -0600
+
+    unit tests for order, person, pizza, sideitem, topping
+
+commit 7f64f9a121ff1dbe380f6e6a839d970a4e7d8949
+Author: darkbobo <curtis.mayott@gmail.com>
+Date:   Wed Oct 28 17:49:03 2015 -0600
+
+    now CollectPayment and Order take into account amounts previously collected when updating an order:
+        ex: order has a medium pizza and sent to makeline and collected 5.99, enter order and add another pizza, now collectPayment only collects on the pizza added
+    realized, paying by card has no effect
+
+commit 5cb754dbd3ac0b67cd931e144f224226809d425b
+Author: darkbobo <curtis.mayott@gmail.com>
+Date:   Wed Oct 28 14:30:07 2015 -0600
+
+    OrderLookup (OrderList) now functions
+
+commit 72b8dc84d4e22a42876857a61096a93bbff4dcd8
+Author: Austin Clark <austin.clark@hpe.com>
+Date:   Wed Oct 28 13:59:23 2015 -0600
+
+    Bug fix for employee edit; username was not being saved.
+
+commit 492e3a34f711621f69839cf74e3e27efd6acd4e6
+Author: Austin Clark <austin.clark@hpe.com>
+Date:   Wed Oct 28 12:43:55 2015 -0600
+
+    Auth now logs out employee when MainMenu is selected
+
+commit 8dbbc24cd9e1238699240f5a70c3526b284138e0
+Author: darkbobo <curtis.mayott@gmail.com>
+Date:   Tue Oct 27 23:38:31 2015 -0600
+
+    some views fonts and layout changes
+
+commit 66201cad7291af59bcde4b59544b4e8e447d6304
+Author: Tyler927 <tkjones927@gmail.com>
+Date:   Tue Oct 27 23:33:02 2015 -0600
+
+    make line complete
+
+commit 291f5a563c2bebf9c795a44ac0126e7a8a99bb82
+Author: Tyler927 <tkjones927@gmail.com>
+Date:   Tue Oct 27 23:07:04 2015 -0600
+
+    make line 99% complete
+
+commit 4e86e2d8322f3bdca4b073f8046168b540f0dbdb
+Merge: 0fa9709 6770b72
+Author: Tyler927 <tkjones927@gmail.com>
+Date:   Tue Oct 27 22:57:34 2015 -0600
+
+    Merge remote-tracking branch 'origin/master'
+
+commit 6770b7248ca9540af64bd60e57bfe114c1c21172
+Author: darkbobo <curtis.mayott@gmail.com>
+Date:   Tue Oct 27 22:56:14 2015 -0600
+
+    fixed issue with orderIDs not being passed from CustomerListener to OrderEditListener (every order was a new order)
+    slightly updated some text entry fields, more to come
+
+commit 0fa970960f5e02a4b2f6f44918f9b41bd2cc15c9
+Author: Tyler927 <tkjones927@gmail.com>
+Date:   Tue Oct 27 21:59:11 2015 -0600
+
+    Merge branch 'master' of /Users/Tyler/Documents/workspace414/CS414GroupF with conflicts.
+
+commit 1a547c756908953d87081d0c4daf573f0c0f72f2
+Author: darkbobo <curtis.mayott@gmail.com>
+Date:   Tue Oct 27 21:56:46 2015 -0600
+
+    MenuEdit now successfully functioning
+    getPizzaCatalog is no longer static (Register)
+    window keys (WindowManager) are no long static
+    PizzaCatalog now has add/remove functionality
+
+commit 6fcd86fec13f609083de6f683d720328f5808c8c
+Author: Austin Clark <austin.clark@hpe.com>
+Date:   Tue Oct 27 19:00:39 2015 -0600
+
+    Add a handful of test classes, remove DrinkTest
+
+commit ac7cc86eeaa423efe79dbe2d36763794a4bd5ef9
+Author: Austin Clark <austin.clark@hpe.com>
+Date:   Tue Oct 27 18:18:43 2015 -0600
+
+    Change Role from class to enum type
+
+commit f31ce285e51046071987a17016a2682e4c197f6e
+Author: darkbobo <curtis.mayott@gmail.com>
+Date:   Tue Oct 27 17:25:33 2015 -0600
+
+    now orderTotal is two decimal places
+
+commit d13856259a3d1f3ae14fc145b2185e6e5b5b0de6
+Merge: f6c8f54 cd04a30
+Author: darkbobo <curtis.mayott@gmail.com>
+Date:   Tue Oct 27 17:20:46 2015 -0600
+
+    Merge remote-tracking branch 'origin/master'
+
+commit cd04a30bd6387492a8748f20f3622b638b1d410f
+Author: Austin Clark <austin.clark@hpe.com>
+Date:   Tue Oct 27 17:16:01 2015 -0600
+
+    Add unit tests skeleton for views
+
+commit f6c8f54dd4a4106d2da8704751c0cd0d23088aaa
+Merge: 0ac6a12 a2929fd
+Author: darkbobo <curtis.mayott@gmail.com>
+Date:   Tue Oct 27 17:12:13 2015 -0600
+
+    Merge remote-tracking branch 'origin/master'
+
+commit a2929fddaea67d82b1d3431ce5679735eca8673c
+Author: Austin Clark <austin.clark@hpe.com>
+Date:   Tue Oct 27 17:12:08 2015 -0600
+
+    Add unit tests skeleton for objects
+
+commit 0ac6a129ad2ee9b7576674874e94ededa3c6e711
+Author: darkbobo <curtis.mayott@gmail.com>
+Date:   Tue Oct 27 17:12:04 2015 -0600
+
+    now orderTotal is two decimal places
+
+commit eede5a6d30cebc840740df282fd4e97f42206dec
+Merge: 86c968d d2acad9
+Author: Austin Clark <austin.clark@hpe.com>
+Date:   Tue Oct 27 17:11:24 2015 -0600
+
+    Merge remote-tracking branch 'origin/master'
+
+commit 86c968d458d6cd559eade89ad2326f685ee1dcef
+Author: Austin Clark <austin.clark@hpe.com>
+Date:   Tue Oct 27 17:11:13 2015 -0600
+
+    Adds unit test skeleton for controllers
+
+commit d2acad930dc8cb5f13c021ad41b64f59628cf62a
+Author: darkbobo <curtis.mayott@gmail.com>
+Date:   Tue Oct 27 17:05:50 2015 -0600
+
+    Employee Edit is complete (ideally)
+
+commit 79c0789e8e0045eac222d5d713350184f9d74256
+Author: darkbobo <curtis.mayott@gmail.com>
+Date:   Tue Oct 27 16:44:38 2015 -0600
+
+    employee edit save, delete, cancel
+    required editing register's employee object relation
+    required adding some setters to employee and person that were missing
+
+commit af5f18b5bd7099ab3fe10ad40a7cb2398b6dde84
+Merge: d9041ad ffecbc3
+Author: Austin Clark <austin.clark@hpe.com>
+Date:   Tue Oct 27 16:12:34 2015 -0600
+
+    Merge remote-tracking branch 'origin/master'
+
+commit d9041adc4609521f004f742d93204f0f9c13c9e3
+Author: Austin Clark <austin.clark@hpe.com>
+Date:   Tue Oct 27 16:12:21 2015 -0600
+
+    Add default employees for the three different roles
+
+commit ffecbc31cd589631d37e65d56eeac3a1e022905f
+Author: darkbobo <curtis.mayott@gmail.com>
+Date:   Tue Oct 27 16:10:55 2015 -0600
+
+    role toString()
+
+commit 38a046fa3f054ccd6cd1b9daa7a21e55f66e0669
+Author: darkbobo <curtis.mayott@gmail.com>
+Date:   Tue Oct 27 15:53:40 2015 -0600
+
+    added roles and employee information to the register, began the list selection processes, handled back button in employee edit window
+    created the view layouts for employee edit and menu edit
+
+commit 47e2ace81f78e5056aadc44b6ca0b97162c8cadb
+Author: darkbobo <curtis.mayott@gmail.com>
+Date:   Tue Oct 27 14:19:30 2015 -0600
+
+    manager menu screens are setup ready to be worked on:
+     - actionPerformed added to relevant listeners
+     - constructors completed for views and listeners
+     - addComponents method added to views
+     - valueChanged added to relevant listeners
+    manager main menu goes to views respectively
+
+commit bb67c0fc069acead05b783fc06552e3fc8b3b338
+Author: darkbobo <curtis.mayott@gmail.com>
+Date:   Tue Oct 27 13:49:11 2015 -0600
+
+    fix to not refreshing pizza list when add multiple pizzas to order
+
+commit 009f8af7b38d05cfda2d1acef8ff97a36302674b
+Author: darkbobo <curtis.mayott@gmail.com>
+Date:   Tue Oct 27 10:42:00 2015 -0600
+
+    added sides and drinks
+    removal is mostly successful except that the dialogs are duplicated
+
+commit 1220040b18a5650f7ddcf3c96a2ac33944cc4a66
+Author: Tyler927 <tkjones927@gmail.com>
+Date:   Mon Oct 26 23:19:14 2015 -0600
+
+    working on makeline complete pizza
+
+commit caf91ba816944d038c416669c73633ece5b6b47b
+Author: darkbobo <curtis.mayott@gmail.com>
+Date:   Mon Oct 26 21:58:33 2015 -0600
+
+    authentication for order entry
+
+commit 1171713b2bd029fec0be2b707f6581a8bf1e3bec
+Author: darkbobo <curtis.mayott@gmail.com>
+Date:   Mon Oct 26 21:47:43 2015 -0600
+
+    authentication for order entry
+
+commit 15f98453ef4a73efb692e7f95ffa4ff857d45a1f
+Author: Tyler927 <tkjones927@gmail.com>
+Date:   Mon Oct 26 21:42:01 2015 -0600
+
+    makeline works
+
+commit 27addeeeada0570c9d3cbd24d24cf9d76ee438b7
+Author: darkbobo <curtis.mayott@gmail.com>
+Date:   Mon Oct 26 21:30:55 2015 -0600
+
+    can now successfully make new orders without them overwriting older orders
+
+commit aaac9228351a9ac0851b474b389b0f6e91bc9855
+Author: darkbobo <curtis.mayott@gmail.com>
+Date:   Mon Oct 26 20:17:16 2015 -0600
+
+    component makeline added to makeline list
+
+commit 328430d168d5e866e6e1dcfe5e7c4aa6a95484ad
+Author: Austin Clark <austin.clark@hpe.com>
+Date:   Mon Oct 26 12:50:54 2015 -0600
+
+    Add make pizza (third) SSD
+
+commit 76bc5c8b8a7a7195ebdb228d0d6286fd59d4ab40
+Author: Austin Clark <austin.clark@hpe.com>
+Date:   Mon Oct 26 12:38:36 2015 -0600
+
+    Add cashier ordering pizza SSD
+
+commit 787d2e4afe7f61c66b0bd1275a1148a9a12c96a6
+Author: Austin Clark <austin.clark@hpe.com>
+Date:   Mon Oct 26 12:25:48 2015 -0600
+
+    Add diagrams dir, first SSD (manager edit menu item)
+
+commit 4f58c01f25a6c5f169eb6fda977b9729f758b0de
+Author: Tyler927 <tkjones927@gmail.com>
+Date:   Sun Oct 25 21:42:16 2015 -0600
+
+    makeline sorta works
+
+commit 873be16373c63c77522b38492e55933f9e530f70
+Author: darkbobo <curtis.mayott@gmail.com>
+Date:   Sun Oct 25 20:48:22 2015 -0600
+
+    order list now displays nicely,
+
+commit 00dc8b1ef37e03e68320d767eee3bf207c365891
+Author: darkbobo <curtis.mayott@gmail.com>
+Date:   Sun Oct 25 20:21:20 2015 -0600
+
+    return from order_list
+
+commit 4c0954c7264cad6b3800cb001cda9f2d6619acf8
+Author: darkbobo <curtis.mayott@gmail.com>
+Date:   Sun Oct 25 20:19:33 2015 -0600
+
+    order edit adds pizzas
+
+commit aa9f0092fa25d8abc40dc26320326a3ba4099c79
+Author: darkbobo <curtis.mayott@gmail.com>
+Date:   Sun Oct 25 20:07:40 2015 -0600
+
+    can now navigate through order edit
+
+commit a26e3ac5b5c430957a5599ea4470edc582d73e7c
+Author: darkbobo <curtis.mayott@gmail.com>
+Date:   Sun Oct 25 19:37:24 2015 -0600
+
+    main menu controller is enabled
+
+commit c0b15c673fadd4ec241d3fa30ae178de01dec590
+Author: darkbobo <curtis.mayott@gmail.com>
+Date:   Sun Oct 25 19:18:14 2015 -0600
+
+    now views and models are abstracted
+
+commit 0d2cd1bd120d48cd184c8ae321a30f7f333fdf14
+Author: darkbobo <curtis.mayott@gmail.com>
+Date:   Sun Oct 25 18:56:27 2015 -0600
+
+    now views and models are abstracted
+
+commit 680f877e417619e700380a7960cc67cbffd79f21
+Author: darkbobo <curtis.mayott@gmail.com>
+Date:   Sun Oct 25 18:34:22 2015 -0600
+
+    fix null pointer exception in WindowManager
+
+commit bcaba9e33d248a5357c60c24ff9224caee30864c
+Author: darkbobo <curtis.mayott@gmail.com>
+Date:   Sun Oct 25 12:59:52 2015 -0600
+
+    abstract View - need to finish view implementation in WindowManager
+
+commit dfdc651628f0707f7471ade4b92f2cecaf99ece6
+Author: darkbobo <curtis.mayott@gmail.com>
+Date:   Sun Oct 25 12:19:03 2015 -0600
+
+    Massive change:
+    Abstracted ActionListener to add an orderID and easy Register adding.
+    Added a window manager to control navigation between windows.
+    Edited most files related to these two features.
+    Order button (main menu) now goes to OrderListView -> New Order now goes to CustomerView -> Save now goes to AddOrderView (expected flow).
+
+commit 4a8650dc3d47a845f2faadc128ea5ac66e1e31a9
+Author: Tyler927 <tkjones927@gmail.com>
+Date:   Sat Oct 24 15:47:41 2015 -0600
+
+    started makeline
+
+commit e42c62c1f5c90d666232af0777b56b46f2b1ea2a
+Author: darkbobo <curtis.mayott@gmail.com>
+Date:   Sat Oct 24 12:47:51 2015 -0600
+
+    Now collectPayment should function (with testing value for order total)
+
+commit d0a9ab6caeab69fb4999a7382d7b46cb0343ebb9
+Author: darkbobo <curtis.mayott@gmail.com>
+Date:   Sat Oct 24 11:14:24 2015 -0600
+
+    now OrderID's are populated when addOrder (Register)
+
+commit 799d05c25e326dc97ecfd6675bb49c963ac52387
+Author: darkbobo <curtis.mayott@gmail.com>
+Date:   Sat Oct 24 10:59:13 2015 -0600
+
+    moved controller package
+
+commit 6a55d53181e2702f9cb304e1ae69144626c54f7c
+Author: darkbobo <curtis.mayott@gmail.com>
+Date:   Sat Oct 24 10:58:18 2015 -0600
+
+    made controller package
+    made view for customer edit
+
+commit ea4b335bd281e9ba23da5624fc5c85d0789c16cf
+Author: darkbobo <curtis.mayott@gmail.com>
+Date:   Thu Oct 22 21:24:21 2015 -0600
+
+    implemented model view controller fairly successfully in the add order section.
+
+commit a983bdb9266651ac4d38c32480e135616914ed76
+Author: Austin Clark <austin.clark@hpe.com>
+Date:   Wed Oct 7 13:39:54 2015 -0600
+
+    Refactor User class (Employee) to inherit from Person
+
+commit c14c0eeaa9aef88a53b776d7d286421d2d2b3d86
+Author: darkbobo <curtis.mayott@gmail.com>
+Date:   Mon Oct 5 22:47:54 2015 -0600
+
+    added order status
+    can now add pizza to order, select pizza from list and buttons get marked selected, and can update successfully
+    the running total now displays
+    PIZZA_STATUS is complete I believe
+    pressing "Send to Makeline" button marks pizza's status MAKELINE
+
+commit fe81ac43d721ccedacab4906ae78e2e01affcf18
+Author: darkbobo <curtis.mayott@gmail.com>
+Date:   Mon Oct 5 18:11:37 2015 -0600
+
+    added register to main menu (final static) and order object to addorderview class, pizza calculates on command
+
+commit 96d306da6fa7c67e33da436d32a5b407b959b9cc
+Author: darkbobo <curtis.mayott@gmail.com>
+Date:   Mon Oct 5 17:50:38 2015 -0600
+
+    add register, users, multi select toppings, sizes are horizontal, now toString displays fullname
+
+commit 6490af5ddfaf3d0e2f18e1af5b32de349668f805
+Author: darkbobo <curtis.mayott@gmail.com>
+Date:   Mon Sep 28 20:53:08 2015 -0600
+
+    initial
+
+commit 1b5195b17dbaee8223e9dc3b4230329289963d5b
+Author: darkbobo <curtis.mayott@gmail.com>
+Date:   Mon Sep 28 18:17:22 2015 -0600
+
+    initial
+
+commit 5c2af7f1c686973b12f2caba9489d777a2e96f1f
+Author: darkbobo <curtis.mayott@gmail.com>
+Date:   Mon Sep 28 18:11:35 2015 -0600
+
+    initial
