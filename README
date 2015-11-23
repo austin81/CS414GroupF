@@ -1,0 +1,48 @@
+CS414 Group F - A5 - Pizza Ordering System
+
+
+Members:
+Bryon Berryhill
+Austin Clark
+Tyler Kuntz
+
+
+Dependencies:
+junit-4.12.jar - for unit tests
+hamcrest-core-1.3.jar - for junit
+
+
+Run Instructions:
+To run the program after building the project, first ensure that the RMI
+registry is running in the same directory as the .class files.
+
+`CS414GroupF/out/production/CS414GroupF/$ rmiregistry`
+
+Then, start the Server on a machine, specifying the host IP (localhost or
+127.0.0.* required for the server) and the port number:
+
+`CS414GroupF/out/production/CS414GroupF/$ java server.Server <host> <port>`
+
+Then, start any number of clients with the Server's IP and port number:
+
+`CS414GroupF/out/production/CS414GroupF/$ java views.Main <host> <port>`
+
+To log onto any view but the customer, you will need the appropriate login
+credentials. The Manager credentials will work for all three views:
+
+Manager: 321
+Chef: 123
+Cashier: 000
+
+
+What's good:
+The project's business logic, views, and controllers are separated well. The
+project is cleanly distributed and works well across multiple machines with RMI.
+
+What's missing:
+The customer loyalty system only has a manager-facing component and is not
+functional with customer accounts.
+
+Patterns used:
+RMI was used to distribute the system. The MVC pattern was used to refactor the
+existing system and desgin the new one.
