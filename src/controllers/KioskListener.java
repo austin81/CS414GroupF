@@ -20,6 +20,7 @@ public class KioskListener extends MyActionListener implements ListSelectionList
     }
 
     public void setOrderID(int orderID){
+        System.out.println("IN ORDEREDITLISTNER");
         order = model.getOrder(orderID);
         this.orderID = orderID;
     }
@@ -44,6 +45,7 @@ public class KioskListener extends MyActionListener implements ListSelectionList
                 pizza.setSize(model.getCatalog().getSizes().get(((JList) components.get("pizzaSizesList")).getSelectedIndex()));
                 pizza.calculatePrice();
                 System.out.println(pizza);
+                System.out.println(order);
                 if (((JButton)components.get("addPizzaButton")).getText().equals("Add")) {
                     order.addPizza(pizza);
                 } else {
@@ -109,11 +111,11 @@ public class KioskListener extends MyActionListener implements ListSelectionList
                     model.removeOrder(order.getOrderID());
                     order = null;
                     resetView();
-                    manager.activateWindow(manager.ORDER_EDIT, manager.ORDER_LIST);
+                    manager.activateWindow(manager.Kiosk, manager.MAIN_MENU);
                 }else{
                     // do nothing
                 }
-                manager.activateWindow(manager.ORDER_EDIT, manager.ORDER_LIST);
+                manager.activateWindow(manager.Kiosk, manager.MAIN_MENU);
                 break;
             case "Sides":
                 ArrayList<Side> sides = model.getCatalog().getSides();
@@ -147,7 +149,7 @@ public class KioskListener extends MyActionListener implements ListSelectionList
                 model.updateOrder(orderID, order);
                 order = null;
                 manager.passOrderID(manager.COLLECT_PAYMENT, orderID);
-                manager.activateWindow(manager.ORDER_EDIT, manager.COLLECT_PAYMENT);
+                manager.activateWindow(manager.Kiosk, manager.COLLECT_PAYMENT);
                 break;
             case "pickup":
                 order.setOrderType(OrderType.pickUp);

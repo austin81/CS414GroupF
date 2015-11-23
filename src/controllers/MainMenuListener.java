@@ -1,7 +1,6 @@
 package controllers;
 
-import objects.Employee;
-import objects.ROLE;
+import objects.*;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -11,8 +10,10 @@ import java.util.HashMap;
  * Created by darkbobo on 10/25/15.
  */
 public class MainMenuListener extends MyActionListener {
+    Order order;
     public MainMenuListener(){
         components = new HashMap<>();
+        orderID = -1;
     }
 
     @Override
@@ -22,7 +23,31 @@ public class MainMenuListener extends MyActionListener {
         Employee e;
         switch (actionEvent.getActionCommand()){
             case "Customer":
+
+
+                manager.passOrderID(manager.CUSTOMER, -1);
                 manager.activateWindow(manager.MAIN_MENU, manager.Kiosk);
+
+                Address address = new Address();
+                address.setStreetAddress("efqwf");
+                address.setCity("fkjhdskaljf");
+                address.setState("dhkfjhadsk");
+                address.setZipcode("kdfhdjkhfjkd");
+
+                Phone phone = new Phone();
+                phone.setNumber("23323");
+
+                Person person = new Person("name", address, phone);
+                if(order == null){
+                    order = new Order();
+                    order.setCustomer(person);
+                    orderID = model.addOrder(order);
+                }
+
+                System.out.println("OrderID: " + orderID);
+                manager.passOrderID(manager.Kiosk, orderID);
+                orderID = -1;
+                order = null;
                 break;
             case "Orders":
                 authenticationKey = (String)JOptionPane.showInputDialog(

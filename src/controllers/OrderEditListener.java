@@ -20,6 +20,7 @@ public class OrderEditListener extends MyActionListener implements ListSelection
     }
 
     public void setOrderID(int orderID){
+        System.out.println("IN ORDEREDITLISTNER");
         order = model.getOrder(orderID);
         this.orderID = orderID;
     }
@@ -43,6 +44,7 @@ public class OrderEditListener extends MyActionListener implements ListSelection
                 pizza.setSauce(model.getCatalog().getSauces().get(((JList) components.get("pizzaSaucesList")).getSelectedIndex()));
                 pizza.setSize(model.getCatalog().getSizes().get(((JList) components.get("pizzaSizesList")).getSelectedIndex()));
                 pizza.calculatePrice();
+                System.out.println(order);
                 if (((JButton)components.get("addPizzaButton")).getText().equals("Add")) {
                     order.addPizza(pizza);
                 } else {
