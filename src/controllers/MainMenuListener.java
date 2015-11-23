@@ -29,15 +29,15 @@ public class MainMenuListener extends MyActionListener {
                 manager.activateWindow(manager.MAIN_MENU, manager.Kiosk);
 
                 Address address = new Address();
-                address.setStreetAddress("efqwf");
-                address.setCity("fkjhdskaljf");
-                address.setState("dhkfjhadsk");
-                address.setZipcode("kdfhdjkhfjkd");
+                address.setStreetAddress("Kiosk");
+                address.setCity("Kiosk");
+                address.setState("Kiosk");
+                address.setZipcode("Kiosk");
 
                 Phone phone = new Phone();
-                phone.setNumber("23323");
+                phone.setNumber("Kiosk");
 
-                Person person = new Person("name", address, phone);
+                Person person = new Person("Kiosk", address, phone);
                 if(order == null){
                     order = new Order();
                     order.setCustomer(person);
